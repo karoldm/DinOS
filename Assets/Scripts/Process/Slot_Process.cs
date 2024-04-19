@@ -16,4 +16,9 @@ public class Slot_Process : MonoBehaviour
     {
         return transform.position;
     }
+
+    public void Clear()
+    {
+        this.process = null;
+    }
 }

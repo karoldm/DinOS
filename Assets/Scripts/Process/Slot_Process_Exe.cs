@@ -52,11 +52,14 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
             {
                 processController.AddItemExecuted(currentItemExe);
                 processController.queueExe.Add(currentItemExe.ID);
+                currentItemExe.AddPauseTime();
 
                 processController.UpdateTimeText("");
                 currentItemExe.isExe = false;
                 currentItemExe.Hide();
                 currentItemExe = null;
+
+                processController.HandleItemFinished();
             }
         }
     }
@@ -72,6 +75,12 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
             currentItemExe.isExe = true;
 
             processController.UpdateTimeText(currentItemExe.GetTimeLeft().ToString("F0"));
+
+            Slot_Process slotToClear = processController.slots.Find(slot => slot.process != null && slot.process.ID == currentItemExe.ID);
+            if(slotToClear != null)
+            {
+                slotToClear.Clear();
+            }
 
             processController.UpdateQueue(currentItemExe);
         }

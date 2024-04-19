@@ -14,10 +14,9 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public Image processImage;
     public Vector2 startPosition;
     public bool isExe;
-    public List<float> pauseExe = new List<float>();
+    public List<int> pauseExe = new List<int>();
 
     private float timeLeft;
-    private bool isDraggable = false;
 
     void Awake()
     {
@@ -44,14 +43,11 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!isDraggable) return;
-
         processImage.raycastTarget = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!isDraggable) return;
 
         processImage.raycastTarget = true;
 
@@ -64,25 +60,14 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
                 process_controller.ClearSlotExe();
                 isExe = false;
                 process_controller.UpdateTimeText("");
-                pauseExe.Add(timeLeft);
+                AddPauseTime();
 
-                process_controller.queueExe.Add(ID);
+                process_controller.queueExe.Add(this.ID);
                 process_controller.ResetProgressBar();
 
                 int index = process_controller.GetLastQueuePosition();
 
                 process_controller.slots[index].SetSlot(this);
-            }
-        }
-
-        // when a process item is removed of slot exe, and come back to the end of the queu
-        // we need disable yout drag resource
-        if(!isExe)
-        {
-            Process_item lastProcess = process_controller.GetLastQueueProcess();
-            if(lastProcess != null && transform.position == lastProcess.transform.position)
-            {
-                isDraggable = false;
             }
         }
     }
@@ -95,7 +80,6 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isDraggable) return;
 
         transform.position = eventData.position;
     }
@@ -125,13 +109,8 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         return this.timeLeft;
     }
 
-    public void SetIsDraggable(bool isDraggable)
+    public void AddPauseTime()
     {
-        this.isDraggable = isDraggable;
-    }
-
-    public bool GetIsDraggable()
-    {
-        return this.isDraggable;
+        this.pauseExe.Add((int)timeLeft);
     }
 }

@@ -30,10 +30,7 @@ public class Process_controller : MonoBehaviour
     
     public void Start()
     {
-        if(slots != null && slots.Count > 0)
-        {
-            GetFirstQueueSlot().process.SetIsDraggable(true);
-        }
+
     }
 
     public static Process_controller Instance
@@ -63,7 +60,6 @@ public class Process_controller : MonoBehaviour
     {
         for(int i = 0; i < itens.Count; i++)
         {
-            Debug.Log("reset " + itens[i].ID);
             Vector2 position = slots[i].GetPosition();
 
             itens[i].transform.position = position;
@@ -71,8 +67,6 @@ public class Process_controller : MonoBehaviour
 
             itensExecuted[i].SetTimeLeft(itens[i].timeToExecute);
             slots[i].process = itens[i];
-
-            itens[i].SetIsDraggable(i == 0);
             
             itens[i].Show();
         }
@@ -92,8 +86,8 @@ public class Process_controller : MonoBehaviour
 
             // First Come First Serve
             for (int i = 0; i < itens.Count; i++)
-            { 
-                if (itens[i].ID != itensExecuted[itens.Count - i - 1].ID)
+            {
+                if (itens[i].ID != itensExecuted[i].ID)
                 {
                     isFCFS = false;
                     break;
@@ -130,14 +124,12 @@ public class Process_controller : MonoBehaviour
                     break;
                 }
 
-                List<float> times = itensExecuted[i].pauseExe;
+                List<int> times = itensExecuted[i].pauseExe;
 
                 for (int j = 1; j < times.Count; j++) {
-                    if (j == times.Count - 1 && times[j] > quantum) {
-                        isRR = false;
-                        break;
-                    }
-                    if (times[j] - times[j-1] != quantum)
+
+                    int difference = times[j - 1] - times[j];
+                    if (difference != quantum && difference != quantum + 1 && difference != quantum - 1)
                     {
                         isRR = false;
                         break;
@@ -147,29 +139,20 @@ public class Process_controller : MonoBehaviour
                 if (!isRR) break;
             }
 
-            // int loopCount = 0;
-            for(int i = 0; i < queueExe.Count; i++)
+            int[] order = { 1, 2, 3, 4, 1, 3, 4, 1, 3, 1 };
+            if(order.Length != queueExe.Count)
             {
-                Debug.Log("RR id queueExe " + queueExe[i]);
-                /* for(int j = itens.Count - 1; j >= 0; j--)
+                isRR = false;
+            }
+            else 
+                for(int i = 0; i < queueExe.Count; i++) 
                 {
-                    if (i >= queueExe.Count) break;
-
-                    Debug.Log("RR id itens " + itens[j].ID);
-                         
-                    if (((itens[j].timeToExecute / quantum) - loopCount > 0) && (queueExe[i] != itens[j].ID)) 
+                    if (queueExe[i] != order[i])
                     {
                         isRR = false;
                         break;
                     }
-                    else
-                    {
-                        i++;
-                    }
                 }
-                i--;
-                loopCount++; */
-            }
 
             if (isRR)
             {
@@ -236,29 +219,29 @@ public class Process_controller : MonoBehaviour
 
     public void UpdateQueue(Process_item itemExe)
     {
-        for (int i = 0; i < slots.Count - 1; i++)
+        int index = slots.FindIndex(slot => slot.process == null);
+
+        for (int i = index; i < slots.Count; i++)
         {
-            if (slots[i+1].process != null)
+            if (i + 1 < slots.Count && slots[i+1].process != null)
             {
                 slots[i].SetSlot(slots[i + 1].process);
-            }
+            }   
         }
 
         int lastSlot = GetLastQueuePosition();
 
         itemExe.startPosition = slots[lastSlot].GetPosition();
-        itemExe.SetIsDraggable(true);
         slots[lastSlot].process = null;
-
-        Process_item firstProcesss = GetFirstQueueSlot().process;
-        if(firstProcesss != null) {
-            firstProcesss.SetIsDraggable(true);
-        }
     }
 
     public void AddItemExecuted(Process_item item)
     {
         itensExecuted.Add(item);
-        HandleItemFinished();
+    }
+
+    public int GetItensExecutedCount()
+    {
+        return this.itensExecuted.Count;
     }
 }

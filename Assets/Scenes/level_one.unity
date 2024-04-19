@@ -978,12 +978,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  priority: 1
-  timeToExecute: 1
+  priority: 4
+  timeToExecute: 20
   processImage: {fileID: 577544935}
   startPosition: {x: 0, y: 0}
   isExe: 0
-  pauseExe: []
+  pauseExe: 
 --- !u!1 &713404193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,11 +1371,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 4
   priority: 2
-  timeToExecute: 1
+  timeToExecute: 10
   processImage: {fileID: 1232372733}
   startPosition: {x: 0, y: 0}
   isExe: 0
-  pauseExe: []
+  pauseExe: 
 --- !u!114 &1232372733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1466,12 +1466,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 3
-  priority: 2
-  timeToExecute: 1
+  priority: 3
+  timeToExecute: 15
   processImage: {fileID: 1296223644}
   startPosition: {x: 0, y: 0}
   isExe: 0
-  pauseExe: []
+  pauseExe: 
 --- !u!114 &1296223644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1780,12 +1780,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  priority: 3
-  timeToExecute: 1
+  priority: 1
+  timeToExecute: 5
   processImage: {fileID: 1926384531}
   startPosition: {x: 0, y: 0}
   isExe: 0
-  pauseExe: []
+  pauseExe: 
 --- !u!114 &1926384531
 MonoBehaviour:
   m_ObjectHideFlags: 0
