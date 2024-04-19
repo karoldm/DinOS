@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   priority: 1
-  timeToExecute: 10
+  timeToExecute: 1
   processImage: {fileID: 577544935}
   startPosition: {x: 0, y: 0}
   isExe: 0
@@ -1369,9 +1369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1618e1e36a8b03a42bdfe02125e02843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 4
   priority: 2
-  timeToExecute: 15
+  timeToExecute: 1
   processImage: {fileID: 1232372733}
   startPosition: {x: 0, y: 0}
   isExe: 0
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 3
   priority: 2
-  timeToExecute: 15
+  timeToExecute: 1
   processImage: {fileID: 1296223644}
   startPosition: {x: 0, y: 0}
   isExe: 0
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   priority: 3
-  timeToExecute: 5
+  timeToExecute: 1
   processImage: {fileID: 1926384531}
   startPosition: {x: 0, y: 0}
   isExe: 0
