@@ -9,7 +9,13 @@ public class Process_controller : MonoBehaviour
     private static Process_controller instance;
 
     public List<Process_item> itens;
-    public List<Slot_Process> slots;
+    /*
+     * Simula uma fila 
+     * Considere que:
+     * Incio da fila: primeiro item inserido, posição 0
+     * Final da fila: último item inserido, posição count - 1
+     */
+    public List<Slot_Process> slots; 
     public List<int> queueExe;
 
     public Slot_Process_Exe slotProcessExe;
@@ -22,6 +28,13 @@ public class Process_controller : MonoBehaviour
 
     private List<Process_item> itensExecuted = new List<Process_item>();
     
+    public void Start()
+    {
+        if(slots != null && slots.Count > 0)
+        {
+            GetFirstQueueSlot().process.SetIsDraggable(true);
+        }
+    }
 
     public static Process_controller Instance
     {
@@ -48,17 +61,20 @@ public class Process_controller : MonoBehaviour
 
     public void ResetGame()
     {
-        for(int i = 0; i < itensExecuted.Count; i++)
+        for(int i = 0; i < itens.Count; i++)
         {
+            Debug.Log("reset " + itens[i].ID);
             Vector2 position = slots[i].GetPosition();
 
-            itensExecuted[i].transform.position = position;
-            itensExecuted[i].startPosition = position;
+            itens[i].transform.position = position;
+            itens[i].startPosition = position;
 
-            itensExecuted[i].SetTimeLeft(itensExecuted[i].timeToExecute);
-            slots[i].process = itensExecuted[i];
+            itensExecuted[i].SetTimeLeft(itens[i].timeToExecute);
+            slots[i].process = itens[i];
 
-            itensExecuted[i].Show();
+            itens[i].SetIsDraggable(i == 0);
+            
+            itens[i].Show();
         }
 
         itensExecuted.Clear();
@@ -193,33 +209,51 @@ public class Process_controller : MonoBehaviour
         Progress_bar.Instance.UpdateProgressBar(progress);
     }
 
+    public void ResetProgressBar()
+    {
+        Progress_bar.Instance.UpdateProgressBar(1);
+    }
+
     public void ClearSlotExe()
     {
         slotProcessExe.currentItemExe = null;
     }
 
-    public int GetFirstSlot() 
+    public int GetLastQueuePosition() 
     {
-        return (slots.Count - (slots.Count - itensExecuted.Count));
+        return (slots.Count - itensExecuted.Count) - 1;
+    }
+
+    public Slot_Process GetFirstQueueSlot()
+    {
+        return slots[0];
+    }
+
+    public Process_item GetLastQueueProcess()
+    {
+        return slots[GetLastQueuePosition()].process;
     }
 
     public void UpdateQueue(Process_item itemExe)
     {
-        int index = slots.FindIndex(slot => slot.process != null && slot.process.ID == itemExe.ID);
-
-
-        for (int i = index; i > 0; i--)
+        for (int i = 0; i < slots.Count - 1; i++)
         {
-            if (slots[i-1].process != null)
+            if (slots[i+1].process != null)
             {
-                slots[i].SetSlot(slots[i - 1].process);
+                slots[i].SetSlot(slots[i + 1].process);
             }
         }
 
-        int firstSlot = GetFirstSlot();
+        int lastSlot = GetLastQueuePosition();
 
-        itemExe.startPosition = slots[firstSlot].GetPosition();
-        slots[firstSlot].process = null;
+        itemExe.startPosition = slots[lastSlot].GetPosition();
+        itemExe.SetIsDraggable(true);
+        slots[lastSlot].process = null;
+
+        Process_item firstProcesss = GetFirstQueueSlot().process;
+        if(firstProcesss != null) {
+            firstProcesss.SetIsDraggable(true);
+        }
     }
 
     public void AddItemExecuted(Process_item item)

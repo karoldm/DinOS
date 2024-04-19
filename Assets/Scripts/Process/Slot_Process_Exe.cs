@@ -53,8 +53,6 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
                 processController.AddItemExecuted(currentItemExe);
                 processController.queueExe.Add(currentItemExe.ID);
 
-                Debug.Log("item executed " + currentItemExe);
-
                 processController.UpdateTimeText("");
                 currentItemExe.isExe = false;
                 currentItemExe.Hide();

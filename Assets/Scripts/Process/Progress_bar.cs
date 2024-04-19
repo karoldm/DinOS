@@ -32,6 +32,5 @@ public class Progress_bar : MonoBehaviour
     {
         float clampedProgress = Mathf.Clamp01(progress);
         progressBar.fillAmount = clampedProgress;
-        Debug.Log(progressBar.fillAmount);
     }
 }
