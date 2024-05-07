@@ -80,7 +80,6 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
     public void OnDrag(PointerEventData eventData)
     {
-
         transform.position = eventData.position;
     }
 
