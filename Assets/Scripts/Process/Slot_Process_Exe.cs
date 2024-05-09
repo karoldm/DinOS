@@ -47,6 +47,16 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
                 currentItemExe.DecreaseTimeLeft(Time.deltaTime);
                 processController.UpdateTimeText(currentItemExe.GetTimeLeft().ToString("F0"));
                 processController.UpdateProgressBar(currentItemExe.GetTimeLeft(), currentItemExe.timeToExecute);
+
+                // Request to abort exe of the current process
+                if (processController.GetRequestAbort() &&
+                    Math.Round(currentItemExe.GetTimeLeft()%5) == 0 && 
+                    currentItemExe.GetTimeLeft() != currentItemExe.timeToExecute
+                   ) 
+                {
+                    processController.ClearRequestAbort();
+                    currentItemExe.AbortExe();
+                }
             }
             else
             {

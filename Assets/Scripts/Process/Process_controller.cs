@@ -7,6 +7,7 @@ using TMPro;
 public class Process_controller : MonoBehaviour
 {
     private static Process_controller instance;
+    private bool requestAbort = false;
 
     public List<Process_item> itens;
     /*
@@ -26,11 +27,20 @@ public class Process_controller : MonoBehaviour
     public Star starFCFS;
     public Star starPriority;
 
+
     private List<Process_item> itensExecuted = new List<Process_item>();
     
     public void Start()
     {
 
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown("f"))
+        {
+            this.requestAbort = true;
+        }
     }
 
     public static Process_controller Instance
@@ -243,5 +253,15 @@ public class Process_controller : MonoBehaviour
     public int GetItensExecutedCount()
     {
         return this.itensExecuted.Count;
+    }
+
+    public bool GetRequestAbort()
+    {
+        return this.requestAbort;
+    }
+
+    public void ClearRequestAbort()
+    {
+        this.requestAbort = false;
     }
 }

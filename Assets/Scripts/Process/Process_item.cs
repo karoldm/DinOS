@@ -57,17 +57,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
             if (isExe)
             {
-                process_controller.ClearSlotExe();
-                isExe = false;
-                process_controller.UpdateTimeText("");
-                AddPauseTime();
-
-                process_controller.queueExe.Add(this.ID);
-                process_controller.ResetProgressBar();
-
-                int index = process_controller.GetLastQueuePosition();
-
-                process_controller.slots[index].SetSlot(this);
+                AbortExe();
             }
         }
     }
@@ -80,6 +70,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (this.isExe) return;
         transform.position = eventData.position;
     }
 
@@ -111,5 +102,20 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public void AddPauseTime()
     {
         this.pauseExe.Add((int)timeLeft);
+    }
+    
+    public void AbortExe()
+    {
+        process_controller.ClearSlotExe();
+        isExe = false;
+        process_controller.UpdateTimeText("");
+        AddPauseTime();
+
+        process_controller.queueExe.Add(this.ID);
+        process_controller.ResetProgressBar();
+
+        int index = process_controller.GetLastQueuePosition();
+
+        process_controller.slots[index].SetSlot(this);
     }
 }
