@@ -56,7 +56,6 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
                     currentItemExe.GetTimeLeft() != currentItemExe.timeToExecute
                    ) 
                 {
-                    processController.ClearRequestAbort();
                     currentItemExe.AbortExe();
                 }
             }

@@ -82,6 +82,7 @@ public class Process_controller : MonoBehaviour
         }
 
         itensExecuted.Clear();
+        ClearRequestAbort();
     }
 
     public void HandleItemFinished()
