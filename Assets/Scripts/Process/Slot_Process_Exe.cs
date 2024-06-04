@@ -12,6 +12,8 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
 
     public Process_item currentItemExe;
 
+    private bool isOverSlot;
+
     private static Slot_Process_Exe instance;
     public static Slot_Process_Exe Instance => instance;
 

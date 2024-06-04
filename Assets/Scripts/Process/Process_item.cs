@@ -51,7 +51,9 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
         processImage.raycastTarget = true;
 
-        if (transform.position != process_controller.slotProcessExe.transform.position)
+        Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
+
+        if (!RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), Input.mousePosition, null))
         {
             transform.position = startPosition;
 
