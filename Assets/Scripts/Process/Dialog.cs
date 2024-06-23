@@ -12,7 +12,8 @@ public class Dialog : MonoBehaviour
         FCFS,
         BP,
         RR,
-        SJF
+        SJF,
+        None
     }
 
     private static string[] introTexts =
@@ -53,6 +54,12 @@ public class Dialog : MonoBehaviour
             "Você é fera! Sabia que alternar entre os vôos utilizando conexões e paradas permite que você distribua melhor o tempo de processamento? Essa abordagem garante que nenhum vôo espere muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de processos! Ops! Coordenador de vôos."
         };
     private LinkedList<string> RRDialog = new LinkedList<string>(RRTexts);
+
+    private static string[] NoneTexts =
+        {
+            "As coisas parecem meio fora de ordem por aqui...",
+        };
+    private LinkedList<string> NoneDialog = new LinkedList<string>(RRTexts);
 
     public Button button;
     public TextMeshProUGUI dialogText;
@@ -138,6 +145,8 @@ public class Dialog : MonoBehaviour
                 this.currentDialog = this.FCFSDialog; break;
             case DialogType.RR:
                 this.currentDialog = this.RRDialog; break;
+            default:
+                this.currentDialog = this.NoneDialog; break;
         }
 
         if(this.currentDialog != null)

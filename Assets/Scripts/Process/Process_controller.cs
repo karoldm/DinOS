@@ -81,6 +81,7 @@ public class Process_controller : MonoBehaviour
         itensExecuted.Clear();
         ClearRequestAbort();
         timeText.text = string.Empty;
+        this.requestAbort.interactable = true;
     }
 
     public void HandleItemFinished()
@@ -161,16 +162,19 @@ public class Process_controller : MonoBehaviour
 
             else if (isFCFS)
             {
-                starFCFS.Unlock();
+               starFCFS.Unlock();
                dialog.showDialog(Dialog.DialogType.FCFS);
             }
 
             else if (isByPriority)
             {
-                starPriority.Unlock();
+               starPriority.Unlock();
                dialog.showDialog(Dialog.DialogType.BP);
             }
-
+            else
+            {
+                dialog.showDialog(Dialog.DialogType.None);
+            }
             ResetGame();
         }
     }

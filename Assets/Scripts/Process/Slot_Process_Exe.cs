@@ -85,6 +85,8 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
 
         if (currentItemExe == null && draggedItem != null)
         {
+            processController.requestAbort.interactable = false;
+
             currentItemExe = draggedItem;
             currentItemExe.transform.position = transform.position;
             currentItemExe.isExe = true;
