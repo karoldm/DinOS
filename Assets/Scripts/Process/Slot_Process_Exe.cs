@@ -44,18 +44,19 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
 
         if (currentItemExe != null && currentItemExe.isExe)
         {
-            if (currentItemExe.GetTimeLeft() > 0)
+            if (currentItemExe.GetTimeLeft() > 1)
             {
                 currentItemExe.DecreaseTimeLeft(Time.deltaTime);
                 processController.UpdateTimeText(currentItemExe.GetTimeLeft().ToString("F0"));
                 processController.UpdateProgressBar(currentItemExe.GetTimeLeft(), currentItemExe.timeToExecute);
 
                 // Request to abort exe of the current process
-                if (processController.GetRequestAbort() &&
+                if (processController.GetRequestAbortValue() &&
                     Math.Round(currentItemExe.GetTimeLeft()%5) == 0 && 
                     currentItemExe.GetTimeLeft() != currentItemExe.timeToExecute
                    ) 
                 {
+                    currentItemExe.DecreaseTimeLeft(1);
                     currentItemExe.AbortExe();
                 }
             }
@@ -63,14 +64,17 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
             {
                 processController.AddItemExecuted(currentItemExe);
                 processController.queueExe.Add(currentItemExe.ID);
-                currentItemExe.AddPauseTime();
 
-                processController.UpdateTimeText("");
+                processController.UpdateTimeText("Finalizado!");
+                processController.UpdateTimeColor(Color.green);
+                processController.UpdateTimeSize(12);
+
                 currentItemExe.isExe = false;
                 currentItemExe.Hide();
                 currentItemExe = null;
 
                 processController.HandleItemFinished();
+                processController.ResetProgressBar();
             }
         }
     }
@@ -86,6 +90,8 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
             currentItemExe.isExe = true;
 
             processController.UpdateTimeText(currentItemExe.GetTimeLeft().ToString("F0"));
+            processController.UpdateTimeColor(Color.white);
+            processController.UpdateTimeSize(16);
 
             Slot_Process slotToClear = processController.slots.Find(slot => slot.process != null && slot.process.ID == currentItemExe.ID);
             if(slotToClear != null)

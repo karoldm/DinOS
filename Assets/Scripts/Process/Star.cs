@@ -20,9 +20,9 @@ public class Star : MonoBehaviour
     public void Unlock()
     {
 
-        if (gameObject.GetComponent<Image>() == null)
+        if (gameObject.GetComponent<SpriteRenderer>() == null)
         {
-            Debug.LogError("Image component not found on the GameObject.");
+            Debug.LogError("SpriteRenderer component not found on the GameObject.");
             return;
         }
 
@@ -32,6 +32,6 @@ public class Star : MonoBehaviour
             return;
         }
 
-        gameObject.GetComponent<Image>().sprite = unlockedImage;
+        gameObject.GetComponent<SpriteRenderer>().sprite = unlockedImage;
     }
 }

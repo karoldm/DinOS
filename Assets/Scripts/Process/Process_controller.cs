@@ -7,7 +7,7 @@ using TMPro;
 public class Process_controller : MonoBehaviour
 {
     private static Process_controller instance;
-    private bool requestAbort = false;
+    public Toggle requestAbort;
 
     public List<Process_item> itens;
     /*
@@ -20,6 +20,7 @@ public class Process_controller : MonoBehaviour
     public List<int> queueExe;
 
     public Slot_Process_Exe slotProcessExe;
+    public Dialog dialog;
     public TextMeshProUGUI timeText;
 
     public Star starRR;
@@ -32,15 +33,12 @@ public class Process_controller : MonoBehaviour
     
     public void Start()
     {
-
+        dialog.showDialog(Dialog.DialogType.intro);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown("f"))
-        {
-            this.requestAbort = true;
-        }
+
     }
 
     public static Process_controller Instance
@@ -74,15 +72,15 @@ public class Process_controller : MonoBehaviour
 
             itens[i].transform.position = position;
             itens[i].startPosition = position;
-
-            itensExecuted[i].SetTimeLeft(itens[i].timeToExecute);
-            slots[i].process = itens[i];
-            
+            itens[i].ResetTimeLeft();
             itens[i].Show();
+
+            slots[i].process = itens[i];
         }
 
         itensExecuted.Clear();
         ClearRequestAbort();
+        timeText.text = string.Empty;
     }
 
     public void HandleItemFinished()
@@ -126,38 +124,22 @@ public class Process_controller : MonoBehaviour
             }
 
             // Round Robin
-            float quantum = 5;
-            for (int i = 1; i < itensExecuted.Count; i++)
-            {
-                if (itensExecuted[i].pauseExe.Count == 0)
-                {
-                    isRR = false;
-                    break;
-                }
-
-                List<int> times = itensExecuted[i].pauseExe;
-
-                for (int j = 1; j < times.Count; j++) {
-
-                    int difference = times[j - 1] - times[j];
-                    if (difference != quantum && difference != quantum + 1 && difference != quantum - 1)
-                    {
-                        isRR = false;
-                        break;
-                    }
-                }
-
-                if (!isRR) break;
-            }
 
             int[] order = { 1, 2, 3, 4, 1, 3, 4, 1, 3, 1 };
-            if(order.Length != queueExe.Count)
+
+            Debug.Log(queueExe.Count);
+            Debug.Log(order.Length);
+
+            if (order.Length != queueExe.Count)
             {
                 isRR = false;
             }
             else 
                 for(int i = 0; i < queueExe.Count; i++) 
                 {
+                    Debug.Log(i);
+                    Debug.Log(queueExe[i] != order[i]);
+
                     if (queueExe[i] != order[i])
                     {
                         isRR = false;
@@ -168,21 +150,25 @@ public class Process_controller : MonoBehaviour
             if (isRR)
             {
                starRR.Unlock();
+               dialog.showDialog(Dialog.DialogType.RR);
             }
 
             else if (isSJF)
             {
                starSJF.Unlock();
+               dialog.showDialog(Dialog.DialogType.SJF);
             }
 
             else if (isFCFS)
             {
                 starFCFS.Unlock();
+               dialog.showDialog(Dialog.DialogType.FCFS);
             }
 
             else if (isByPriority)
             {
                 starPriority.Unlock();
+               dialog.showDialog(Dialog.DialogType.BP);
             }
 
             ResetGame();
@@ -197,6 +183,16 @@ public class Process_controller : MonoBehaviour
         }
     }
 
+    public void UpdateTimeColor(Color color)
+    {
+        timeText.color = color;
+    }
+
+    public void UpdateTimeSize(float size)
+    {
+        timeText.fontSize = size;
+    }
+
     public void UpdateProgressBar(float currentTime, float fullTime)
     {
         float progress = currentTime / fullTime;
@@ -205,7 +201,7 @@ public class Process_controller : MonoBehaviour
 
     public void ResetProgressBar()
     {
-        Progress_bar.Instance.UpdateProgressBar(1);
+        Progress_bar.Instance.UpdateProgressBar(0);
     }
 
     public void ClearSlotExe()
@@ -256,13 +252,18 @@ public class Process_controller : MonoBehaviour
         return this.itensExecuted.Count;
     }
 
-    public bool GetRequestAbort()
+    public bool GetRequestAbortValue()
     {
-        return this.requestAbort;
+        if(this.requestAbort != null)
+        {
+            return this.requestAbort.isOn;
+        }
+
+        return false;
     }
 
     public void ClearRequestAbort()
     {
-        this.requestAbort = false;
+        this.requestAbort.isOn = false;
     }
 }

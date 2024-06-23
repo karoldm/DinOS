@@ -14,7 +14,6 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public Image processImage;
     public Vector2 startPosition;
     public bool isExe;
-    public List<int> pauseExe = new List<int>();
 
     private float timeLeft;
 
@@ -73,6 +72,8 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public void OnDrag(PointerEventData eventData)
     {
         if (this.isExe) return;
+        Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
+        if (slot != null && slot.currentItemExe != null) return;
         transform.position = eventData.position;
     }
 
@@ -101,17 +102,17 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         return this.timeLeft;
     }
 
-    public void AddPauseTime()
+    public void ResetTimeLeft()
     {
-        this.pauseExe.Add((int)timeLeft);
+        this.timeLeft = this.timeToExecute;
     }
-    
+
+
     public void AbortExe()
     {
         process_controller.ClearSlotExe();
         isExe = false;
         process_controller.UpdateTimeText("");
-        AddPauseTime();
 
         process_controller.queueExe.Add(this.ID);
         process_controller.ResetProgressBar();
