@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Player : MonoBehaviour
     private Animator animator;
 
     public List<Tilemap> tilemapObjects = new List<Tilemap>();
+    public Tilemap tilemapProcessPortal;
+    public Tilemap tilemapInitialPortal;
+
+    public DialogInitial initialDialog;
 
     private void Awake()
     {
@@ -58,9 +63,38 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(Move(targetPosition));
             }
+
+
+            CheckPortal(targetPosition);
         }
 
         animator.SetBool("IsMoving", isMoving); 
+    }
+
+    private void CheckPortal(Vector3 targetPosition)
+    {
+        if (tilemapProcessPortal != null)
+        {
+            Vector3Int obstacleMap = tilemapProcessPortal.WorldToCell(targetPosition);
+
+            if (tilemapProcessPortal.GetTile(obstacleMap) != null)
+            {
+                initialDialog.showDialog(DialogInitial.InitialDialogType.process);
+                initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.process);
+            }
+
+        }
+
+        if (tilemapInitialPortal != null)
+        {
+            Vector3Int obstacleMap = tilemapInitialPortal.WorldToCell(targetPosition);
+
+            if (tilemapInitialPortal.GetTile(obstacleMap) != null)
+            {
+                SceneManager.LoadScene("Initial");
+            }
+
+        }
     }
 
     IEnumerator Move(Vector3 targetPosition)
