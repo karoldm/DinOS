@@ -63,12 +63,6 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         }
     }
 
-    public void UpdatePosition(Vector2 position)
-    {
-        transform.position = position;
-        startPosition = position;
-    }
-
     public void OnDrag(PointerEventData eventData)
     {
         if (this.isExe) return;
@@ -107,6 +101,11 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         this.timeLeft = this.timeToExecute;
     }
 
+    public void UpdatePosition(Vector2 position)
+    {
+        transform.position = position;
+        startPosition = position;
+    }
 
     public void AbortExe()
     {
