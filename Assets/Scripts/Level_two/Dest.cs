@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dest : MonoBehaviour
 {
+    public ProgressBar progressBar;
     private bool isBusy = false;
 
     // Start is called before the first frame update
@@ -22,9 +23,34 @@ public class Dest : MonoBehaviour
     {
         this.isBusy = isBusy;
     }
-    
+
+    public IEnumerator InitProgressBar(int busyFor)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < busyFor)
+        {
+            elapsedTime += Time.deltaTime;
+            UpdateProgressBar(elapsedTime, busyFor);
+            yield return null;
+        }
+
+        UpdateProgressBar(busyFor, busyFor);
+    }
+
     public bool IsBusy()
     {
         return this.isBusy;
+    }
+
+    public void UpdateProgressBar(float currentTime, float fullTime)
+    {
+        float progress = currentTime / fullTime;
+        progressBar.UpdateProgressBar(progress);
+    }
+
+    public void ClearProgressBar()
+    {
+        progressBar.UpdateProgressBar(0f);
     }
 }

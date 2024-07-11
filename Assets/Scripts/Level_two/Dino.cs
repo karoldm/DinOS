@@ -63,7 +63,9 @@ public class Dino : MonoBehaviour
 
         if (targetPosition != initialPosition)
         {
-            yield return new WaitForSeconds(currentTask.GetTime());
+            int time = currentTask.GetTime();
+            StartCoroutine(this.dest.InitProgressBar(time));
+            yield return new WaitForSeconds(time);
             controller.UpdateScore(this.currentTask.GetScore());
             ComeBack();
         }
@@ -87,6 +89,7 @@ public class Dino : MonoBehaviour
     private void ComeBack()
     {
         this.dest.SetBusy(false);
+        this.dest.ClearProgressBar();
         MoveToPosition(initialPosition);
     }
 

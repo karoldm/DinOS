@@ -35,10 +35,10 @@ public class RAMController : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScore(int taskScore)
     {
-        this.score += score;
-        this.scoreText.text = score.ToString();
+        this.score += taskScore;
+        this.scoreText.text = this.score.ToString();
     }
 
     private int GetRandInt(int min, int max)
@@ -99,7 +99,7 @@ public class RAMController : MonoBehaviour
 
     public void RemoveChildOfQueue(int queueIndex)
     {
-        Transform child = GetLastChildOfQueue(queueIndex);
+        Transform child = GetFirstChildOfQueue(queueIndex);
         Destroy(child.gameObject);
         ForceRebuildLayoutQueue(queueIndex);
 
