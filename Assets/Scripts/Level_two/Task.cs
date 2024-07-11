@@ -55,7 +55,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         return this.time;
     }
 
-    public int GetScores()
+    public int GetScore()
     {
         return this.score;
     }

@@ -64,7 +64,7 @@ public class Dino : MonoBehaviour
         if (targetPosition != initialPosition)
         {
             yield return new WaitForSeconds(currentTask.GetTime());
-
+            controller.UpdateScore(this.currentTask.GetScore());
             ComeBack();
         }
     }

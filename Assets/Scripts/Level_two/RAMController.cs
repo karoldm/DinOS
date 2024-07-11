@@ -13,6 +13,8 @@ public class RAMController : MonoBehaviour
     public List<HorizontalLayoutGroup> queues;
     public List<Dino> dinos;
     public List<Dest> dest;
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
 
 
     public static RAMController Instance
@@ -31,6 +33,12 @@ public class RAMController : MonoBehaviour
             }
             return instance;
         }
+    }
+
+    public void UpdateScore(int score)
+    {
+        this.score += score;
+        this.scoreText.text = score.ToString();
     }
 
     private int GetRandInt(int min, int max)
