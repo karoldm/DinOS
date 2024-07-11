@@ -10,9 +10,9 @@ public class RAMController : MonoBehaviour
     private static RAMController instance;
 
     public List<Task> tasks;
-    public List<HorizontalLayoutGroup> horizontalLayoutGroup;
+    public List<HorizontalLayoutGroup> queues;
     public List<Dino> dinos;
-    public List<GameObject> dest;
+    public List<Dest> dest;
 
 
     public static RAMController Instance
@@ -33,10 +33,23 @@ public class RAMController : MonoBehaviour
         }
     }
 
+    private int GetRandInt(int min, int max)
+    {
+        int minRange = min;
+        int maxRange = max;
+        int randomNumberInRange = Random.Range(minRange, maxRange + 1);
+
+        return randomNumberInRange;
+    }
+
     void Start()
     {
-        AddElementToQueue(1, 0);
-        AddElementToQueue(1, 1);
+       for(int i = 0; i < queues.Count; i++)
+        {
+            AddElementToQueue(i, GetRandInt(0, 2));
+            AddElementToQueue(i, GetRandInt(0, 2));
+            AddElementToQueue(i, GetRandInt(0, 2));
+        }
     }
 
 
@@ -47,12 +60,61 @@ public class RAMController : MonoBehaviour
 
     public void AddElementToQueue(int indexQueue, int indexTask)
     {
-        if (horizontalLayoutGroup[indexQueue] == null || tasks[indexTask] == null) return;
+        if (indexQueue < 0 || indexQueue >= queues.Count)
+        {
+            Debug.LogError("Índice inválido para HorizontalLayoutGroup");
+            Debug.LogError("indexQueue: " + indexQueue.ToString());
+            return;
+        }
 
-        Task task = Instantiate(tasks[indexTask], horizontalLayoutGroup[indexQueue].transform);
+        if (indexTask < 0 || indexTask >= tasks.Count)
+        {
+            Debug.LogError("Índice inválido para HorizontalLayoutGroup");
+            Debug.LogError("indexTask: " + indexTask.ToString());
+            return;
+        }
 
-        task.InstanciateTask(indexTask);
+        Task task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(horizontalLayoutGroup[indexQueue].GetComponent<RectTransform>());
+        task.InstanciateTask(indexTask, indexQueue);
+
+        ForceRebuildLayoutQueue(indexQueue);
+
+        task.UpdateStartPosition();
+    }
+
+    public void ForceRebuildLayoutQueue(int indexQueue)
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(queues[indexQueue].GetComponent<RectTransform>());
+
+    }
+
+    public void RemoveChildOfQueue(int queueIndex)
+    {
+        Transform child = GetLastChildOfQueue(queueIndex);
+        Destroy(child.gameObject);
+        ForceRebuildLayoutQueue(queueIndex);
+
+        AddElementToQueue(queueIndex, GetRandInt(0, 2));
+    }
+
+    private int GetQueueCount(int index)
+    {
+        return queues [index].transform.childCount;
+    }
+
+    public Transform GetLastChildOfQueue(int queueIndex)
+    {
+        return queues[queueIndex].transform.GetChild(GetQueueCount(queueIndex) - 1);
+    }
+
+    public Transform GetFirstChildOfQueue(int queueIndex)
+    {
+        return queues[queueIndex].transform.GetChild(0);
+    }
+
+    public bool DestIsBusy(Task task)
+    {
+        return dest[task.GetIndexOfColor()].IsBusy();
     }
 }

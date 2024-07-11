@@ -4,15 +4,16 @@ using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
 
 
-public class Dino : MonoBehaviour, IDropHandler
+public class Dino : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed;
     private bool isMoving;
     private Vector3 finalPosition;
     private Animator animator;
     private Vector3 initialPosition;
     private Task currentTask;
     private RAMController controller;
+    private Dest dest;
 
     private void Awake()
     {
@@ -68,40 +69,32 @@ public class Dino : MonoBehaviour, IDropHandler
         }
     }
 
-    private void MoveToDest(Task task)
+    private void MoveToDest()
     {
-        switch (task.GetColor())
+        this.dest = controller.dest[this.currentTask.GetIndexOfColor()];
+
+        if (this.dest != null)
         {
-            case Task.TaskColor.red:
-                Move(controller.dest[0].transform.position);
-                break;
-            case Task.TaskColor.green:
-                Move(controller.dest[1].transform.position);
-                break;
-            case Task.TaskColor.blue:
-                Move(controller.dest[2].transform.position);
-                break;
+            this.dest.SetBusy(true);
+            StartCoroutine(Move(this.dest.transform.position));
+        }
+        else
+        {
+            Debug.LogError("dest é null em MoveToDest()");
         }
     }
 
     private void ComeBack()
     {
+        this.dest.SetBusy(false);
         MoveToPosition(initialPosition);
     }
 
-    private void DropTask(Task task)
+    public void DropTask(Task task)
     {
+        int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
-        Destroy(task);
-        MoveToDest(task);
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Task draggedItem = eventData.pointerDrag.GetComponent<Task>();
-        if (draggedItem != null)
-        {
-            DropTask(draggedItem);
-        }
+        controller.RemoveChildOfQueue(queueIndex);
+        MoveToDest();
     }
 }

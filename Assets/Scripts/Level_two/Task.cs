@@ -14,6 +14,8 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     private TaskColor color;
     private RAMController controller;
     private Vector3 startPosition;
+    private SpriteRenderer sprite;
+    private int indexQueue;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +38,16 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         {
             Debug.LogError("RAMController instance not found in the scene.");
         }
+    }
 
+    public void UpdateStartPosition()
+    {
         this.startPosition = transform.position;
+    }
+
+    public int GetQueueIndex()
+    {
+        return this.indexQueue;
     }
 
     public int GetTime()
@@ -65,35 +75,53 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         return randomNumberInRange;
     }
 
-    private TaskColor GetColorByIndex(int index)
+    public TaskColor GetColorByIndex(int index)
     {
         switch(index)
         {
             case 0:
-                return TaskColor.blue;
-            case 1:
                 return TaskColor.red;
+            case 1:
+                return TaskColor.green;
             case 2:
             default:
-                return TaskColor.green;
+                return TaskColor.blue;
         }
     }
 
-    public void InstanciateTask(int index)
+    public int GetIndexOfColor()
     {
+        switch (this.color)
+        {
+            case TaskColor.red:
+                return 0;
+            case TaskColor.green:
+                return 1;
+            case TaskColor.blue:
+                return 2;
+            default:
+                return 0;
+        }  
+    }
+
+    public void InstanciateTask(int TaskColorindex, int indexQueue)
+    {
+        this.indexQueue = indexQueue;
+
         int score = GetRandInt(1, 5);
         int time = GetRandInt(1, 5);
 
         this.time = time;
         this.score = score;
 
-        this.color = GetColorByIndex(index);
+        this.color = GetColorByIndex(TaskColorindex);
 
-        SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
 
-        if (sprite == null)
+        this.sprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (this.sprite == null)
         {
-            Debug.LogError("SpriteRenderer não encontrado.");
+            Debug.LogError("SpriteRenderer não encontrado em InstanciateTask().");
             return;
         }
 
@@ -101,7 +129,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
         if (canvas == null)
         {
-            Debug.LogError("Canvas não encontrado no SpriteRenderer.");
+            Debug.LogError("Canvas não encontrado no SpriteRenderer em InstanciateTask().");
             return;
         }
 
@@ -118,31 +146,69 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-     //   gameObject.raycastTarget = false;
+    }
+
+    private bool CanMove()
+    {
+        return IsLastInQueue() && !controller.DestIsBusy(this);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!CanMove()) return;
 
-      //  gameObject.raycastTarget = true;
+        List<Dino> droppables = controller.dinos;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        bool isInDino = false;
 
-        List<Dino> droppable = controller.dinos;
-
-        foreach (Dino dino in droppable)
+        if(droppables != null)
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(dino.GetComponent<RectTransform>(), Input.mousePosition, null))
+            foreach (Dino dino in droppables)
             {
-                return;
+                if(dino == null)
+                {
+                    Debug.Log("Dino é null");
+                    return;
+                }
+
+                Collider2D dinoCollider = dino.GetComponent<Collider2D>();
+
+                if (dinoCollider == null)
+                {
+                    Debug.LogError("Dino não contém um Collider2D");
+                }
+                else if (dinoCollider.OverlapPoint(mousePosition))
+                {
+                    isInDino = true;
+                    transform.position = dino.transform.position;
+                    dino.DropTask(this);
+                    return;
+                }
             }
         }
+        else
+        {
+            Debug.LogError("controller.dinos é null");
+        }
+
+        if (!isInDino)
+        {
+            transform.position = startPosition;
+        }
         
-        transform.position = startPosition;
-        
+    }
+
+    private bool IsLastInQueue()
+    {
+        return (controller.GetFirstChildOfQueue(this.GetQueueIndex()) == transform);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        if (!CanMove()) return;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPosition.z = 0; 
+        transform.position = worldPosition;
     }
 
     public void Show()
