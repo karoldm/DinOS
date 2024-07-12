@@ -11,7 +11,8 @@ public class DialogInitial : MonoBehaviour
 
     public enum InitialDialogType
     { 
-        process
+        process,
+        RAM
     }
     private InitialDialogType currentSceneType;
 
@@ -20,6 +21,12 @@ public class DialogInitial : MonoBehaviour
             "Aqui é onde acompanhamos e controlamos os vôos que precisam ser executados ou que já estão em excecução.", 
     };
     private LinkedList<string> processDialog = new LinkedList<string>(processTexts);
+
+    private static string[] ramTexts =
+       {
+            "Aqui é onde realizamos as tarefas necessárias para permitir que os aviões decolem e cheguem ao destino corretamente e sem problemas.",
+    };
+    private LinkedList<string> ramDialog = new LinkedList<string>(ramTexts);
 
 
     public Button button;
@@ -73,6 +80,10 @@ public class DialogInitial : MonoBehaviour
                 this.hidden();
                 SceneManager.LoadScene("level_one");
                 break;
+            case InitialDialogType.RAM:
+                this.hidden();
+                SceneManager.LoadScene("level_two");
+                break;
         }
     }
 
@@ -100,6 +111,8 @@ public class DialogInitial : MonoBehaviour
         {
             case InitialDialogType.process:
                 this.currentDialog = this.processDialog; break;
+            case InitialDialogType.RAM:
+                this.currentDialog = this.ramDialog; break;
             default:
                 this.currentDialog = this.processDialog; break;
         }

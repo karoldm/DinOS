@@ -59,7 +59,7 @@ public class Dialog : MonoBehaviour
         {
             "As coisas parecem meio fora de ordem por aqui...",
         };
-    private LinkedList<string> NoneDialog = new LinkedList<string>(RRTexts);
+    private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
     public Button button;
     public TextMeshProUGUI dialogText;

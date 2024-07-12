@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -18,7 +19,7 @@ public class RAMController : MonoBehaviour
     public List<Dest> dest;
     public TextMeshProUGUI scoreText;
     public Award award;
-    public Dialog dialog;
+    public DialogLevelTwo dialog;
 
     void Start()
     {
@@ -46,11 +47,17 @@ public class RAMController : MonoBehaviour
         }
     }
 
+    public void LoadInitialScene()
+    {
+        SceneManager.LoadScene("Initial");
+
+    }
+
     private void Deadlock()
     {
         if (award.IsLocked())
         {
-            dialog.showDialog(Dialog.DialogType.dinnerProblem);
+            dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
             award.Unlock();
         }
     }
