@@ -16,6 +16,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     private Vector3 startPosition;
     private SpriteRenderer sprite;
     private int indexQueue;
+    private Task next;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,42 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
     }
 
+    public void SetNext(Task task)
+    {
+        this.next = task;
+
+        this.sprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (this.sprite == null)
+        {
+            Debug.LogError("SpriteRenderer não encontrado em SetNext().");
+            return;
+        }
+
+        Canvas canvas = sprite.GetComponentInChildren<Canvas>();
+
+        if (canvas == null)
+        {
+            Debug.LogError("Canvas não encontrado no SpriteRenderer em SetNext().");
+            return;
+        }
+
+        SpriteRenderer arrow = canvas.transform.Find("arrow")?.GetComponent<SpriteRenderer>();
+        
+        if(arrow == null)
+        {
+            Debug.LogError("Arrow não encontrado no canvas em SetNext().");
+            return;
+        }
+
+        arrow.gameObject.SetActive(true);
+    }
+
+    public Task GetNext()
+    {
+        return this.next;
+    }
+
     void Awake()
     {
 
@@ -36,7 +73,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
         if (controller == null)
         {
-            Debug.LogError("RAMController instance not found in the scene.");
+            Debug.LogError("RAMController instance não encontrado na cena.");
         }
     }
 
@@ -116,7 +153,6 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
         this.color = GetColorByIndex(TaskColorindex);
 
-
         this.sprite = GetComponentInChildren<SpriteRenderer>();
 
         if (this.sprite == null)
@@ -194,6 +230,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         if (!isInDino)
         {
             transform.position = startPosition;
+            MoveNextToStartPosition(this.next);
         }
         
     }
@@ -209,6 +246,27 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPosition.z = 0; 
         transform.position = worldPosition;
+
+        MoveNext(this.next, worldPosition, 1);
+    }
+
+    private void MoveNext(Task nextTask, Vector3 position, int i)
+    {
+        if(nextTask != null)
+        {
+            nextTask.transform.position = new Vector3(position.x - i*(250), position.y, position.z);
+            i += 1;
+            nextTask.MoveNext(nextTask.next, position, i);
+        }
+    }
+
+    private void MoveNextToStartPosition(Task nextTask)
+    {
+        if (nextTask != null)
+        {
+            nextTask.transform.position = nextTask.startPosition;
+            nextTask.MoveNextToStartPosition(nextTask.next);
+        }
     }
 
     public void Show()

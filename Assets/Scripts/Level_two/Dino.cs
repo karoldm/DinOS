@@ -14,6 +14,8 @@ public class Dino : MonoBehaviour
     private Task currentTask;
     private RAMController controller;
     private Dest dest;
+    private Dest nextDest;
+    private bool awaiting = false;
 
     private void Awake()
     {
@@ -25,6 +27,14 @@ public class Dino : MonoBehaviour
         if (controller == null)
         {
             Debug.LogError("RAMController instance not found in the scene.");
+        }
+    }
+
+    void Update()
+    {
+        if (this.awaiting)
+        {
+            MoveToNextDest();
         }
     }
 
@@ -67,7 +77,39 @@ public class Dino : MonoBehaviour
             StartCoroutine(this.dest.InitProgressBar(time));
             yield return new WaitForSeconds(time);
             controller.UpdateScore(this.currentTask.GetScore());
-            ComeBack();
+
+            if(this.currentTask.GetNext() != null)
+            {
+                this.currentTask = this.currentTask.GetNext();
+                Dest destOfNextTask = controller.dest[this.currentTask.GetIndexOfColor()];
+
+                if(destOfNextTask == null)
+                {
+                    Debug.LogError("destOfNextTask é null em Move()");
+                    yield return null;
+                }
+
+                this.nextDest = destOfNextTask;
+                MoveToNextDest();
+            }
+            else
+            {
+                ComeBack();
+            }
+        }
+    }
+
+    private void MoveToNextDest() {
+        if (this.nextDest == this.dest || !this.nextDest.IsBusy())
+        {
+            this.dest.SetBusy(false);
+            this.dest.ClearProgressBar();
+            this.dest = this.nextDest;
+            MoveToDest();
+        }
+        else
+        {
+            this.awaiting = true;
         }
     }
 
@@ -88,16 +130,16 @@ public class Dino : MonoBehaviour
 
     private void ComeBack()
     {
-        this.dest.SetBusy(false);
         this.dest.ClearProgressBar();
         MoveToPosition(initialPosition);
+        this.dest.SetBusy(false);
     }
 
     public void DropTask(Task task)
     {
         int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
-        controller.RemoveChildOfQueue(queueIndex);
+        controller.RemoveChildOfQueue(queueIndex, task);
         MoveToDest();
     }
 }

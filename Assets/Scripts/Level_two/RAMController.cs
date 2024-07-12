@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class RAMController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RAMController : MonoBehaviour
 
     public List<Task> tasks;
     public List<HorizontalLayoutGroup> queues;
+    public List<HorizontalLayoutGroup> queuesComplete;
     public List<Dino> dinos;
     public List<Dest> dest;
     public TextMeshProUGUI scoreText;
@@ -45,7 +47,7 @@ public class RAMController : MonoBehaviour
     {
         int minRange = min;
         int maxRange = max;
-        int randomNumberInRange = Random.Range(minRange, maxRange + 1);
+        int randomNumberInRange = UnityEngine.Random.Range(minRange, maxRange + 1);
 
         return randomNumberInRange;
     }
@@ -82,7 +84,19 @@ public class RAMController : MonoBehaviour
             return;
         }
 
+        Task lastChild = GetLastTaskOfQueue(indexQueue);
+
         Task task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
+        
+        bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
+
+        if (willHadNext)
+        {
+            if (lastChild != null)
+            {
+                lastChild.SetNext(task);
+            }
+        }
 
         task.InstanciateTask(indexTask, indexQueue);
 
@@ -91,19 +105,75 @@ public class RAMController : MonoBehaviour
         task.UpdateStartPosition();
     }
 
+    public void IterateQueue(Transform queueTransform, Action<Task, int> action)
+    {
+        if (queueTransform == null || action == null)
+        {
+            Debug.LogError("Queue ou action é null.");
+            return;
+        }
+
+        for (int i = 0; i < queueTransform.childCount; i++)
+        {
+            Task task = queueTransform.GetChild(i).GetComponent<Task>();
+            if (task != null)
+            {
+                action(task, i);
+            }
+        }
+    }
+
+    public void IterateQueue(Transform queueTransform, Action<Transform, int> action)
+    {
+        if (queueTransform == null || action == null)
+        {
+            Debug.LogError("Queue ou action é null.");
+            return;
+        }
+
+        for (int i = 0; i < queueTransform.childCount; i++)
+        {
+            Transform child = queueTransform.GetChild(i);
+            if (child != null)
+            {
+                action(child, i);
+            }
+        }
+    }
+
+
     public void ForceRebuildLayoutQueue(int indexQueue)
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(queues[indexQueue].GetComponent<RectTransform>());
-
     }
 
-    public void RemoveChildOfQueue(int queueIndex)
+    public void RemoveChildOfQueue(int indexQueue, Task task)
     {
-        Transform child = GetFirstChildOfQueue(queueIndex);
-        Destroy(child.gameObject);
-        ForceRebuildLayoutQueue(queueIndex);
+        int taskToAdd = 0;
 
-        AddElementToQueue(queueIndex, GetRandInt(0, 2));
+        Task currentTask = task;
+        while (currentTask != null)
+        {
+            Transform child = GetFirstChildOfQueue(indexQueue);
+            if (child != null)
+            {
+                child.SetParent(queuesComplete[indexQueue].transform, false);
+                taskToAdd++;
+            }
+            currentTask = currentTask.GetNext();
+        }
+
+        ForceRebuildLayoutQueue(indexQueue);
+
+        IterateQueue(queues[indexQueue].transform, (Task task, int index) => {
+            task.UpdateStartPosition();
+        });
+
+       for (int i = 0; i < taskToAdd; i++)
+        {
+            AddElementToQueue(indexQueue, GetRandInt(0, 2));
+        }
+
     }
 
     private int GetQueueCount(int index)
@@ -113,12 +183,44 @@ public class RAMController : MonoBehaviour
 
     public Transform GetLastChildOfQueue(int queueIndex)
     {
+        if (GetQueueCount(queueIndex) <= 0) return null;
+
         return queues[queueIndex].transform.GetChild(GetQueueCount(queueIndex) - 1);
     }
 
     public Transform GetFirstChildOfQueue(int queueIndex)
     {
+        if (GetQueueCount(queueIndex) <= 0) return null;
+
         return queues[queueIndex].transform.GetChild(0);
+    }
+
+    public Task GetLastTaskOfQueue(int queueIndex)
+    {
+        if (GetQueueCount(queueIndex) <= 0) return null;
+
+        Transform lastChildTransform = queues[queueIndex].transform.GetChild(GetQueueCount(queueIndex) - 1);
+
+        return lastChildTransform.GetComponent<Task>();
+    }
+
+    public Task GetFirstTaskOfQueue(int queueIndex)
+    {
+        if (GetQueueCount(queueIndex) <= 0) return null;
+
+        Transform lastChildTransform = queues[queueIndex].transform.GetChild(0);
+
+        return lastChildTransform.GetComponent<Task>();
+    }
+
+    public Task GetTaskAt(int queueIndex, int index)
+    {
+        int queueCount = GetQueueCount(queueIndex);
+        if (queueCount <= 0 || index >= queueCount || index <= 0) return null;
+
+        Transform lastChildTransform = queues[queueIndex].transform.GetChild(index);
+
+        return lastChildTransform.GetComponent<Task>();
     }
 
     public bool DestIsBusy(Task task)
