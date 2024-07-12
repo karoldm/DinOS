@@ -9,6 +9,7 @@ public class RAMController : MonoBehaviour
 {
 
     private static RAMController instance;
+    private int score = 0;
 
     public List<Task> tasks;
     public List<HorizontalLayoutGroup> queues;
@@ -16,8 +17,43 @@ public class RAMController : MonoBehaviour
     public List<Dino> dinos;
     public List<Dest> dest;
     public TextMeshProUGUI scoreText;
-    private int score = 0;
+    public Award award;
+    public Dialog dialog;
 
+    void Start()
+    {
+        for (int i = 0; i < queues.Count; i++)
+        {
+            AddElementToQueue(i, GetRandInt(0, 2));
+            AddElementToQueue(i, GetRandInt(0, 2));
+            AddElementToQueue(i, GetRandInt(0, 2));
+        }
+    }
+
+
+    void Update()
+    {
+        foreach (Dino dino1 in dinos)
+        {
+            foreach (Dino dino2 in dinos)
+            {
+                if (dino1 != dino2 && dino1.IsAwaiting() && dino2.IsAwaiting() &&
+                    dino1.GetDest() == dino2.GetNextDest() && dino2.GetDest() == dino1.GetNextDest())
+                {
+                    Deadlock();
+                }
+            }
+        }
+    }
+
+    private void Deadlock()
+    {
+        if (award.IsLocked())
+        {
+            dialog.showDialog(Dialog.DialogType.dinnerProblem);
+            award.Unlock();
+        }
+    }
 
     public static RAMController Instance
     {
@@ -50,22 +86,6 @@ public class RAMController : MonoBehaviour
         int randomNumberInRange = UnityEngine.Random.Range(minRange, maxRange + 1);
 
         return randomNumberInRange;
-    }
-
-    void Start()
-    {
-       for(int i = 0; i < queues.Count; i++)
-        {
-            AddElementToQueue(i, GetRandInt(0, 2));
-            AddElementToQueue(i, GetRandInt(0, 2));
-            AddElementToQueue(i, GetRandInt(0, 2));
-        }
-    }
-
-
-    void Update()
-    {
-
     }
 
     public void AddElementToQueue(int indexQueue, int indexTask)

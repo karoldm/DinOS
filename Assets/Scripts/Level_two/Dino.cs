@@ -38,6 +38,21 @@ public class Dino : MonoBehaviour
         }
     }
 
+    public bool IsAwaiting()
+    {
+        return this.awaiting;
+    }
+
+    public Dest GetDest()
+    {
+        return this.dest;
+    }
+
+    public Dest GetNextDest()
+    {
+        return this.nextDest;
+    }
+
     public void MoveToPosition(Vector3 targetPosition)
     {
         if (!isMoving)

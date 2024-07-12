@@ -2097,6 +2097,7 @@ MonoBehaviour:
   - {fileID: 1099859037}
   - {fileID: 158549151}
   scoreText: {fileID: 237465180}
+  award: {fileID: 2084633135}
 --- !u!4 &562969473
 Transform:
   m_ObjectHideFlags: 0
@@ -84823,6 +84824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084633133}
   - component: {fileID: 2084633134}
+  - component: {fileID: 2084633135}
   m_Layer: 0
   m_Name: unlocked
   m_TagString: Untagged
@@ -84897,6 +84899,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2084633135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084633132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104450aa39b58464391f2df489835a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockedImage: {fileID: 21300000, guid: 7d9d0133b66c86a47b705338cca70bb6, type: 3}
 --- !u!1 &2141309058
 GameObject:
   m_ObjectHideFlags: 0
