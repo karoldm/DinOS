@@ -2,6 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 
 public class Dino : MonoBehaviour
@@ -16,6 +20,7 @@ public class Dino : MonoBehaviour
     private Dest dest;
     private Dest nextDest;
     private bool awaiting = false;
+    public HorizontalLayoutGroup currentTasks;
 
     private void Awake()
     {
@@ -148,6 +153,7 @@ public class Dino : MonoBehaviour
         this.dest.ClearProgressBar();
         MoveToPosition(initialPosition);
         this.dest.SetBusy(false);
+        ClearCurrentTasks();
     }
 
     public void DropTask(Task task)
@@ -155,6 +161,31 @@ public class Dino : MonoBehaviour
         int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
         controller.RemoveChildOfQueue(queueIndex, task);
+        UpdateCurrentTasks();
         MoveToDest();
+    }
+
+    private void UpdateCurrentTasks()
+    {
+        Task current = this.currentTask;
+        while (current != null)
+        {
+            Task task = Instantiate(current, currentTasks.transform);
+            task.UpdateStartPosition();
+            task.Resize(0.3f);
+            current = current.GetNext();
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(currentTasks.GetComponent<RectTransform>());
+    }
+
+    private void ClearCurrentTasks()
+    {
+        this.currentTask = null;
+
+        foreach (Transform child in currentTasks.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
     }
 }

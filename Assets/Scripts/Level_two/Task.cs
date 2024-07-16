@@ -278,4 +278,15 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     {
         gameObject.SetActive(false);
     }
+
+    public void Resize(float scale)
+    {
+        RectTransform taskTransform = GetComponent<RectTransform>();
+        if (taskTransform == null)
+        {
+            Debug.LogError("RectTransform da task é null em UpdateCurrentTasks");
+            return;
+        }
+        taskTransform.localScale = new Vector3(0.3f, 0.3f, taskTransform.localScale.z);
+    }
 }
