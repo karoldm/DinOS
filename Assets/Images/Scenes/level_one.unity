@@ -1043,7 +1043,8 @@ MonoBehaviour:
   - {fileID: 1697664929}
   - {fileID: 1918460334}
   tilemapProcessPortal: {fileID: 0}
-  tilemapInitialPortal: {fileID: 0}
+  tilemapInitialPortal: {fileID: 1360373925}
+  tilemapRAMPortal: {fileID: 0}
   initialDialog: {fileID: 0}
 --- !u!4 &251243786
 Transform:
@@ -4650,8 +4651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 416.25, y: -261.85266}
-  m_SizeDelta: {x: 769.2446, y: 181.1489}
+  m_AnchoredPosition: {x: 400.5, y: -276.0766}
+  m_SizeDelta: {x: 737.75, y: 183.7351}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285108575
 MonoBehaviour:
@@ -4902,8 +4903,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 2.7514954, y: 136.74474}
-  m_SizeDelta: {x: -33.2584, y: 251.4895}
+  m_AnchoredPosition: {x: 2.7514038, y: 138.784}
+  m_SizeDelta: {x: -22.9139, y: 247.4109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351292235
 MonoBehaviour:
@@ -5031,7 +5032,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -6271,7 +6272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1669596728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6352,10 +6353,10 @@ RectTransform:
   m_Father: {fileID: 185080733}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 413.5, y: 209.5}
-  m_SizeDelta: {x: 827, y: 419}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3.2189941, y: -1.8594666}
+  m_SizeDelta: {x: 796.438, y: 432.5951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669596732
 MonoBehaviour:
@@ -10146,8 +10147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1, y: -1}
+  m_AnchoredPosition: {x: 4.9765, y: 0}
+  m_SizeDelta: {x: 8.9529, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912503241
 MonoBehaviour:
