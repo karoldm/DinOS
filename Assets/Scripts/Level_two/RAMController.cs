@@ -16,12 +16,17 @@ public class RAMController : MonoBehaviour
     public List<HorizontalLayoutGroup> queues;
     public List<HorizontalLayoutGroup> queuesComplete;
     public List<Dino> dinos;
-    public List<Dest> dest;
+    public List<Dest> dests;
     public TextMeshProUGUI scoreText;
     public Award award;
     public DialogLevelTwo dialog;
 
     void Start()
+    {
+        AddInitialTasks();
+    }
+
+    private void AddInitialTasks()
     {
         for (int i = 0; i < queues.Count; i++)
         {
@@ -60,6 +65,7 @@ public class RAMController : MonoBehaviour
             dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
             award.Unlock();
         }
+        Reset();
     }
 
     public static RAMController Instance
@@ -252,6 +258,28 @@ public class RAMController : MonoBehaviour
 
     public bool DestIsBusy(Task task)
     {
-        return dest[task.GetIndexOfColor()].IsBusy();
+        return dests[task.GetIndexOfColor()].IsBusy();
+    }
+
+    private void Reset()
+    {
+        foreach(Dino dino in dinos)
+        {
+            dino.Reset();
+        }
+        foreach(Dest dest in dests)
+        {
+            dest.SetBusy(false);
+        }
+
+        for(int i = 0; i < queues.Count; i++)
+        {
+            IterateQueue(queues[i].transform, (Transform child, int index) =>
+            {
+                Destroy(child);
+            });
+            ForceRebuildLayoutQueue(i);
+        }
+        AddInitialTasks();
     }
 }

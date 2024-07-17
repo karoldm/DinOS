@@ -1,12 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityTask = System.Threading.Tasks.Task;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System;
-
+using System.Threading.Tasks;
 
 public class Dino : MonoBehaviour
 {
@@ -58,11 +59,11 @@ public class Dino : MonoBehaviour
         return this.nextDest;
     }
 
-    public void MoveToPosition(Vector3 targetPosition)
+    public async UnityTask MoveToPosition(Vector3 targetPosition)
     {
         if (!isMoving)
         {
-            StartCoroutine(Move(targetPosition));
+            await StartCoroutineAsTask(Move(targetPosition));
         }
     }
 
@@ -71,7 +72,7 @@ public class Dino : MonoBehaviour
         this.currentTask = task;
     }
 
-    IEnumerator Move(Vector3 targetPosition)
+    private IEnumerator Move(Vector3 targetPosition)
     {
         isMoving = true;
 
@@ -98,12 +99,12 @@ public class Dino : MonoBehaviour
             yield return new WaitForSeconds(time);
             controller.UpdateScore(this.currentTask.GetScore());
 
-            if(this.currentTask.GetNext() != null)
+            if (this.currentTask.GetNext() != null)
             {
                 this.currentTask = this.currentTask.GetNext();
-                Dest destOfNextTask = controller.dest[this.currentTask.GetIndexOfColor()];
+                Dest destOfNextTask = controller.dests[this.currentTask.GetIndexOfColor()];
 
-                if(destOfNextTask == null)
+                if (destOfNextTask == null)
                 {
                     Debug.LogError("destOfNextTask é null em Move()");
                     yield return null;
@@ -119,7 +120,8 @@ public class Dino : MonoBehaviour
         }
     }
 
-    private void MoveToNextDest() {
+    private void MoveToNextDest()
+    {
         if (this.nextDest == this.dest || !this.nextDest.IsBusy())
         {
             this.dest.SetBusy(false);
@@ -135,7 +137,7 @@ public class Dino : MonoBehaviour
 
     private void MoveToDest()
     {
-        this.dest = controller.dest[this.currentTask.GetIndexOfColor()];
+        this.dest = controller.dests[this.currentTask.GetIndexOfColor()];
 
         if (this.dest != null)
         {
@@ -148,12 +150,12 @@ public class Dino : MonoBehaviour
         }
     }
 
-    private void ComeBack()
+    private async UnityTask ComeBack()
     {
-        this.dest.ClearProgressBar();
-        MoveToPosition(initialPosition);
-        this.dest.SetBusy(false);
         ClearCurrentTasks();
+        this.dest.ClearProgressBar();
+        await MoveToPosition(initialPosition);
+        this.dest.SetBusy(false);
     }
 
     public void DropTask(Task task)
@@ -187,5 +189,26 @@ public class Dino : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+    }
+
+    public void Reset()
+    {
+        ComeBack().ConfigureAwait(false);
+        this.dest = null;
+        this.nextDest = null;
+        this.awaiting = false;
+    }
+
+    private UnityTask StartCoroutineAsTask(IEnumerator coroutine)
+    {
+        var tcs = new TaskCompletionSource<bool>();
+        StartCoroutine(RunCoroutine(coroutine, tcs));
+        return tcs.Task;
+    }
+
+    private IEnumerator RunCoroutine(IEnumerator coroutine, TaskCompletionSource<bool> tcs)
+    {
+        yield return coroutine;
+        tcs.SetResult(true);
     }
 }

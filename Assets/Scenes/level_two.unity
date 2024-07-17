@@ -2096,7 +2096,7 @@ MonoBehaviour:
   - {fileID: 329442203}
   - {fileID: 319373153}
   - {fileID: 1357225739}
-  dest:
+  dests:
   - {fileID: 2048654858}
   - {fileID: 1099859037}
   - {fileID: 158549151}
