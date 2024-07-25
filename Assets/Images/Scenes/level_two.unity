@@ -1095,6 +1095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   currentTasks: {fileID: 1127266797}
+  max: 5
 --- !u!61 &319373154
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1307,6 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   currentTasks: {fileID: 1120295383}
+  max: 10
 --- !u!61 &329442204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2103,6 +2105,7 @@ MonoBehaviour:
   scoreText: {fileID: 237465180}
   award: {fileID: 2084633135}
   dialog: {fileID: 244979074}
+  maxScore: 15
 --- !u!4 &562969473
 Transform:
   m_ObjectHideFlags: 0
@@ -83558,6 +83561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   currentTasks: {fileID: 1525517231}
+  max: 15
 --- !u!61 &1357225740
 BoxCollider2D:
   m_ObjectHideFlags: 0

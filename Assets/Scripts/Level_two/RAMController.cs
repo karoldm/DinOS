@@ -12,7 +12,7 @@ public class RAMController : MonoBehaviour
     private static RAMController instance;
     private int score = 0;
 
-    public List<Task> tasks;
+    public List<AirportTask> tasks;
     public List<HorizontalLayoutGroup> queues;
     public List<HorizontalLayoutGroup> queuesComplete;
     public List<Dino> dinos;
@@ -20,6 +20,7 @@ public class RAMController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Award award;
     public DialogLevelTwo dialog;
+    public int maxScore = 15;
 
     void Start()
     {
@@ -117,19 +118,20 @@ public class RAMController : MonoBehaviour
             return;
         }
 
-        Task lastChild = GetLastTaskOfQueue(indexQueue);
+        AirportTask lastChild = GetLastTaskOfQueue(indexQueue);
 
-        Task task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
+        AirportTask task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
         
         bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
 
         if (willHadNext)
         {
-            if (lastChild != null)
+            if (lastChild != null && (lastChild.SumOfScore() + task.GetScore()) <= maxScore)
             {
                 lastChild.SetNext(task);
             }
         }
+  
 
         task.InstanciateTask(indexTask, indexQueue);
 
@@ -138,7 +140,7 @@ public class RAMController : MonoBehaviour
         task.UpdateStartPosition();
     }
 
-    public void IterateQueue(Transform queueTransform, Action<Task, int> action)
+    public void IterateQueue(Transform queueTransform, Action<AirportTask, int> action)
     {
         if (queueTransform == null || action == null)
         {
@@ -148,7 +150,7 @@ public class RAMController : MonoBehaviour
 
         for (int i = 0; i < queueTransform.childCount; i++)
         {
-            Task task = queueTransform.GetChild(i).GetComponent<Task>();
+            AirportTask task = queueTransform.GetChild(i).GetComponent<AirportTask>();
             if (task != null)
             {
                 action(task, i);
@@ -180,11 +182,11 @@ public class RAMController : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(queues[indexQueue].GetComponent<RectTransform>());
     }
 
-    public void RemoveChildOfQueue(int indexQueue, Task task)
+    public void RemoveChildOfQueue(int indexQueue, AirportTask task)
     {
         int taskToAdd = 0;
 
-        Task currentTask = task;
+        AirportTask currentTask = task;
         while (currentTask != null)
         {
             Transform child = GetFirstChildOfQueue(indexQueue);
@@ -198,7 +200,7 @@ public class RAMController : MonoBehaviour
 
         ForceRebuildLayoutQueue(indexQueue);
 
-        IterateQueue(queues[indexQueue].transform, (Task task, int index) => {
+        IterateQueue(queues[indexQueue].transform, (AirportTask task, int index) => {
             task.UpdateStartPosition();
         });
 
@@ -228,35 +230,35 @@ public class RAMController : MonoBehaviour
         return queues[queueIndex].transform.GetChild(0);
     }
 
-    public Task GetLastTaskOfQueue(int queueIndex)
+    public AirportTask GetLastTaskOfQueue(int queueIndex)
     {
         if (GetQueueCount(queueIndex) <= 0) return null;
 
         Transform lastChildTransform = queues[queueIndex].transform.GetChild(GetQueueCount(queueIndex) - 1);
 
-        return lastChildTransform.GetComponent<Task>();
+        return lastChildTransform.GetComponent<AirportTask>();
     }
 
-    public Task GetFirstTaskOfQueue(int queueIndex)
+    public AirportTask GetFirstTaskOfQueue(int queueIndex)
     {
         if (GetQueueCount(queueIndex) <= 0) return null;
 
         Transform lastChildTransform = queues[queueIndex].transform.GetChild(0);
 
-        return lastChildTransform.GetComponent<Task>();
+        return lastChildTransform.GetComponent<AirportTask>();
     }
 
-    public Task GetTaskAt(int queueIndex, int index)
+    public AirportTask GetTaskAt(int queueIndex, int index)
     {
         int queueCount = GetQueueCount(queueIndex);
         if (queueCount <= 0 || index >= queueCount || index <= 0) return null;
 
         Transform lastChildTransform = queues[queueIndex].transform.GetChild(index);
 
-        return lastChildTransform.GetComponent<Task>();
+        return lastChildTransform.GetComponent<AirportTask>();
     }
 
-    public bool DestIsBusy(Task task)
+    public bool DestIsBusy(AirportTask task)
     {
         return dests[task.GetIndexOfColor()].IsBusy();
     }

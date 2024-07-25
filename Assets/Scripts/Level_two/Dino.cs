@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using System.Threading.Tasks;
 
 public class Dino : MonoBehaviour
 {
@@ -16,12 +15,13 @@ public class Dino : MonoBehaviour
     private Vector3 finalPosition;
     private Animator animator;
     private Vector3 initialPosition;
-    private Task currentTask;
+    private AirportTask currentTask;
     private RAMController controller;
     private Dest dest;
     private Dest nextDest;
     private bool awaiting = false;
     public HorizontalLayoutGroup currentTasks;
+    public int max;
 
     private void Awake()
     {
@@ -40,8 +40,17 @@ public class Dino : MonoBehaviour
     {
         if (this.awaiting)
         {
-            MoveToNextDest();
+            if (!nextDest.IsBusy())
+            {
+                this.awaiting = false;
+                StartCoroutine(MoveToNextDest());
+            }
         }
+    }
+
+    public Vector3 GetInitialPosition()
+    {
+        return this.initialPosition;
     }
 
     public bool IsAwaiting()
@@ -67,7 +76,7 @@ public class Dino : MonoBehaviour
         }
     }
 
-    public void SetCurrentTask(Task task)
+    public void SetCurrentTask(AirportTask task)
     {
         this.currentTask = task;
     }
@@ -87,47 +96,49 @@ public class Dino : MonoBehaviour
         }
 
         transform.position = targetPosition;
-
         animator.SetBool("IsMoving", false);
-
         isMoving = false;
 
         if (targetPosition != initialPosition)
         {
-            int time = currentTask.GetTime();
-            StartCoroutine(this.dest.InitProgressBar(time));
-            yield return new WaitForSeconds(time);
-            controller.UpdateScore(this.currentTask.GetScore());
-
-            if (this.currentTask.GetNext() != null)
+            if (this.currentTask != null)
             {
-                this.currentTask = this.currentTask.GetNext();
-                Dest destOfNextTask = controller.dests[this.currentTask.GetIndexOfColor()];
+                int time = currentTask.GetTime();
+                StartCoroutine(this.dest.InitProgressBar(time));
+                yield return new WaitForSeconds(time);
 
-                if (destOfNextTask == null)
+                controller.UpdateScore(this.currentTask.GetScore());
+
+                if (this.currentTask.GetNext() != null)
                 {
-                    Debug.LogError("destOfNextTask é null em Move()");
-                    yield return null;
-                }
+                    this.currentTask = this.currentTask.GetNext();
+                    Dest destOfNextTask = controller.dests[this.currentTask.GetIndexOfColor()];
 
-                this.nextDest = destOfNextTask;
-                MoveToNextDest();
-            }
-            else
-            {
-                ComeBack();
+                    if (destOfNextTask == null)
+                    {
+                        Debug.LogError("destOfNextTask is null in Move()");
+                        yield break;
+                    }
+
+                    this.nextDest = destOfNextTask;
+                    yield return StartCoroutine(MoveToNextDest());
+                }
+                else
+                {
+                    yield return StartCoroutine(ComeBack());
+                }
             }
         }
     }
 
-    private void MoveToNextDest()
+    private IEnumerator MoveToNextDest()
     {
         if (this.nextDest == this.dest || !this.nextDest.IsBusy())
         {
-            this.dest.SetBusy(false);
             this.dest.ClearProgressBar();
+            this.dest.SetBusy(false);
             this.dest = this.nextDest;
-            MoveToDest();
+            yield return StartCoroutine(Move(this.dest.transform.position));
         }
         else
         {
@@ -137,6 +148,8 @@ public class Dino : MonoBehaviour
 
     private void MoveToDest()
     {
+        if (this.currentTask == null) return;
+
         this.dest = controller.dests[this.currentTask.GetIndexOfColor()];
 
         if (this.dest != null)
@@ -146,19 +159,24 @@ public class Dino : MonoBehaviour
         }
         else
         {
-            Debug.LogError("dest é null em MoveToDest()");
+            Debug.LogError("dest is null in MoveToDest()");
         }
     }
 
-    private async UnityTask ComeBack()
+    private IEnumerator ComeBack()
     {
-        ClearCurrentTasks();
         this.dest.ClearProgressBar();
-        await MoveToPosition(initialPosition);
         this.dest.SetBusy(false);
+        ClearCurrentTasks();
+        yield return StartCoroutine(MoveToPositionCoroutine(initialPosition));
     }
 
-    public void DropTask(Task task)
+    private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition)
+    {
+        yield return StartCoroutineAsTask(Move(targetPosition));
+    }
+
+    public void DropTask(AirportTask task)
     {
         int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
@@ -169,10 +187,10 @@ public class Dino : MonoBehaviour
 
     private void UpdateCurrentTasks()
     {
-        Task current = this.currentTask;
+        AirportTask current = this.currentTask;
         while (current != null)
         {
-            Task task = Instantiate(current, currentTasks.transform);
+            AirportTask task = Instantiate(current, currentTasks.transform);
             task.UpdateStartPosition();
             task.Resize(0.3f);
             current = current.GetNext();
@@ -188,25 +206,25 @@ public class Dino : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
     }
 
     public void Reset()
     {
-        ComeBack().ConfigureAwait(false);
         this.dest = null;
         this.nextDest = null;
         this.awaiting = false;
+        ClearCurrentTasks();
+        StartCoroutine(ComeBack());
     }
 
     private UnityTask StartCoroutineAsTask(IEnumerator coroutine)
     {
-        var tcs = new TaskCompletionSource<bool>();
+        var tcs = new System.Threading.Tasks.TaskCompletionSource<bool>();
         StartCoroutine(RunCoroutine(coroutine, tcs));
         return tcs.Task;
     }
 
-    private IEnumerator RunCoroutine(IEnumerator coroutine, TaskCompletionSource<bool> tcs)
+    private IEnumerator RunCoroutine(IEnumerator coroutine, System.Threading.Tasks.TaskCompletionSource<bool> tcs)
     {
         yield return coroutine;
         tcs.SetResult(true);

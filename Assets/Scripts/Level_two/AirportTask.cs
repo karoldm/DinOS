@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 
-public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
     public enum TaskColor { red, green, blue }
     private int time;
@@ -16,7 +16,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
     private Vector3 startPosition;
     private SpriteRenderer sprite;
     private int indexQueue;
-    private Task next;
+    private AirportTask next;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
     }
 
-    public void SetNext(Task task)
+    public void SetNext(AirportTask task)
     {
         this.next = task;
 
@@ -61,7 +61,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         arrow.gameObject.SetActive(true);
     }
 
-    public Task GetNext()
+    public AirportTask GetNext()
     {
         return this.next;
     }
@@ -189,6 +189,19 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         return IsLastInQueue() && !controller.DestIsBusy(this);
     }
 
+    public int SumOfScore()
+    {
+        int sum = this.score;
+        AirportTask nextTask = this.next;
+        while(nextTask != null)
+        {
+            sum += nextTask.score;
+            nextTask = nextTask.next;
+        }
+
+        return sum;
+    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!CanMove()) return;
@@ -204,7 +217,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
                 if(dino == null)
                 {
                     Debug.Log("Dino é null");
-                    return;
+                    continue;
                 }
 
                 Collider2D dinoCollider = dino.GetComponent<Collider2D>();
@@ -212,13 +225,17 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
                 if (dinoCollider == null)
                 {
                     Debug.LogError("Dino não contém um Collider2D");
+                    return;
                 }
-                else if (dinoCollider.OverlapPoint(mousePosition))
+                if (dinoCollider.OverlapPoint(mousePosition))
                 {
+                    if (SumOfScore() > dino.max) continue;
+                    if (dino.GetInitialPosition() != dino.transform.position) continue;
+
                     isInDino = true;
                     transform.position = dino.transform.position;
                     dino.DropTask(this);
-                    return;
+                    break;
                 }
             }
         }
@@ -250,7 +267,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         MoveNext(this.next, worldPosition, 1);
     }
 
-    private void MoveNext(Task nextTask, Vector3 position, int i)
+    private void MoveNext(AirportTask nextTask, Vector3 position, int i)
     {
         if(nextTask != null)
         {
@@ -260,7 +277,7 @@ public class Task : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         }
     }
 
-    private void MoveNextToStartPosition(Task nextTask)
+    private void MoveNextToStartPosition(AirportTask nextTask)
     {
         if (nextTask != null)
         {
