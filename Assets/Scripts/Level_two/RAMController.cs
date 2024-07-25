@@ -272,6 +272,7 @@ public class RAMController : MonoBehaviour
         foreach(Dest dest in dests)
         {
             dest.SetBusy(false);
+            dest.ClearProgressBar();
         }
 
         for(int i = 0; i < queues.Count; i++)

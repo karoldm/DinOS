@@ -40,7 +40,7 @@ public class Dino : MonoBehaviour
     {
         if (this.awaiting)
         {
-            if (!nextDest.IsBusy())
+            if (!this.nextDest.IsBusy())
             {
                 this.awaiting = false;
                 StartCoroutine(MoveToNextDest());
@@ -138,6 +138,7 @@ public class Dino : MonoBehaviour
             this.dest.ClearProgressBar();
             this.dest.SetBusy(false);
             this.dest = this.nextDest;
+            this.dest.SetBusy(true);
             yield return StartCoroutine(Move(this.dest.transform.position));
         }
         else
@@ -200,12 +201,12 @@ public class Dino : MonoBehaviour
 
     private void ClearCurrentTasks()
     {
-        this.currentTask = null;
-
         foreach (Transform child in currentTasks.transform)
         {
             Destroy(child.gameObject);
         }
+
+        this.currentTask = null;
     }
 
     public void Reset()
@@ -214,7 +215,7 @@ public class Dino : MonoBehaviour
         this.nextDest = null;
         this.awaiting = false;
         ClearCurrentTasks();
-        StartCoroutine(ComeBack());
+        transform.position = this.initialPosition;
     }
 
     private UnityTask StartCoroutineAsTask(IEnumerator coroutine)
