@@ -81,6 +81,11 @@ public class Dino : MonoBehaviour
         this.currentTask = task;
     }
 
+    private Transform GetFirstChildOfQueue()
+    {
+        return currentTasks.transform.GetChild(0);
+    } 
+
     private IEnumerator Move(Vector3 targetPosition)
     {
         isMoving = true;
@@ -112,6 +117,10 @@ public class Dino : MonoBehaviour
                 if (this.currentTask.GetNext() != null)
                 {
                     this.currentTask = this.currentTask.GetNext();
+
+                    Destroy(GetFirstChildOfQueue().gameObject);
+                    ForceRebuildLayoutQueue();
+
                     Dest destOfNextTask = controller.dests[this.currentTask.GetIndexOfColor()];
 
                     if (destOfNextTask == null)
@@ -182,6 +191,12 @@ public class Dino : MonoBehaviour
         int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
         controller.RemoveChildOfQueue(queueIndex, task);
+
+        if (this.currentTask.SumOfScore() < this.max)
+        {
+            controller.SetHasSegmentation();
+        }
+
         UpdateCurrentTasks();
         MoveToDest();
     }
@@ -196,6 +211,11 @@ public class Dino : MonoBehaviour
             task.Resize(0.3f);
             current = current.GetNext();
         }
+        ForceRebuildLayoutQueue();
+    }
+
+    private void ForceRebuildLayoutQueue()
+    {
         LayoutRebuilder.ForceRebuildLayoutImmediate(currentTasks.GetComponent<RectTransform>());
     }
 

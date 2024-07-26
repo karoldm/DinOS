@@ -141,11 +141,18 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         }  
     }
 
+    private int GetRandScore()
+    {
+        int[] scores = {5, 10, 15};
+        int index = GetRandInt(0, 2);
+        return scores[index];
+    }
+
     public void InstanciateTask(int TaskColorindex, int indexQueue)
     {
         this.indexQueue = indexQueue;
 
-        int score = GetRandInt(1, 5);
+        int score = GetRandScore();
         int time = GetRandInt(1, 5);
 
         this.time = time;

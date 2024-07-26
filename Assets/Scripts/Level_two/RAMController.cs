@@ -18,13 +18,20 @@ public class RAMController : MonoBehaviour
     public List<Dino> dinos;
     public List<Dest> dests;
     public TextMeshProUGUI scoreText;
-    public Award award;
+    public Award awardDeadlock;
+    private bool hasSegmentation = false;
+    public Award awardSegmentation;
     public DialogLevelTwo dialog;
     public int maxScore = 15;
 
     void Start()
     {
         AddInitialTasks();
+    }
+
+    public void SetHasSegmentation()
+    {
+        this.hasSegmentation = true;
     }
 
     private void AddInitialTasks()
@@ -35,6 +42,16 @@ public class RAMController : MonoBehaviour
             AddElementToQueue(i, GetRandInt(0, 2));
             AddElementToQueue(i, GetRandInt(0, 2));
         }
+    }
+
+    void FinishGame()
+    {
+        if (awardSegmentation.IsLocked() && !this.hasSegmentation)
+        {
+            dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
+            awardSegmentation.Unlock();
+        }
+        Reset();
     }
 
 
@@ -61,10 +78,10 @@ public class RAMController : MonoBehaviour
 
     private void Deadlock()
     {
-        if (award.IsLocked())
+        if (awardDeadlock.IsLocked())
         {
             dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
-            award.Unlock();
+            awardDeadlock.Unlock();
         }
         Reset();
     }
@@ -279,7 +296,7 @@ public class RAMController : MonoBehaviour
         {
             IterateQueue(queues[i].transform, (Transform child, int index) =>
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             });
             ForceRebuildLayoutQueue(i);
         }
