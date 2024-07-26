@@ -46,12 +46,12 @@ public class RAMController : MonoBehaviour
 
     private void AddInitialTasks()
     {
-        for (int i = 0; i < queues.Count; i++)
-        {
+       for (int i = 0; i < queues.Count; i++)
+       {
             AddElementToQueue(i, GetRandInt(0, 2));
             AddElementToQueue(i, GetRandInt(0, 2));
             AddElementToQueue(i, GetRandInt(0, 2));
-        }
+       }
     }
 
     void FinishGame()
@@ -171,21 +171,40 @@ public class RAMController : MonoBehaviour
             return;
         }
 
-        AirportTask lastChild = GetLastTaskOfQueue(indexQueue); 
+        AirportTask firstChild = GetFirstTaskOfQueue(indexQueue);
+        AirportTask lastChild = GetLastTaskOfQueue(indexQueue);
+
+        bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
+
+        int sum = 0;
+        if (willHadNext)
+        {
+
+            if(lastChild != null)
+            {
+                if (firstChild != null && firstChild.GetNext() != null)
+                {
+                    sum = firstChild.SumOfScore();
+                }
+                else
+                {
+                    sum = lastChild.SumOfScore();
+                }
+            }
+            else
+            {
+                willHadNext = false;
+            }
+        }
 
         AirportTask task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
         task.InstanciateTask(indexTask, indexQueue);
         ForceRebuildLayoutQueue(indexQueue);
         task.UpdateStartPosition();
 
-        bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
-
-        if (willHadNext)
+        if (willHadNext && (sum + task.GetScore()) <= maxScore)
         {
-            if (lastChild != null && (lastChild.SumOfScore() + task.GetScore()) <= maxScore)
-            {
-                lastChild.SetNext(task);
-            }
+            lastChild.SetNext(task);
         }
     }
 

@@ -22,6 +22,7 @@ public class Dino : MonoBehaviour
     private bool awaiting = false;
     public HorizontalLayoutGroup currentTasks;
     public int max;
+    public TextMeshProUGUI capacityText;
 
     private void Awake()
     {
@@ -34,6 +35,11 @@ public class Dino : MonoBehaviour
         {
             Debug.LogError("RAMController instance not found in the scene.");
         }
+    }
+
+    private void UpdateCapacity(int score)
+    {
+        capacityText.text = score.ToString() + "|" + this.max.ToString();
     }
 
     void Update()
@@ -178,6 +184,7 @@ public class Dino : MonoBehaviour
         this.dest.ClearProgressBar();
         this.dest.SetBusy(false);
         ClearCurrentTasks();
+        UpdateCapacity(0);
         yield return StartCoroutine(MoveToPositionCoroutine(initialPosition));
     }
 
@@ -190,6 +197,7 @@ public class Dino : MonoBehaviour
     {
         int queueIndex = task.GetQueueIndex();
         this.currentTask = task;
+        UpdateCapacity(task.SumOfScore());
         controller.RemoveChildOfQueue(queueIndex, task);
 
         if (this.currentTask.SumOfScore() < this.max)
