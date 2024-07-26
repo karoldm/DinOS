@@ -23,10 +23,20 @@ public class RAMController : MonoBehaviour
     public Award awardSegmentation;
     public DialogLevelTwo dialog;
     public int maxScore = 15;
+    private float leftTime = 180f;
+    public TextMeshProUGUI timeText;
+    bool gamingRunning = false;
+    public GameObject timeContainer;
+    public GameObject startButton;  
 
     void Start()
     {
         AddInitialTasks();
+    }
+
+    public bool GamingRunning()
+    {
+        return this.gamingRunning;
     }
 
     public void SetHasSegmentation()
@@ -48,9 +58,13 @@ public class RAMController : MonoBehaviour
     {
         if (awardSegmentation.IsLocked() && !this.hasSegmentation)
         {
-            dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
+            dialog.showDialog(DialogLevelTwo.DialogType.segmentation);
             awardSegmentation.Unlock();
         }
+
+        timeContainer.SetActive(false);
+        startButton.SetActive(true);
+
         Reset();
     }
 
@@ -68,6 +82,28 @@ public class RAMController : MonoBehaviour
                 }
             }
         }
+
+        if (gamingRunning)
+        {
+            if (leftTime > 0)
+            {
+                leftTime -= Time.deltaTime;
+                timeText.text = Mathf.Round(leftTime).ToString();
+            }
+            else
+            {
+                FinishGame();
+                gamingRunning = false;
+            }
+        }
+    }
+
+    public void InitGame()
+    {
+        gamingRunning = true;
+
+        timeContainer.SetActive(true);
+        startButton.SetActive(false);
     }
 
     public void LoadInitialScene()
@@ -135,10 +171,13 @@ public class RAMController : MonoBehaviour
             return;
         }
 
-        AirportTask lastChild = GetLastTaskOfQueue(indexQueue);
+        AirportTask lastChild = GetLastTaskOfQueue(indexQueue); 
 
         AirportTask task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
-        
+        task.InstanciateTask(indexTask, indexQueue);
+        ForceRebuildLayoutQueue(indexQueue);
+        task.UpdateStartPosition();
+
         bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
 
         if (willHadNext)
@@ -148,13 +187,6 @@ public class RAMController : MonoBehaviour
                 lastChild.SetNext(task);
             }
         }
-  
-
-        task.InstanciateTask(indexTask, indexQueue);
-
-        ForceRebuildLayoutQueue(indexQueue);
-
-        task.UpdateStartPosition();
     }
 
     public void IterateQueue(Transform queueTransform, Action<AirportTask, int> action)
@@ -282,6 +314,9 @@ public class RAMController : MonoBehaviour
 
     private void Reset()
     {
+        score = 0;
+        scoreText.text = score.ToString();
+
         foreach(Dino dino in dinos)
         {
             dino.Reset();
@@ -300,6 +335,7 @@ public class RAMController : MonoBehaviour
             });
             ForceRebuildLayoutQueue(i);
         }
+
         AddInitialTasks();
     }
 }

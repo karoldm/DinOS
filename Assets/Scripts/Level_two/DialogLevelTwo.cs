@@ -11,7 +11,15 @@ public class DialogLevelTwo : MonoBehaviour
         dinnerProblem,
         none,
         intro,
+        segmentation,
     }
+
+    private static string[] segmentationTexts =
+        {
+          "Conquista desbloqueada: Zero Segmentaçã!",
+          "É muito raro conseguir aproveitar 100% dos funcionários e garantir que não estamos desperdiçando tempo e recursos!"
+        };
+    private LinkedList<string> segmentationDialog = new LinkedList<string>(segmentationTexts);
 
 
     private static string[] introTexts =
@@ -118,6 +126,8 @@ public class DialogLevelTwo : MonoBehaviour
                 this.currentDialog = this.dinnerProblemDialog; break;
             case DialogType.intro:
                 this.currentDialog = this.introDialog; break;
+            case DialogType.segmentation:
+                this.currentDialog = this.segmentationDialog; break;
             default:
                 this.currentDialog = this.NoneDialog; break;
         }

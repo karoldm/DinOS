@@ -193,7 +193,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
     private bool CanMove()
     {
-        return IsLastInQueue() && !controller.DestIsBusy(this);
+        return IsLastInQueue() && !controller.DestIsBusy(this) && controller.GamingRunning();
     }
 
     public int SumOfScore()

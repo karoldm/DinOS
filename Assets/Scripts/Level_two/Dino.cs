@@ -84,7 +84,7 @@ public class Dino : MonoBehaviour
     private Transform GetFirstChildOfQueue()
     {
         return currentTasks.transform.GetChild(0);
-    } 
+    }
 
     private IEnumerator Move(Vector3 targetPosition)
     {
@@ -231,6 +231,8 @@ public class Dino : MonoBehaviour
 
     public void Reset()
     {
+        StopAllCoroutines();
+        animator.SetBool("IsMoving", false);
         this.dest = null;
         this.nextDest = null;
         this.awaiting = false;
