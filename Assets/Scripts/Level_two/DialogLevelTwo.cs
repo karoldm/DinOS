@@ -24,11 +24,12 @@ public class DialogLevelTwo : MonoBehaviour
 
     private static string[] introTexts =
         {
-           "Bem vindo a sala de gerenciamento de tarefas! Aqui realizamos todas as tarefas necessárias para que um plano de vôo iniciado possa ser conduzido até o final sem falhar.",
-           "Diversas tarefas como abastecer o avião, checar as travas de segurança, verificar a comunicação com a torre, conduzir os passageiros, entre muitas outras são realizadas desde o preparo da decolagem até o termino do vôo!",
+           "Bem vindo aos vôos em execuçao! Aqui realizamos todas as tarefas necessárias para que um plano de vôo iniciado pela Torre de Controle possa ser conduzido até o final sem falhas.",
+           "Diversas tarefas como abastecer o avião, checar as travas de segurança, verificar a comunicação com a torre, conduzir os passageiros, entre muitas outras são realizadas neste local.",
            "Graças a nossa tecnologia avançada, podemos realizar essas tarefas apartir de terminais localizados aqui mesmo! Que tal tentar?",
            "Cada vôo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu próprio terminal (identificado pela cor e pelo ícone da tarefa).",
-           "Nossos companheiros podem te ajudar a realizar essas tarefas, mas cada um deles só pode realizar uma tarefa de cada, e enquanto estiver ocupando com uma tarefa não pode receber outras! Além disso, cada terminal só pode ser usado por um Dino por vez.",
+           "Nossos companheiros podem te ajudar a realizar essas tarefas, mas cada um deles só pode realizar uma tarefa de cada, e enquanto estiver ocupado com uma tarefa não pode receber outras! Além disso, cada terminal só pode ser usado por um Dino por vez.",
+           "Como temos uma equipe diversificada, cada um dos nossos funcionários lida com diferentes dificuldades de tarefas. A capacidade de um Dino é indicada abaixo dele e mostra quantos pontos de dificuladade ele consegue suportar de uma vez!",
            "Muito cuidado com tarefas dependentes! Algumas de nossas tarefas dependem de outras de modo que serão executadas imediatamente em seguida. Essas tarefas são marcadas com uma seta.",
            "Para iniciar, basta arrastar uma tarefa de um dos vôos até um dino, e esperar ele concluir. Lembre-se que você consegue ver quanto tempo a tarefa vai levar e quantos pontos ela vai te dar antes mesmo de executá-la!",
         };

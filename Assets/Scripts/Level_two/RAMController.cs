@@ -148,12 +148,9 @@ public class RAMController : MonoBehaviour
 
     private int GetRandInt(int min, int max)
     {
-        int minRange = min;
-        int maxRange = max;
-        int randomNumberInRange = UnityEngine.Random.Range(minRange, maxRange + 1);
-
-        return randomNumberInRange;
+        return UnityEngine.Random.Range(min, max + 1);
     }
+
 
     public void AddElementToQueue(int indexQueue, int indexTask)
     {

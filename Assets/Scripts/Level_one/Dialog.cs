@@ -18,8 +18,8 @@ public class Dialog : MonoBehaviour
 
     private static string[] introTexts =
         {
-            "Olá, seja bem vindo a sala de controle! Por aqui nós conseguimos acompanhar quando um novo vôo é agendado e chega para nós por meio dos planos de vôos.",
-            "Os planos de vôos nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a priodade dele. Como gerenciadores desse setor devemos nos atentar a qual vôo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
+            "Olá, seja bem vindo à Torre de Controle! Por aqui nós conseguimos acompanhar quando um novo vôo é agendado e chega para nós por meio dos planos de vôos.",
+            "Os planos de vôos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a priodade dele. Como gerenciadores desse setor devemos nos atentar a qual vôo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
             "Olha só, no momento temos 4 planos de vôos esperando para iniciarem, que tal você tentar selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
             "Para iniciar um plano de vôo você precisa arrastar ele até o painel de excecução a sua direita. No painel você consegue acompanhar quanto tempo falta até o vôo ser concluído. Lembre-se de usar as informações que você possuí para executar os planos da forma mais eficiente possível!",
             "Lembre-se que você pode interromper um vôo a qualquer momento e devolver ele para o final da fila! Por questões de segurança, você deve esperar um certo tempo antes de interromeper um vôo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela metade.",
