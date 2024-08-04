@@ -7,14 +7,17 @@ using UnityEngine.UI;
 
 public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler    
 {
-    public enum Priority {High, Medium, Low}
-
     private LevelThreeController controller;
 
     private int timeToExecute;
     private int score;
-    private Priority priority;
+    private Priority.PriorityEnum priority;
     private VerticalLayoutGroup queue;
+    public string color;
+    private bool busy = false;
+    private bool isInCorrectQeueu;
+    public VerticalLayoutGroup correctQueue;
+    public VerticalLayoutGroup priorityRenderer;
 
     void Awake()
     {
@@ -27,15 +30,40 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void SetQueue(VerticalLayoutGroup queue)
+    {
+        this.queue = queue;
+    }
+
+    public bool GetCorrectQueue()
+    {
+        return this.isInCorrectQeueu;
+    }
+
+    public int GetScore()
+    {
+        return this.score;
+    }
+
     void Start()
     {
         
+    }
+
+    public Priority.PriorityEnum GetPriority()
+    {
+        return this.priority;
     }
 
     void Update()
     {
         
 
+    }
+
+    public void SetBusy()
+    {
+        this.busy = true;
     }
 
     public VerticalLayoutGroup GetQueue()
@@ -46,18 +74,21 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (busy)
+        {
+            controller.firstSelected = null;
+            return;
+        }
+
         int index = GetIndexOfChild();
 
-        Debug.Log(index.ToString());
-
         if (index == -1 || index != 0) return;
-
-        Debug.Log("swap called");
 
         if (controller.firstSelected != null && controller.firstSelected != this)
         {
             controller.secondSelected = this;
             controller.Swap();
+            this.isInCorrectQeueu = this.queue == correctQueue;
         }
         else
         {
@@ -75,13 +106,40 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
                 return i;
             }
         }
-        return -1; 
+        return -1;
+
+    }
+
+    private int GetRandInt(int min, int max)
+    {
+        return UnityEngine.Random.Range(min, max + 1);
     }
 
     public void Instanciate(int airplaneIndex, VerticalLayoutGroup queue)
     {
         this.queue = queue;
+        this.isInCorrectQeueu = queue == correctQueue;
+        int score = GetRandInt(1, 4);
+        this.score = score;
+        this.priority = Priority.GetFromInt(score-1);
+
+        UpdatePriorityRenderer();
+
         Show();
+    }
+
+    private void UpdatePriorityRenderer()
+    {
+        Transform transform = priorityRenderer.transform;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            SpriteRenderer sprite = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            if (sprite != null && (int)this.priority >= i)
+            {
+                sprite.color = Color.red;
+            }
+        }
     }
 
     public void Show()

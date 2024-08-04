@@ -12,12 +12,19 @@ public class LevelThreeController : MonoBehaviour
     private static LevelThreeController instance;
 
     public List<VerticalLayoutGroup> queues;
-    public List<Dino> dinos;
+    public List<AirplaneCall> calls;
+    public List<AirplaneDino> dinos;
     private float interval = 5f; 
     private int maxOfQueue = 4;
     public List<AirplanePeriferic> listTypeOfAirplanes;
     public AirplanePeriferic firstSelected;
     public AirplanePeriferic secondSelected;
+    private AirplaneCall selectedCall;
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
+    private bool wrongFlag = false; 
+    public AwardLevelThree award;
+
 
     public static LevelThreeController Instance
     {
@@ -47,6 +54,50 @@ public class LevelThreeController : MonoBehaviour
 
     }
 
+    public void LoadInitialScene()
+    {
+        SceneManager.LoadScene("Initial");
+
+    }
+
+    public void SetSelectedCall(AirplaneCall call)
+    {
+        this.selectedCall = call;
+    }
+
+    public AirplaneCall GetSelectedCall()
+    {
+        return this.selectedCall;
+    }
+
+    private int GetQueueCount(int index)
+    {
+        return queues[index].transform.childCount;
+    }
+
+    public AirplanePeriferic GetFirstAirplaneOfQueue(int queueIndex)
+    {
+        if (GetQueueCount(queueIndex) <= 0) return null;
+
+        Transform firstChildTransform = queues[queueIndex].transform.GetChild(0);
+
+        return firstChildTransform.GetComponent<AirplanePeriferic>();
+    }
+
+    public void UpdateCalls()
+    {
+        for(int i = 0; i < queues.Count; i++)
+        {
+            AirplanePeriferic airplane = GetFirstAirplaneOfQueue(i);
+
+            if (airplane != null)
+            {
+                AirplaneCall call = calls[i];
+                call.SetAirplane(airplane);
+            }
+        }
+    }
+
    public  void Swap()
     {
         if (firstSelected != null && secondSelected != null)
@@ -61,13 +112,18 @@ public class LevelThreeController : MonoBehaviour
             transform2.SetParent(null);
 
             transform1.SetParent(queue2.transform);
+            firstSelected.SetQueue(queue2);
+
             transform2.SetParent(queue1.transform);
+            secondSelected.SetQueue(queue1);
 
             transform1.SetSiblingIndex(0);
             transform2.SetSiblingIndex(0);
 
             firstSelected = null;
             secondSelected = null;
+
+            UpdateCalls();
         }
         else
         {
@@ -93,6 +149,7 @@ public class LevelThreeController : MonoBehaviour
             if (QueueSize(i) < maxOfQueue)
             {
                 AddElementToQueue(i);
+                UpdateCalls();
             }
         } 
     }
@@ -132,4 +189,39 @@ public class LevelThreeController : MonoBehaviour
         ForceRebuildLayoutQueue(indexQueue);
     }
 
+    public void EndService(AirplanePeriferic airplane)
+    {
+        if (!airplane.GetCorrectQueue())
+        {
+            this.wrongFlag = true;
+        }
+        this.score += (airplane.GetCorrectQueue() ? 1 : -1) * airplane.GetScore();
+        if (this.score < 0) this.score = 0;
+        this.scoreText.text = score.ToString();
+
+        RemoveChildOfQueue(airplane.GetQueue());
+    }
+
+    public void RemoveChildOfQueue(VerticalLayoutGroup queue)
+    {
+       
+        Transform child = queue.transform.GetChild(queue.transform.childCount - 1);
+
+        if (child != null)
+        {
+            child.SetParent(null, false);
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(queue.GetComponent<RectTransform>());
+
+        child.gameObject.SetActive(false);
+    }
+
+    private void EndGame()
+    {
+        if (!this.wrongFlag)
+        {
+            award.Unlock();
+        }
+    }
 }
