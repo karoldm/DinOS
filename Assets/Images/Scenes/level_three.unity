@@ -88064,7 +88064,7 @@ MonoBehaviour:
   secondSelected: {fileID: 0}
   scoreText: {fileID: 825926188}
   award: {fileID: 1851517364}
-  dialog: {fileID: 0}
+  dialog: {fileID: 1272373389}
 --- !u!1 &2113416462
 GameObject:
   m_ObjectHideFlags: 0
