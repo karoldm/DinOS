@@ -11,6 +11,16 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
     private string color;
     public AirplanePeriferic airplane;
 
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+
+    }
+
     void Awake()
     {
 
@@ -62,16 +72,6 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
     public string GetColor()
     {
         return this.color;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 
     public void OnPointerClick(PointerEventData eventData)

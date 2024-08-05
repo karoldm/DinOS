@@ -8,6 +8,7 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
     public double velocity;
     public SpriteRenderer circle;
     private AirplaneCall call;
+    public ProgressBar progressBar;
 
     private LevelThreeController controller;
 
@@ -49,7 +50,7 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
     {
         isBusy = true;
 
-        /*StartCoroutine(this.dest.InitProgressBar(time));*/
+        StartCoroutine(InitProgressBar((float)velocity));
         yield return new WaitForSeconds((float)velocity);
         EndService();
     }
@@ -57,6 +58,7 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
     private void EndService()
     {
         isBusy = false;
+        ClearProgressBar();
         UpdateCircleColor("#EEEEEE");
         controller.EndService(call.airplane);
         this.call = null;
@@ -80,5 +82,30 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogError("Circle is null");
         }
+    }
+
+    public IEnumerator InitProgressBar(float busyFor)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < busyFor)
+        {
+            elapsedTime += Time.deltaTime;
+            UpdateProgressBar(elapsedTime, busyFor);
+            yield return null;
+        }
+
+        UpdateProgressBar(busyFor, busyFor);
+    }
+
+    public void UpdateProgressBar(float currentTime, float fullTime)
+    {
+        float progress = currentTime / fullTime;
+        progressBar.UpdateProgressBar(progress);
+    }
+
+    public void ClearProgressBar()
+    {
+        progressBar.UpdateProgressBar(0f);
     }
 }

@@ -205,7 +205,7 @@ public class LevelThreeController : MonoBehaviour
     public void RemoveChildOfQueue(VerticalLayoutGroup queue)
     {
        
-        Transform child = queue.transform.GetChild(queue.transform.childCount - 1);
+        Transform child = queue.transform.GetChild(0);
 
         if (child != null)
         {
@@ -213,6 +213,7 @@ public class LevelThreeController : MonoBehaviour
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(queue.GetComponent<RectTransform>());
+        UpdateCalls();
 
         child.gameObject.SetActive(false);
     }
