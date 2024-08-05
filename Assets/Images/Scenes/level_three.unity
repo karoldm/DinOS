@@ -84582,8 +84582,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogLevelTwo, Assembly-CSharp
+      - m_Target: {fileID: 1272373389}
+        m_TargetAssemblyTypeName: LevelThreeDialog, Assembly-CSharp
         m_MethodName: nextText
         m_Mode: 1
         m_Arguments:
@@ -85068,8 +85068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -35.62552, y: -170.15636}
-  m_SizeDelta: {x: 2182.0713, y: 823.7056}
+  m_AnchoredPosition: {x: -32.4034, y: -174.9896}
+  m_SizeDelta: {x: 2265.8477, y: 833.3723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272373386
 MonoBehaviour:

@@ -125,6 +125,9 @@ public class LevelThreeController : MonoBehaviour
             transform1.SetSiblingIndex(0);
             transform2.SetSiblingIndex(0);
 
+            firstSelected.UpdateCorrectQueue();
+            secondSelected.UpdateCorrectQueue();
+
             firstSelected = null;
             secondSelected = null;
 

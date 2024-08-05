@@ -88,12 +88,17 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
         {
             controller.secondSelected = this;
             controller.Swap();
-            this.isInCorrectQeueu = this.queue == correctQueue;
         }
         else
         {
             controller.firstSelected = this;
         }
+    }
+
+    public void UpdateCorrectQueue()
+    {
+        this.isInCorrectQeueu = this.queue == correctQueue;
+
     }
 
     int GetIndexOfChild()
