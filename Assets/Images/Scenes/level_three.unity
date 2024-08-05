@@ -3832,7 +3832,7 @@ GameObject:
   - component: {fileID: 736937676}
   - component: {fileID: 736937675}
   m_Layer: 0
-  m_Name: Queue1
+  m_Name: Queue_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4367,7 +4367,7 @@ GameObject:
   - component: {fileID: 839100375}
   - component: {fileID: 839100374}
   m_Layer: 0
-  m_Name: Queue2
+  m_Name: Queue_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84582,7 +84582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1272373384}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DialogLevelTwo, Assembly-CSharp
         m_MethodName: nextText
         m_Mode: 1
@@ -85039,7 +85039,7 @@ GameObject:
   - component: {fileID: 1272373388}
   - component: {fileID: 1272373387}
   - component: {fileID: 1272373386}
-  - component: {fileID: 1272373384}
+  - component: {fileID: 1272373389}
   m_Layer: 5
   m_Name: DialogCanvas
   m_TagString: Untagged
@@ -85047,20 +85047,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1272373384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272373383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ae33971e5bd7c4b9a6bfcd9f6827ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1191074650}
-  dialogText: {fileID: 1720140386}
 --- !u!224 &1272373385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85146,6 +85132,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 999
   m_TargetDisplay: 0
+--- !u!114 &1272373389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272373383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cda45c53ef88e640ae855b29cb1bab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1191074650}
+  dialogText: {fileID: 1720140386}
 --- !u!1 &1280024011
 GameObject:
   m_ObjectHideFlags: 0
@@ -86055,7 +86055,7 @@ GameObject:
   - component: {fileID: 1646847465}
   - component: {fileID: 1646847464}
   m_Layer: 0
-  m_Name: Queue4
+  m_Name: Queue_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86282,7 +86282,7 @@ GameObject:
   - component: {fileID: 1690424298}
   - component: {fileID: 1690424297}
   m_Layer: 0
-  m_Name: Queue3
+  m_Name: Queue_yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88064,6 +88064,7 @@ MonoBehaviour:
   secondSelected: {fileID: 0}
   scoreText: {fileID: 825926188}
   award: {fileID: 1851517364}
+  dialog: {fileID: 0}
 --- !u!1 &2113416462
 GameObject:
   m_ObjectHideFlags: 0

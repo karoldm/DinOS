@@ -25,7 +25,9 @@ public class LevelThreeController : MonoBehaviour
     private bool wrongFlag = false; 
     public AwardLevelThree award;
     private int totalAirplanes = 0;
-    private int maxAirplanes = 2;
+    private int maxAirplanes = 32;
+    public LevelThreeDialog dialog;
+
 
 
     public static LevelThreeController Instance
@@ -48,6 +50,7 @@ public class LevelThreeController : MonoBehaviour
 
     void Start()
     {
+        dialog.showDialog(LevelThreeDialog.DialogType.intro);
         InvokeRepeating("AddAirplane", 0f, interval);
     }
 
@@ -235,9 +238,10 @@ public class LevelThreeController : MonoBehaviour
         if (!this.wrongFlag)
         {
             award.Unlock();
+            dialog.showDialog(LevelThreeDialog.DialogType.award);
         }
 
-        foreach(VerticalLayoutGroup queue in queues)
+        foreach (VerticalLayoutGroup queue in queues)
         {
             HideAllElements(queue);
         }
