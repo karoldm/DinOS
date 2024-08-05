@@ -24,6 +24,8 @@ public class LevelThreeController : MonoBehaviour
     private int score = 0;
     private bool wrongFlag = false; 
     public AwardLevelThree award;
+    private int totalAirplanes = 0;
+    private int maxAirplanes = 2;
 
 
     public static LevelThreeController Instance
@@ -98,7 +100,7 @@ public class LevelThreeController : MonoBehaviour
         }
     }
 
-   public  void Swap()
+    public void Swap()
     {
         if (firstSelected != null && secondSelected != null)
         {
@@ -124,6 +126,9 @@ public class LevelThreeController : MonoBehaviour
             secondSelected = null;
 
             UpdateCalls();
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(queue1.GetComponent<RectTransform>());
+            LayoutRebuilder.ForceRebuildLayoutImmediate(queue2.GetComponent<RectTransform>());
         }
         else
         {
@@ -146,7 +151,7 @@ public class LevelThreeController : MonoBehaviour
     {
         for(int i = 0; i < queues.Count; i++)
         {
-            if (QueueSize(i) < maxOfQueue)
+            if (QueueSize(i) < maxOfQueue && totalAirplanes < maxAirplanes)
             {
                 AddElementToQueue(i);
                 UpdateCalls();
@@ -200,6 +205,13 @@ public class LevelThreeController : MonoBehaviour
         this.scoreText.text = score.ToString();
 
         RemoveChildOfQueue(airplane.GetQueue());
+
+        totalAirplanes++;
+
+        if(totalAirplanes >= maxAirplanes)
+        {
+            EndGame();
+        }
     }
 
     public void RemoveChildOfQueue(VerticalLayoutGroup queue)
@@ -223,6 +235,19 @@ public class LevelThreeController : MonoBehaviour
         if (!this.wrongFlag)
         {
             award.Unlock();
+        }
+
+        foreach(VerticalLayoutGroup queue in queues)
+        {
+            HideAllElements(queue);
+        }
+    }
+
+    public void HideAllElements(VerticalLayoutGroup queue)
+    {
+        foreach (Transform child in queue.transform)
+        {
+            child.gameObject.SetActive(false);
         }
     }
 }
