@@ -50,15 +50,14 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
         
     }
 
+    void Update()
+    {
+
+    }
+
     public Priority.PriorityEnum GetPriority()
     {
         return this.priority;
-    }
-
-    void Update()
-    {
-        
-
     }
 
     public void SetBusy()
