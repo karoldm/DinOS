@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 5f;
+    private float speed = 5000f;
 
     private bool isMoving;
     private Vector2 input;
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public Tilemap tilemapProcessPortal;
     public Tilemap tilemapInitialPortal;
     public Tilemap tilemapRAMPortal;
+    public Tilemap tilemapESPortal;
 
     public DialogInitial initialDialog;
 
@@ -66,7 +67,10 @@ public class Player : MonoBehaviour
             }
 
 
-            CheckPortal(targetPosition);
+            if (collision)
+            {
+                CheckPortal(targetPosition);
+            }
         }
 
         animator.SetBool("IsMoving", isMoving); 
@@ -74,6 +78,9 @@ public class Player : MonoBehaviour
 
     private void CheckPortal(Vector3 targetPosition)
     {
+        if (initialDialog != null && initialDialog.gameObject.activeInHierarchy) return;
+
+
         if (tilemapProcessPortal != null)
         {
             Vector3Int obstacleMap = tilemapProcessPortal.WorldToCell(targetPosition);
@@ -94,6 +101,18 @@ public class Player : MonoBehaviour
             {
                 initialDialog.showDialog(DialogInitial.InitialDialogType.RAM);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.RAM);
+            }
+
+        }
+
+        if (tilemapESPortal != null)
+        {
+            Vector3Int obstacleMap = tilemapESPortal.WorldToCell(targetPosition);
+
+            if (tilemapESPortal.GetTile(obstacleMap) != null)
+            {
+                initialDialog.showDialog(DialogInitial.InitialDialogType.ES);
+                initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.ES);
             }
 
         }

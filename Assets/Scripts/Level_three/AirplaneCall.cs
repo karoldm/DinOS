@@ -10,6 +10,9 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
     private LevelThreeController controller;
     private string color;
     public AirplanePeriferic airplane;
+    public TextMeshProUGUI label;
+    private Vector3 scaleIncrement = new Vector3(0.1f, 0.1f, 0.1f);
+
 
     void Start()
     {
@@ -35,7 +38,6 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
     public void SetAirplane(AirplanePeriferic airplane)
     {
         this.airplane = airplane;
-        TextMeshProUGUI label = GetComponent<TextMeshProUGUI>();
         if(label != null)
         {
             label.text = Priority.GetPriorityLabel(airplane.GetPriority());
@@ -76,6 +78,7 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        transform.localScale += scaleIncrement;
         controller.SetSelectedCall(this);
     }
 }

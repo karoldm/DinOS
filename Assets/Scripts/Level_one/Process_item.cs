@@ -52,7 +52,14 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
         Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
 
-        if (!RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), Input.mousePosition, null))
+        Vector3 worldPosition;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            process_controller.GetComponent<RectTransform>(),
+            eventData.position,
+            eventData.pressEventCamera,
+            out worldPosition);
+
+        if (!RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), worldPosition, null))
         {
             transform.position = startPosition;
 
@@ -66,9 +73,20 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public void OnDrag(PointerEventData eventData)
     {
         if (this.isExe) return;
+
         Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
         if (slot != null && slot.currentItemExe != null) return;
-        transform.position = eventData.position;
+
+        // Converter a posição do mouse na tela para as coordenadas do mundo
+        Vector3 worldPosition;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            process_controller.GetComponent<RectTransform>(),
+            eventData.position,
+            eventData.pressEventCamera,
+            out worldPosition);
+
+        // Ajustar a posição do objeto para a célula do grid mais próxima
+        transform.position = worldPosition;
     }
 
     public void Hide()

@@ -18,6 +18,7 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
     private bool isInCorrectQeueu;
     public VerticalLayoutGroup correctQueue;
     public VerticalLayoutGroup priorityRenderer;
+    private Vector3 scaleIncrement = new Vector3(1.2f, 1.2f, 1.2f);
 
     void Awake()
     {
@@ -86,11 +87,17 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
         if (controller.firstSelected != null && controller.firstSelected != this)
         {
             controller.secondSelected = this;
+            controller.firstSelected.transform.localScale -= scaleIncrement;
             controller.Swap();
+        }
+        else if(controller.firstSelected == this)
+        {
+            controller.firstSelected = null;
         }
         else
         {
             controller.firstSelected = this;
+            transform.localScale += scaleIncrement;
         }
     }
 

@@ -23,7 +23,7 @@ public class RAMController : MonoBehaviour
     public Award awardSegmentation;
     public DialogLevelTwo dialog;
     public int maxScore = 15;
-    private float leftTime = 180f;
+    private float leftTime = 60f;
     public TextMeshProUGUI timeText;
     bool gamingRunning = false;
     public GameObject timeContainer;
@@ -31,6 +31,7 @@ public class RAMController : MonoBehaviour
 
     void Start()
     {
+        dialog.showDialog(DialogLevelTwo.DialogType.intro);
         AddInitialTasks();
     }
 
@@ -331,6 +332,7 @@ public class RAMController : MonoBehaviour
     private void Reset()
     {
         score = 0;
+        leftTime = 60f;
         scoreText.text = score.ToString();
 
         foreach(Dino dino in dinos)

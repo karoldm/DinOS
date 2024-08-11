@@ -9,6 +9,8 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
     public SpriteRenderer circle;
     private AirplaneCall call;
     public ProgressBar progressBar;
+    private Vector3 scaleIncrement = new Vector3(0.1f, 0.1f, 0.1f);
+
 
     private LevelThreeController controller;
 
@@ -39,6 +41,8 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
         this.call = controller.GetSelectedCall();
 
         if (call == null) return;
+
+        this.call.transform.localScale -= scaleIncrement;
 
         UpdateCircleColor(call.GetColor());
         call.airplane.SetBusy();
