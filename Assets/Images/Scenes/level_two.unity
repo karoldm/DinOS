@@ -517,7 +517,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 98
   m_TargetDisplay: 0
 --- !u!1 &55039197
 GameObject:
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &244979072
 Canvas:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,7 @@ Canvas:
   m_GameObject: {fileID: 244979068}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_Camera: {fileID: 1613284690}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -1038,7 +1038,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 99
   m_TargetDisplay: 0
 --- !u!224 &244979073
 RectTransform:
@@ -1047,9 +1047,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244979068}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.8795238}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5801663}
@@ -1060,9 +1060,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -40.957672, y: -17.892807}
-  m_SizeDelta: {x: 2564.8828, y: 1248.5186}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &244979074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2526,8 +2526,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -242, y: 116}
-  m_SizeDelta: {x: 357.7878, y: 99.903}
+  m_AnchoredPosition: {x: -91, y: 37}
+  m_SizeDelta: {x: 139.2265, y: 31.3348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &593099739
 GameObject:
@@ -3389,7 +3389,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 98
   m_TargetDisplay: 0
 --- !u!1 &925914965
 GameObject:
@@ -3935,8 +3935,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4000,10 +4000,10 @@ RectTransform:
   m_Father: {fileID: 1414708997}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -2.652832, y: 440.6065}
-  m_SizeDelta: {x: -59.00586, y: 610.1497}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.0368958, y: -72.46539}
+  m_SizeDelta: {x: -19.0776, y: 120.5556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1043375141
 GameObject:
@@ -84489,8 +84489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1.2248535, y: 430.03302}
-  m_SizeDelta: {x: -65.762, y: 787.3441}
+  m_AnchoredPosition: {x: 1.6322021, y: 100.981384}
+  m_SizeDelta: {x: -17.1928, y: 186.38123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414708998
 MonoBehaviour:
@@ -84930,7 +84930,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 619.00757
+  orthographic size: 668.8384
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -86016,8 +86016,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -86449,7 +86449,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 98
   m_TargetDisplay: 0
 --- !u!1 &1946872185
 GameObject:
