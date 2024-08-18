@@ -128,19 +128,14 @@ public class Process_controller : MonoBehaviour
 
             int[] order = { 1, 2, 3, 4, 1, 3, 4, 1, 3, 1 };
 
-            Debug.Log(queueExe.Count);
-            Debug.Log(order.Length);
-
             if (order.Length != queueExe.Count)
             {
+                Debug.Log("false");
                 isRR = false;
             }
             else 
                 for(int i = 0; i < queueExe.Count; i++) 
                 {
-                    Debug.Log(i);
-                    Debug.Log(queueExe[i] != order[i]);
-
                     if (queueExe[i] != order[i])
                     {
                         isRR = false;
