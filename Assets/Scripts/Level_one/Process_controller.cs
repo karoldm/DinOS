@@ -79,6 +79,7 @@ public class Process_controller : MonoBehaviour
         }
 
         itensExecuted.Clear();
+        queueExe.Clear();
         ClearRequestAbort();
         timeText.text = string.Empty;
         this.requestAbort.interactable = true;

@@ -18,40 +18,40 @@ public class Dialog : MonoBehaviour
 
     private static string[] introTexts =
         {
-            "Olá, seja bem vindo à Torre de Controle! Por aqui nós conseguimos acompanhar quando um novo vôo é agendado e chega para nós por meio dos planos de vôos.",
-            "Os planos de vôos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a priodade dele. Como gerenciadores desse setor devemos nos atentar a qual vôo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
-            "Olha só, no momento temos 4 planos de vôos esperando para iniciarem, que tal você tentar selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
-            "Para iniciar um plano de vôo você precisa arrastar ele até o painel de excecução a sua direita. No painel você consegue acompanhar quanto tempo falta até o vôo ser concluído. Lembre-se de usar as informações que você possuí para executar os planos da forma mais eficiente possível!",
-            "Lembre-se que você pode interromper um vôo a qualquer momento e devolver ele para o final da fila! Por questões de segurança, você deve esperar um certo tempo antes de interromeper um vôo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela metade.",
-            "Mas não se preocupe! para interromper um vôo você pode só ativar o “cancelamento automatico” que ele será agendado para sempre ser interrompido no tempo correto."
+            "Olá, seja bem-vindo à Torre de Controle! Por aqui nós conseguimos acompanhar quando um novo voo é agendado e chega para nós por meio dos planos de voos.",
+            "Os planos de voos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a prioridade dele. Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
+            "Olha só, no momento temos 4 planos de voos esperando para iniciarem, que tal você tentar selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
+            "Para iniciar um plano de voo você precisa arrastar ele até o painel de execução a sua direita. No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se de usar as informações que você possui para executar os planos da forma mais eficiente possível!",
+            "Lembre-se que você pode interromper um voo a qualquer momento e devolver ele para o final da fila! Por questões de segurança, você deve esperar um certo tempo antes de interromper um voo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela metade.",
+            "Mas não se preocupe! para interromper um voo você pode só ativar o “cancelamento automático” que ele será agendado para sempre ser interrompido no tempo correto."
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] FCFSTexts =
         {
             "Emblema conquistado First Came First Served.",
-            "Nada mal! Você sabia que executar os planos conforme eles chegam, apesar de ser fácil e intuitivo, não é uma das melhores formas? Se você se deparar com um vôo muito urgente, com um tempo curto, mas que está em último na fila, isso pode ser um problema. Talvez seja hora de considerar outras estratégias de escalonamento para lidar com situações mais desafiadoras."
+            "Nada mal! Você sabia que executar os planos conforme eles chegam, apesar de ser fácil e intuitivo, não é uma das melhores formas? Se você se deparar com um voo muito urgente, com um tempo curto, mas que está em último na fila, isso pode ser um problema. Talvez seja hora de considerar outras estratégias de escalonamento para lidar com situações mais desafiadoras."
         };
     private LinkedList<string> FCFSDialog = new LinkedList<string>(FCFSTexts);
 
     private static string[] SJFTexts =
         {
             "Emblema conquistado Shortest Job Firs.",
-            "Uau, muito bom! Optar por iniciar os vôos mais curtos primeiro é uma ótima estratégia. No entanto, lembre-se de que, ao priorizar os vôos mais curtos, os vôos com maior prioridade podem acabar esperando mais do que o desejado. Certifique-se de equilibrar eficiência com prioridades para garantir um bom desempenho em diferentes situações."
+            "Uau, muito bom! Optar por iniciar os voos mais curtos primeiro é uma ótima estratégia. No entanto, lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade podem acabar esperando mais do que o desejado. Certifique-se de equilibrar eficiência com prioridades para garantir um bom desempenho em diferentes situações.\r\n"
         };
     private LinkedList<string> SJFDialog = new LinkedList<string>(SJFTexts);
 
     private static string[] BPTexts =
         {
             "Emblema conquistado Por Prioridade.",
-            "Boa! Iniciar os vôos por prioridade é uma estratégia muito inteligente! No entanto, tome cuidado com vôos que, apesar de serem prioritários, são muito longos e podem acabar atrasando os demais. Certifique-se de avaliar não apenas a prioridade, mas também a duração dos vôos ao planejar seu escalonamento."
+            "Boa! Iniciar os voos por prioridade é uma estratégia muito inteligente! No entanto, tome cuidado com voos que, apesar de serem prioritários, são muito longos e podem acabar atrasando os demais. Certifique-se de avaliar não apenas a prioridade, mas também a duração dos voos ao planejar seu escalonamento."
         };
     private LinkedList<string> BPDialog = new LinkedList<string>(BPTexts);
 
     private static string[] RRTexts =
         {
             "Emblema conquistado Round Robin.",
-            "Você é fera! Sabia que alternar entre os vôos utilizando conexões e paradas permite que você distribua melhor o tempo de processamento? Essa abordagem garante que nenhum vôo espere muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de processos! Ops! Coordenador de vôos."
+            "Você é fera! Sabia que alternar entre os voos utilizando conexões e paradas permite que você distribua melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de processos! Ops! Coordenador de voos."
         };
     private LinkedList<string> RRDialog = new LinkedList<string>(RRTexts);
 

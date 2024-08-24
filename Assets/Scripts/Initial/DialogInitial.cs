@@ -19,7 +19,7 @@ public class DialogInitial : MonoBehaviour
 
     private static string[] processTexts =
         {
-            "Aqui é onde acompanhamos e controlamos os vôos que precisam ser executados ou que já estão em excecução.", 
+            "Aqui é onde acompanhamos e controlamos os voos que precisam ser executados ou que já estão em execução.", 
     };
     private LinkedList<string> processDialog = new LinkedList<string>(processTexts);
 
