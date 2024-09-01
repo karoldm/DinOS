@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "163917526237",
+    "project_id": "dinoso-173fe",
+    "storage_bucket": "dinoso-173fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163917526237:android:739e66254f2e4ac96f5734",
+        "android_client_info": {
+          "package_name": "com.karol.dinoSO"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGqvGEfVkOn5_V2bGsT25cxyxpQBJ-Lu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
