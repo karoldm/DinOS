@@ -3,12 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Shelf : MonoBehaviour, IPointerClickHandler
 {
     private SpriteRenderer fileIcon;
     private TextMeshProUGUI fileName;
     private int? currentFileId = null;
+    private ControllerLevelFour controller;
+    public int shelfNumber;
+
+    void Awake()
+    {
+        controller = ControllerLevelFour.Instance;
+
+        if (controller == null)
+        {
+            Debug.LogError("ControllerLevelFour instance not found in scene.");
+        }
+    }
 
     void Start()
     {
@@ -24,9 +37,15 @@ public class Slot : MonoBehaviour
         
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        controller.SetCurrentShelf(this);
+    }
+
     public void Write(int fileId)
     {
         this.currentFileId = fileId;
+        this.fileName.text = fileId.ToString();
         this.fileIcon.enabled = true;
     }
 
@@ -35,6 +54,12 @@ public class Slot : MonoBehaviour
         int? toReturn = this.currentFileId;
         this.currentFileId = null;
         this.fileIcon.enabled = false;
+        this.fileName.text = "";
         return toReturn;
+    }
+
+    public int? GetCurrentFileId()
+    {
+        return this.currentFileId;
     }
 }

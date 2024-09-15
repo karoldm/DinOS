@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControllerLevelFour : MonoBehaviour
 {
     public List<Bookcase> bookcases = new List<Bookcase>();
-    private string currentFileName;
     public VerticalLayoutGroup dinoQueue;
-    private int fileId = 0;
+    private int? currentFileID;
+    public Customer modelDino;
+    private Bookcase openedBookcase;
+    private Shelf currentShelf;
 
     private static ControllerLevelFour instance;
 
@@ -31,14 +34,37 @@ public class ControllerLevelFour : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        
+        this.addDino();
     }
 
     void Update()
     {
         
+    }
+
+    public void SetCurrentFileId(int fileId)
+    {
+        this.currentFileID = fileId;
+    }
+
+    public void LoadInitialScene()
+    {
+        SceneManager.LoadScene("Initial");
+
     }
 
     void addDino()
@@ -49,9 +75,8 @@ public class ControllerLevelFour : MonoBehaviour
             return;
         }
 
-        Customer dino = Instantiate(new Customer(), dinoQueue.transform);
-        dino.Init(fileId);
-        fileId++;
+        Customer dino = Instantiate(modelDino, dinoQueue.transform);
+        dino.Init();
         updateQueue();
     }
 
@@ -64,9 +89,28 @@ public class ControllerLevelFour : MonoBehaviour
     {
         if (QueueSize() <= 0) return null;
 
-        Transform firstChildTransform = dinoQueue.transform.GetChild(0);
+        Transform firstChildTransform = dinoQueue.transform.GetChild(1);
 
         return firstChildTransform.GetComponent<Customer>();
+    }
+
+    public void Write()
+    {
+        if(this.currentFileID != null)
+        {
+            this.currentShelf.Write((int)this.currentFileID);
+            this.currentFileID = null;
+        }
+    }
+
+    public void SetCurrentShelf(Shelf shelf)
+    {
+        this.currentShelf = shelf;
+    }
+
+    public void Read()
+    {
+        this.currentFileID = this.currentShelf.Read();
     }
 
     private int QueueSize()
@@ -76,22 +120,40 @@ public class ControllerLevelFour : MonoBehaviour
 
     public void OpenBookcaseA()
     {
-        this.bookcases.Find(b => b.address == 'A').gameObject.SetActive(true);
+        this.openedBookcase = this.bookcases.Find(b => b.address == 'A');
+        this.openedBookcase.gameObject.SetActive(true);
     }
 
     public void OpenBookcaseB()
     {
-        this.bookcases.Find(b => b.address == 'B').gameObject.SetActive(true);
+        this.openedBookcase = this.bookcases.Find(b => b.address == 'B');
+        this.openedBookcase.gameObject.SetActive(true);
     }
 
     public void OpenBookcaseC()
     {
-        this.bookcases.Find(b => b.address == 'C').gameObject.SetActive(true);
+        this.openedBookcase = this.bookcases.Find(b => b.address == 'C');
+        this.openedBookcase.gameObject.SetActive(true);
     }
 
     public void OpenBookcaseD()
     {
-        this.bookcases.Find(b => b.address == 'D').gameObject.SetActive(true);
+        this.openedBookcase = this.bookcases.Find(b => b.address == 'D');
+        this.openedBookcase.gameObject.SetActive(true);
     }
 
+    public bool FileIdExist(int fileId)
+    {
+        foreach(Bookcase bookcase in bookcases)
+        {
+            foreach(Shelf shelf in bookcase.shelfs)
+            {
+                if(shelf.GetCurrentFileId() == fileId)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
