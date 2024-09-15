@@ -110,7 +110,11 @@ public class ControllerLevelFour : MonoBehaviour
 
     public void Read()
     {
-        this.currentFileID = this.currentShelf.Read();
+        int? id = this.currentShelf.Read();
+        if(id != null)
+        {
+            this.currentFileID = id;
+        }
     }
 
     private int QueueSize()

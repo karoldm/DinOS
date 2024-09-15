@@ -76,7 +76,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         else {
             this.action = Action.write;
         }
-        this.processText.text = "Arquivo: " + this.fileId.ToString();
+        this.processText.text = "Plano de voo: " + this.fileId.ToString();
         this.actionText.text = "Operação: " + this.action.ToString();
         gameObject.SetActive(true);
     }
