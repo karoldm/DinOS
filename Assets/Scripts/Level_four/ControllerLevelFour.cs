@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ControllerLevelFour : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class ControllerLevelFour : MonoBehaviour
     public Customer modelDino;
     private Bookcase openedBookcase;
     private Shelf currentShelf;
+    private int points = 0;
+    public TextMeshProUGUI pointsText;
+    public VirtualTable virtualTable;
+    private bool gameOver = true;
+    private float leftTime = 60f;
+    public TextMeshProUGUI timeText;
+    public GameObject timeContainer;
+    public GameObject startButton;
 
     private static ControllerLevelFour instance;
 
@@ -48,12 +57,44 @@ public class ControllerLevelFour : MonoBehaviour
 
     void Start()
     {
-        this.addDino();
+        this.virtualTable.Close();
     }
 
     void Update()
     {
-        
+        if (!gameOver)
+        {
+            if (leftTime > 0)
+            {
+                leftTime -= Time.deltaTime;
+                timeText.text = Mathf.Round(leftTime).ToString();
+            }
+            else
+            {
+                FinishGame();
+            }
+        }
+    }
+
+    private void FinishGame()
+    {
+        gameOver = true;
+        this.leftTime = 60f;
+        this.timeText.text = "";
+        timeContainer.SetActive(true);
+        startButton.SetActive(false);
+
+    }
+
+    public void InitGame()
+    {
+        timeContainer.SetActive(true);
+        startButton.SetActive(false);
+        this.gameOver = false;
+        this.AddDino();
+        this.AddDino();
+        this.AddDino();
+        this.AddDino();
     }
 
     public void SetCurrentFileId(int fileId)
@@ -67,7 +108,7 @@ public class ControllerLevelFour : MonoBehaviour
 
     }
 
-    void addDino()
+    void AddDino()
     {
         if (dinoQueue == null)
         {
@@ -76,11 +117,11 @@ public class ControllerLevelFour : MonoBehaviour
         }
 
         Customer dino = Instantiate(modelDino, dinoQueue.transform);
-        dino.Init();
-        updateQueue();
+        dino.SetActive();
+        UpdateQueue();
     }
 
-    public void updateQueue()
+    public void UpdateQueue()
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(dinoQueue.GetComponent<RectTransform>());
     }
@@ -94,13 +135,33 @@ public class ControllerLevelFour : MonoBehaviour
         return firstChildTransform.GetComponent<Customer>();
     }
 
+    private void RemoveFirstDino()
+    {
+        if (QueueSize() <= 0) return;
+
+        Destroy(dinoQueue.transform.GetChild(1).gameObject);
+        UpdateQueue();
+    }
+
     public void Write()
     {
-        if(this.currentFileID != null)
+        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.read)
+        {
+            return;
+        }
+        if (this.currentFileID != null)
         {
             this.currentShelf.Write((int)this.currentFileID);
+            points++;
+            pointsText.text = points.ToString();
             this.currentFileID = null;
+            RemoveFirstDino();
+            if (!this.gameOver)
+            {
+                AddDino();
+            }
         }
+        this.currentShelf = null;
     }
 
     public void SetCurrentShelf(Shelf shelf)
@@ -108,13 +169,49 @@ public class ControllerLevelFour : MonoBehaviour
         this.currentShelf = shelf;
     }
 
+    public void SetOpenedBookcase(Bookcase bookcase)
+    {
+        this.openedBookcase = bookcase;
+    }
+
     public void Read()
     {
-        int? id = this.currentShelf.Read();
-        if(id != null)
+        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.write)
         {
-            this.currentFileID = id;
+            return;
         }
+
+        int? id = this.currentShelf.Read();
+
+        if (id != null)
+        {
+            if(id != this.GetFirstCustomerOfQueue().GetFileId())
+            {
+                this.points--;
+                return;
+            }
+            bool isInVirtualTable = this.virtualTable.Find(
+                id.ToString(),
+                this.currentShelf.shelfNumber.ToString(),
+                this.openedBookcase.address.ToString()
+            );
+            if (isInVirtualTable)
+            {
+                this.points++;
+                virtualTable.Remove(id.ToString());
+            }
+            else
+            {
+                this.points -= 2;
+            }   
+            this.pointsText.text = this.points.ToString();
+            RemoveFirstDino();
+            if (!this.gameOver)
+            {
+                AddDino();
+            }
+        }
+        this.currentShelf = null;
     }
 
     private int QueueSize()
@@ -152,8 +249,9 @@ public class ControllerLevelFour : MonoBehaviour
         {
             foreach(Shelf shelf in bookcase.shelfs)
             {
-                if(shelf.GetCurrentFileId() == fileId)
+                if (shelf.GetCurrentFileId() == fileId)
                 {
+
                     return true;
                 }
             }

@@ -27,7 +27,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -55,6 +55,11 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         return Random.Range(0, 10);
     }
 
+    public void SetActive()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void Init()
     {
         if (this.controller == null)
@@ -68,7 +73,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             return; 
         }
 
-        this.fileId = GetRandId();
+        this.fileId = 1;//GetRandId();
         if (this.controller.FileIdExist(this.fileId))
         {
             this.action = Action.read;
@@ -78,13 +83,13 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         }
         this.processText.text = "Plano de voo: " + this.fileId.ToString();
         this.actionText.text = "Operação: " + this.action.ToString();
-        gameObject.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData eventData) 
     {
         if(this == controller.GetFirstCustomerOfQueue())
         {
+            this.Init();
             controller.SetCurrentFileId(this.fileId);
             this.infoPanel.SetActive(true);
         }
