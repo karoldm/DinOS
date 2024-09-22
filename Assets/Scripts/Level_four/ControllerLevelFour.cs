@@ -21,6 +21,10 @@ public class ControllerLevelFour : MonoBehaviour
     public TextMeshProUGUI timeText;
     public GameObject timeContainer;
     public GameObject startButton;
+    private bool hasError = false;
+    public AwardSecMemory awardSecMemory;
+    public DialogLevelFour dialog;
+
 
     private static ControllerLevelFour instance;
 
@@ -58,6 +62,7 @@ public class ControllerLevelFour : MonoBehaviour
     void Start()
     {
         this.virtualTable.Close();
+        this.dialog.showDialog(DialogLevelFour.DialogType.intro);
     }
 
     void Update()
@@ -83,7 +88,21 @@ public class ControllerLevelFour : MonoBehaviour
         this.timeText.text = "";
         timeContainer.SetActive(true);
         startButton.SetActive(false);
+        ClearDinoQueue();
+        virtualTable.Clear();
+        if(!hasError && awardSecMemory.IsLocked())
+        {
+            dialog.showDialog(DialogLevelFour.DialogType.award);
+            awardSecMemory.Unlock();
+        }
+    }
 
+    private void ClearDinoQueue()
+    {
+        for (int i = 1; i < dinoQueue.transform.childCount-1; i++)
+        {
+            Destroy(dinoQueue.transform.GetChild(i).gameObject);
+        }
     }
 
     public void InitGame()
@@ -187,7 +206,8 @@ public class ControllerLevelFour : MonoBehaviour
         {
             if(id != this.GetFirstCustomerOfQueue().GetFileId())
             {
-                this.points--;
+                this.points -= 3;
+                this.hasError = true;
                 return;
             }
             bool isInVirtualTable = this.virtualTable.Find(
@@ -197,7 +217,7 @@ public class ControllerLevelFour : MonoBehaviour
             );
             if (isInVirtualTable)
             {
-                this.points++;
+                this.points += 2;
                 virtualTable.Remove(id.ToString());
             }
             else

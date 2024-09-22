@@ -50,4 +50,12 @@ public class VirtualTable : MonoBehaviour
         }
 
     }
+
+    public void Clear()
+    {
+        foreach (Row row in rows)
+        {
+            row.Clear();
+        }
+    }
 }

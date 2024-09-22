@@ -73,7 +73,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             return; 
         }
 
-        this.fileId = 1;//GetRandId();
+        this.fileId = GetRandId();
         if (this.controller.FileIdExist(this.fileId))
         {
             this.action = Action.read;
