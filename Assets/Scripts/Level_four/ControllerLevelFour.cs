@@ -81,15 +81,39 @@ public class ControllerLevelFour : MonoBehaviour
         }
     }
 
+    private void CheckCurrentFiles()
+    {
+        foreach (Bookcase bookcase in bookcases)
+        {
+            foreach (Shelf shelf in bookcase.shelfs)
+            {
+                int? id = shelf.GetCurrentFileId();
+                if (id != null)
+                {
+                    bool isInVirtualTable = this.virtualTable.Find(
+                        id.ToString(),
+                        shelf.shelfNumber.ToString(),
+                        bookcase.address.ToString()
+                    );
+                    if (!isInVirtualTable)
+                    {
+                        hasError = true;
+                    }
+                }
+            }
+        }
+    }
+
     private void FinishGame()
     {
         gameOver = true;
         this.leftTime = 60f;
         this.timeText.text = "";
-        timeContainer.SetActive(true);
-        startButton.SetActive(false);
+        timeContainer.SetActive(false);
+        startButton.SetActive(true);
         ClearDinoQueue();
         virtualTable.Clear();
+        CheckCurrentFiles();
         if(!hasError && awardSecMemory.IsLocked())
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
@@ -99,7 +123,7 @@ public class ControllerLevelFour : MonoBehaviour
 
     private void ClearDinoQueue()
     {
-        for (int i = 1; i < dinoQueue.transform.childCount-1; i++)
+        for (int i = 1; i < dinoQueue.transform.childCount; i++)
         {
             Destroy(dinoQueue.transform.GetChild(i).gameObject);
         }
@@ -164,7 +188,7 @@ public class ControllerLevelFour : MonoBehaviour
 
     public void Write()
     {
-        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.read)
+        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.ler)
         {
             return;
         }
@@ -195,7 +219,7 @@ public class ControllerLevelFour : MonoBehaviour
 
     public void Read()
     {
-        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.write)
+        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.escrever)
         {
             return;
         }

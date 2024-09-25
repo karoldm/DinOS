@@ -6,7 +6,7 @@ using TMPro;
 
 public class Customer : MonoBehaviour, IPointerClickHandler
 {
-    public enum Action { read, write };
+    public enum Action { ler, escrever };
 
     private int fileId;
     private Action action;
@@ -52,7 +52,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 
     private int GetRandId()
     {
-        return Random.Range(0, 10);
+        return Random.Range(0,5);
     }
 
     public void SetActive()
@@ -76,10 +76,10 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         this.fileId = GetRandId();
         if (this.controller.FileIdExist(this.fileId))
         {
-            this.action = Action.read;
+            this.action = Action.ler;
         }
         else {
-            this.action = Action.write;
+            this.action = Action.escrever;
         }
         this.processText.text = "Plano de voo: " + this.fileId.ToString();
         this.actionText.text = "Operação: " + this.action.ToString();
