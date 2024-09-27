@@ -14,6 +14,7 @@ public class DialogInitial : MonoBehaviour
         process,
         RAM,
         ES,
+        SecMemory
     }
     private InitialDialogType currentSceneType;
 
@@ -22,6 +23,12 @@ public class DialogInitial : MonoBehaviour
             "Aqui é onde acompanhamos e controlamos os voos que precisam ser executados ou que já estão em execução.", 
     };
     private LinkedList<string> processDialog = new LinkedList<string>(processTexts);
+
+    private static string[] secMemoryTexts =
+        {
+            "Aqui é a área administrativa do nosso aeroport, e também onde os planos de voo são gerados e armazenados para a torre de controle poder recuperá-los depois.",
+    };
+    private LinkedList<string> secMemoryDialog = new LinkedList<string>(secMemoryTexts);
 
     private static string[] ESTexts =
         {
@@ -95,6 +102,10 @@ public class DialogInitial : MonoBehaviour
                 this.hidden();
                 SceneManager.LoadScene("level_three");
                 break;
+            case InitialDialogType.SecMemory:
+                this.hidden();
+                SceneManager.LoadScene("level_four");
+                break;
         }
     }
 
@@ -126,6 +137,8 @@ public class DialogInitial : MonoBehaviour
                 this.currentDialog = this.ramDialog; break;
             case InitialDialogType.ES:
                 this.currentDialog = this.ESDialog; break;
+            case InitialDialogType.SecMemory:
+                this.currentDialog = this.secMemoryDialog; break;
         }
 
         if(this.currentDialog != null)

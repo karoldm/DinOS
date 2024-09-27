@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public Tilemap tilemapProcessPortal;
     public Tilemap tilemapInitialPortal;
     public Tilemap tilemapRAMPortal;
+    public Tilemap tilemapSecMemoryPortal;
     public Tilemap tilemapESPortal;
 
     public DialogInitial initialDialog;
@@ -101,6 +102,18 @@ public class Player : MonoBehaviour
             {
                 initialDialog.showDialog(DialogInitial.InitialDialogType.RAM);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.RAM);
+            }
+
+        }
+
+        if (tilemapSecMemoryPortal != null)
+        {
+            Vector3Int obstacleMap = tilemapSecMemoryPortal.WorldToCell(targetPosition);
+
+            if (tilemapSecMemoryPortal.GetTile(obstacleMap) != null)
+            {
+                initialDialog.showDialog(DialogInitial.InitialDialogType.SecMemory);
+                initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.SecMemory);
             }
 
         }
