@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +26,7 @@ public class DialogInitial : MonoBehaviour
 
     private static string[] secMemoryTexts =
         {
-            "Aqui é a área administrativa do nosso aeroport, e também onde os planos de voo são gerados e armazenados para a torre de controle poder recuperá-los depois.",
+            "Aqui é a área administrativa do nosso aeroporto, onde os planos de voo são gerados e armazenados para que a torre de controle possa recuperá-los posteriormente.",
     };
     private LinkedList<string> secMemoryDialog = new LinkedList<string>(secMemoryTexts);
 

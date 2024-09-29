@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 5000f;
+    private float speed = 50000f;
 
     private bool isMoving;
     private Vector2 input;
@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
 
         while((targetPosition - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, this.speed * Time.deltaTime);
             yield return null;
         }
         transform.position = targetPosition;

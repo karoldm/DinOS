@@ -62,4 +62,12 @@ public class Shelf : MonoBehaviour, IPointerClickHandler
     {
         return this.currentFileId;
     }
+
+    public void Clear()
+    {
+        this.currentFileId = null;
+        if(fileIcon == null || fileName == null) return;
+        this.fileIcon.enabled = false;
+        this.fileName.text = "";
+    }   
 }

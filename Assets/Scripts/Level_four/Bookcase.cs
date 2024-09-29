@@ -40,4 +40,12 @@ public class Bookcase : MonoBehaviour
         gameObject.SetActive(false);
         controller.SetOpenedBookcase(null);
     }
+
+    public void Clear()
+    {
+        foreach (Shelf shelf in this.shelfs)
+        {
+            shelf.Clear();
+        }
+    }
 }

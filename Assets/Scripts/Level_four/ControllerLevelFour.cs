@@ -111,13 +111,22 @@ public class ControllerLevelFour : MonoBehaviour
         this.timeText.text = "";
         timeContainer.SetActive(false);
         startButton.SetActive(true);
+        CheckCurrentFiles();
         ClearDinoQueue();
         virtualTable.Clear();
-        CheckCurrentFiles();
+        ClearBookcases();
         if(!hasError && awardSecMemory.IsLocked())
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
+        }
+    }
+
+    private void ClearBookcases()
+    {
+        foreach (Bookcase bookcase in bookcases)
+        {
+            bookcase.Clear();
         }
     }
 
