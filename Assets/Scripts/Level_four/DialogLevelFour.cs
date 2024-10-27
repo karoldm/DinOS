@@ -20,7 +20,9 @@ public class DialogLevelFour : MonoBehaviour
           "Para manter toda essa papelada organizada, nosso aeroporto faz uso de um sistema de arquivamento composto por estantes, prateleiras e um sistema computacional que gerencia os locais onde os planos são armazenados. Chamamos esse sistema de Tabela Virtual.",
           "Desse modo, toda vez que um voo é solicitado, gerado e armazenado em algumas estantes, o sistema Tabela Virtual deve ser atualizada com a localização atual daquele arquivo. Esse processo é essencial para ajudar a recepção a encontrar os planos mais facilmente e rapidamente quando a torre os solicitar.",
           "No momento, nossa recepção está lotada! Que tal ajudar nosso funcionário a atender todos? Para começar a atender um cliente, basta clicar nele, e ele lhe dirá qual operação deseja realizar e qual o identificador do voo.",
-          "Você pode armazenar o plano de voo onde quiser, mas lembre-se de sempre manter a tabela atualizada quanto à sua posição, pois é a partir dela que a recepção irá recuperar o arquivo. Planos de voo não registrados na tabela ou registrados incorretamente resultam em uma perda de 3 pontos!",
+          "Você pode armazenar o plano de voo onde quiser, mas lembre-se de sempre manter a tabela atualizada quanto à sua posição, pois é a partir dela que a recepção irá recuperar o arquivo.",
+          "Você pode associar as estantes às partes da memória secundária de um sistema computacional que são particionadas sem que os demais componentes precisam saber como, uma vez que o SO utiliza a tabela virtual para transitar os dados para a memória secundária quando a RAM está cheia. ",
+          "Planos de voo não registrados na tabela ou registrados incorretamente resultam em uma perda de 3 pontos!",
           "Para ler ou escrever um arquivo, basta clicar no botão abaixo da estante que indica o seu identificador. Ao abrir a estante, você deve selecionar uma das quatro prateleiras e escolher entre escrever (armazenar arquivo) ou ler (recuperar arquivo).",
           "Boa sorte!"
     };

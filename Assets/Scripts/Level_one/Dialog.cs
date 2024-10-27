@@ -23,35 +23,38 @@ public class Dialog : MonoBehaviour
             "Olha só, no momento temos 4 planos de voos esperando para iniciarem, que tal você tentar  selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
             "Para iniciar um plano de voo você precisa arrastá-lo até o painel de execução à sua direita.  No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se  de usar as informações que você possui para executar os planos da forma mais eficiente  possível!",
             "Lembre-se que você pode interromper um voo a qualquer momento e devolver ele para o  final da fila! Por questões de segurança, você deve esperar certo tempo antes de  interromper um voo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela  metade.",
-            "Mas não se preocupe! Para interromper um voo você pode só ativar o “cancelamento  automático” que ele será agendado para sempre ser interrompido no tempo correto."
+            "Mas não se preocupe! Para interromper um voo você pode só ativar o “cancelamento  automático” que ele será agendado para sempre ser interrompido no tempo correto.",
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] FCFSTexts =
         {
             "Emblema conquistado First Came First Served.",
-            "Nada mal! Você sabia que executar os planos conforme eles chegam, apesar de ser fácil e  intuitivo, não é uma das melhores formas? Se você se deparar com um voo muito urgente,  com um tempo curto, mas que está em último na fila, isso pode ser um problema. Talvez seja  hora de considerar outras estratégias de escalonamento para lidar com situações mais  desafiadoras."
+            "Nada mal! Você sabia que executar os planos conforme eles chegam, apesar de ser fácil e  intuitivo, não é uma das melhores formas? Se você se deparar com um voo muito urgente,  com um tempo curto, mas que está em último na fila, isso pode ser um problema. Talvez seja  hora de considerar outras estratégias de escalonamento para lidar com situações mais  desafiadoras.",
+            " Já pensou se seu SO esperasse todos os processos acabarem antes de exibir o aviso de bateria acabando? Provavelmente seu computador desligaria sem nem você ser avisado. Alguns processos precisam “passar na frente”.",
         };
     private LinkedList<string> FCFSDialog = new LinkedList<string>(FCFSTexts);
 
     private static string[] SJFTexts =
         {
             "Emblema conquistado Shortest Job First.",
-            "Uau, muito bom! Optar por iniciar os voos mais curtos primeiro é uma ótima estratégia. No  entanto, lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade  podem acabar esperando mais do que o desejado. Certifique-se de equilibrar eficiência com  prioridades para garantir um bom desempenho em diferentes situações."
+            "Uau, muito bom! Optar por iniciar os voos mais curtos primeiro é uma ótima estratégia. No  entanto, lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade  podem acabar esperando mais do que o desejado. Certifique-se de equilibrar eficiência com  prioridades para garantir um bom desempenho em diferentes situações.",
+            "Às vezes, por exemplo, queremos executar algo no nosso computador que, apesar de ser mais demorado, é muito mais urgente, pense nisso…",
         };
     private LinkedList<string> SJFDialog = new LinkedList<string>(SJFTexts);
 
     private static string[] BPTexts =
         {
             "Emblema conquistado Por Prioridade.",
-            "Boa! Iniciar os voos por prioridade é uma estratégia muito inteligente! No entanto, tome  cuidado com voos que, apesar de serem prioritários, são muito longos e podem acabar  atrasando os demais. Certifique-se de avaliar não apenas a prioridade, mas também a duração  dos voos ao planejar seu escalonamento."
+            "Boa! Iniciar os voos por prioridade é uma estratégia muito inteligente! No entanto, tome  cuidado com voos que, apesar de serem prioritários, são muito longos e podem acabar  atrasando os demais. Certifique-se de avaliar não apenas a prioridade, mas também a duração  dos voos ao planejar seu escalonamento.",
+            "Já pensou se algum processo do seu Sistema Operacional passasse horas executando e não te deixasse fazer mais nada só porque tem uma prioridade muito alta? Seria péssimo!",
         };
     private LinkedList<string> BPDialog = new LinkedList<string>(BPTexts);
 
     private static string[] RRTexts =
         {
             "Emblema conquistado Round Robin.",
-            "Você é fera! Sabia que alternar entre os voos utilizando conexões e paradas permite que você  distribua melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere  muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e  explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de  processos! Ops! Coordenador de voos."
+            "Você é fera! Sabia que alternar entre os voos utilizando conexões e paradas permite que você  distribua melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere  muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e  explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de  processos! Ops! Coordenador de voos.",
         };
     private LinkedList<string> RRDialog = new LinkedList<string>(RRTexts);
 
