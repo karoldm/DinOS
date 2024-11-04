@@ -2,14 +2,14 @@
   "project_info": {
     "project_number": "163917526237",
     "project_id": "dinoso-173fe",
-    "storage_bucket": "dinoso-173fe.appspot.com"
+    "storage_bucket": "dinoso-173fe.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:163917526237:android:739e66254f2e4ac96f5734",
+        "mobilesdk_app_id": "1:163917526237:android:8fb91b6c41bc0fdf6f5734",
         "android_client_info": {
-          "package_name": "com.karol.dinoSO"
+          "package_name": "com.karoldm.dinoSO"
         }
       },
       "oauth_client": [],
