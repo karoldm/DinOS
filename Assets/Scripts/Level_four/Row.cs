@@ -28,9 +28,6 @@ public class Row : MonoBehaviour
 
     public bool Compare(string fileId, string shelf, string bookcase)
     {
-        Debug.Log(this.fileId);
-        Debug.Log(this.shelf);
-        Debug.Log(this.bookcase);
         return (this.fileId.text == fileId && this.shelf.text == shelf && this.bookcase.text == bookcase);
     }
 
