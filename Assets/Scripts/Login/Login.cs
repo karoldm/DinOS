@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class Login : MonoBehaviour
 {
     private DatabaseManager db;
-    private UserModel user = new UserModel();
+    private UserModel user = new UserModel(username: "", password: "");
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
     public GameObject wrongPasswordMessage;
     public GameObject emptyDataMessage;
+    private int attempts = 0;
 
     void Start()
     {
@@ -21,26 +21,20 @@ public class Login : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     public void OnChangeUsername()
     {
-        this.user.SetUsername(usernameField.text);
+        this.user.username = usernameField.text;
     }
 
     public void OnChangePassword()
     {
-        this.user.SetPassword(passwordField.text);
-
+        this.user.password = passwordField.text;
     }
 
     private void LoginUser(UserModel dbUser)
     {
-        // get all data from firebase and set on playerprefs to use in other screens
         Debug.Log("User logged!");
+        // Handle post-login actions here
     }
 
     private void HandleWrongPassword()
@@ -48,10 +42,21 @@ public class Login : MonoBehaviour
         wrongPasswordMessage.SetActive(true);
     }
 
-    private async void HandleCreateUser()
+    private IEnumerator HandleCreateUser()
     {
-        await db.CreateUser(user);
-        // this.TryLogin();
+        attempts++;
+        yield return StartCoroutine(db.CreateUser(user, success =>
+        {
+            if (success)
+            {
+                TryLogin(); // Retry login after creating user
+            }
+            else if (attempts <= 3)
+            {
+                Debug.LogWarning("Retrying user creation...");
+                StartCoroutine(HandleCreateUser());
+            }
+        }));
     }
 
     private void HandleEmptyData()
@@ -65,31 +70,37 @@ public class Login : MonoBehaviour
         emptyDataMessage.SetActive(false);
     }
 
-    public async void TryLogin()
+    public void TryLogin()
     {
         this.ClearErrorMessages();
 
-        if(user.GetUsername() == "" || user.GetPassword() == "")
+        if (string.IsNullOrEmpty(user.username) || string.IsNullOrEmpty(user.password))
         {
             this.HandleEmptyData();
             return;
         }
 
-        UserModel dbUser = await db.ReadUserOrNull(user.GetUsername());
-        if (dbUser != null)
+        StartCoroutine(db.ReadUserOrNull(user.username, dbUser =>
         {
-            if (user.GetPassword() == dbUser.GetPassword())
+            if (dbUser != null)
             {
-                this.LoginUser(dbUser);
+                if (user.password == dbUser.password)
+                {
+                    this.LoginUser(dbUser);
+                }
+                else
+                {
+                    this.HandleWrongPassword();
+                }
             }
             else
             {
-                this.HandleWrongPassword();
+                StartCoroutine(HandleCreateUser());
             }
-        }
-        else
+        },
+        () =>
         {
-            this.HandleCreateUser();
-        }
+            Debug.LogError("Failed to read user data.");
+        }));
     }
 }

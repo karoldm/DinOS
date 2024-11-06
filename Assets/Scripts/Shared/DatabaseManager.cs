@@ -1,86 +1,86 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Firebase;
-using Firebase.Database;
-using Firebase.Extensions;
-using System.Threading.Tasks;
 using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Networking;
 
 public class DatabaseManager : MonoBehaviour
 {
-    private DatabaseReference databaseReference;
+    private string databaseUrl = ENV.DATABASE_URL;
 
-    public void Start()
+    // Coroutine for writing data to the database
+    public IEnumerator WriteData(string path, string jsonData, Action<bool> onComplete)
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
-            if (task.Result == DependencyStatus.Available)
+        string url = $"{databaseUrl}{path}.json";
+        UnityWebRequest request = new UnityWebRequest(url, "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Data written successfully");
+            onComplete?.Invoke(true);
+        }
+        else
+        {
+            Debug.LogError("Error writing data: " + request.error);
+            onComplete?.Invoke(false);
+        }
+    }
+
+    // Coroutine for reading data from the database
+    public IEnumerator ReadData(string path, Action<string> onSuccess, Action<string> onFailure)
+    {
+        string url = $"{databaseUrl}{path}.json";
+        UnityWebRequest request = UnityWebRequest.Get(url);
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Data received: " + request.downloadHandler.text);
+            onSuccess?.Invoke(request.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogError("Error reading data: " + request.error);
+            onFailure?.Invoke(request.error);
+        }
+    }
+
+    // Coroutine-based method to create a user
+    public IEnumerator CreateUser(UserModel user, Action<bool> onComplete)
+    {
+        string jsonData = JsonUtility.ToJson(user);
+        yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
+    }
+
+    // Coroutine-based method to read a user by username
+    public IEnumerator ReadUserOrNull(string username, Action<UserModel> onComplete, Action onFailure)
+    {
+        string path = $"users/{username}";
+
+        yield return StartCoroutine(ReadData(path,
+            jsonData =>
             {
-                try
+                if (jsonData != "null")
                 {
-                    AppOptions options = new AppOptions()
-                    {
-                        ApiKey = ENV.API_KEY,
-                        AppId = ENV.APP_ID,
-                        ProjectId = ENV.PROJECT_ID,
-                        DatabaseUrl = new System.Uri(ENV.DATABASE_URL)
-                    };
-
-                    FirebaseApp app = FirebaseApp.Create(options, "DinoSO");
-                    databaseReference = FirebaseDatabase.GetInstance(app).RootReference;
-                    Debug.Log("Firebase Realtime Database initialized!");
-
-                } catch(Exception ex)
-                {
-                    Debug.LogError("Error on initialize firebase: " + ex);
+                    UserModel user = UserModel.FromJson(jsonData);
+                    onComplete?.Invoke(user);
                 }
-            }
-            else
+                else
+                {
+                    onComplete?.Invoke(null);
+                }
+            },
+            error =>
             {
-                Debug.LogError("Error on initialize firebase: " + task.Result);
+                Debug.LogError("Error reading user: " + error);
+                onFailure?.Invoke();
             }
-        });
+        ));
     }
-
-    public async Task<UserModel> ReadUserOrNull(string username)
-    {
-        try
-        {
-            DataSnapshot snapshot = await databaseReference.Child("users").Child(username).GetValueAsync();
-
-            if (snapshot.Exists)
-            {
-                return UserModel.FromSnapshot(snapshot);
-            }
-            else
-            {
-                return null;
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error on read data: " + ex);
-            return null;
-        }
-    }
-
-    public async Task CreateUser(UserModel user)
-    {
-        if (user == null || string.IsNullOrEmpty(user.GetUsername()) || string.IsNullOrEmpty(user.GetPassword()))
-        {
-            Debug.LogError("User or required fields are null or empty.");
-            return;
-        }
-
-        try
-        {
-            await databaseReference.Child("users").Child(user.GetUsername()).SetRawJsonValueAsync(JsonUtility.ToJson(user));
-            Debug.Log("User created successfully!");
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error on create user: " + ex);
-        }
-    }
-
 }
