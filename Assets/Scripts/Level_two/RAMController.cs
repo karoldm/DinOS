@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class RAMController : MonoBehaviour
+public class RAMController : UserController
 {
 
     private static RAMController instance;
@@ -61,7 +61,11 @@ public class RAMController : MonoBehaviour
         {
             dialog.showDialog(DialogLevelTwo.DialogType.segmentation);
             awardSegmentation.Unlock();
+            user.levelTwo.awards.Add(LevelData.Award.SEGMENTATION);
         }
+
+        user.levelTwo.score = score;
+        UpdateUser();
 
         timeContainer.SetActive(false);
         startButton.SetActive(true);
@@ -119,6 +123,8 @@ public class RAMController : MonoBehaviour
         {
             dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
             awardDeadlock.Unlock();
+            user.levelTwo.awards.Add(LevelData.Award.DEADLOCK);
+            UpdateUser();
         }
         Reset();
     }

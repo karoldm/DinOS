@@ -46,7 +46,7 @@ public class Login : MonoBehaviour
 
     private void LoginUser(UserModel dbUser)
     {
-        PlayerPrefs.SetString(dbUser.username, JsonUtility.ToJson(dbUser));
+        PlayerPrefs.SetString("user", JsonUtility.ToJson(dbUser));
         SceneManager.LoadScene("Home");
     }
 

@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Process_controller : MonoBehaviour
+public class Process_controller : UserController
 {
     private static Process_controller instance;
     public Toggle requestAbort;
-
     public List<Process_item> itens;
     /*
      * Simula uma fila 
@@ -27,7 +26,6 @@ public class Process_controller : MonoBehaviour
     public Star starSJF;
     public Star starFCFS;
     public Star starPriority;
-
 
     private List<Process_item> itensExecuted = new List<Process_item>();
     
@@ -148,30 +146,35 @@ public class Process_controller : MonoBehaviour
             {
                starRR.Unlock();
                dialog.showDialog(Dialog.DialogType.RR);
+               user.levelOne.awards.Add(LevelData.Award.RR);
             }
 
             else if (isSJF)
             {
                starSJF.Unlock();
                dialog.showDialog(Dialog.DialogType.SJF);
+               user.levelOne.awards.Add(LevelData.Award.SJF);
             }
 
             else if (isFCFS)
             {
                starFCFS.Unlock();
                dialog.showDialog(Dialog.DialogType.FCFS);
+               user.levelOne.awards.Add(LevelData.Award.FCFS);
             }
 
             else if (isByPriority)
             {
                starPriority.Unlock();
                dialog.showDialog(Dialog.DialogType.BP);
+               user.levelOne.awards.Add(LevelData.Award.BP);
             }
             else
             {
                 dialog.showDialog(Dialog.DialogType.None);
             }
             ResetGame();
+            UpdateUser();
         }
     }
 

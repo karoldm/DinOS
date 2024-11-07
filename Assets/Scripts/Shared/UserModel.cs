@@ -6,6 +6,10 @@ public class UserModel
 {
     public string username;
     public string password;
+    public LevelData levelOne = new LevelData();
+    public LevelData levelTwo = new LevelData();
+    public LevelData levelThree = new LevelData();
+    public LevelData levelFour = new LevelData();
 
     public UserModel(string username, string password)
     {

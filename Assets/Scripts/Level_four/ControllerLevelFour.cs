@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class ControllerLevelFour : MonoBehaviour
+public class ControllerLevelFour : UserController
 {
     public List<Bookcase> bookcases = new List<Bookcase>();
     public VerticalLayoutGroup dinoQueue;
@@ -106,6 +106,8 @@ public class ControllerLevelFour : MonoBehaviour
 
     private void FinishGame()
     {
+        user.levelFour.score = points;
+
         gameOver = true;
         this.leftTime = 60f;
         this.timeText.text = "";
@@ -119,7 +121,9 @@ public class ControllerLevelFour : MonoBehaviour
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
+            user.levelFour.awards.Add(LevelData.Award.SECMEMORY);
         }
+        UpdateUser();
     }
 
     private void ClearBookcases()

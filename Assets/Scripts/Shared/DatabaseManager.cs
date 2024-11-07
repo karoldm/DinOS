@@ -54,14 +54,12 @@ public class DatabaseManager : MonoBehaviour
         } 
     }
 
-    // Coroutine-based method to create a user
     public IEnumerator CreateUser(UserModel user, Action<bool> onComplete)
     {
         string jsonData = JsonUtility.ToJson(user);
         yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
     }
 
-    // Coroutine-based method to read a user by username
     public IEnumerator ReadUserOrNull(string username, Action<UserModel> onComplete, Action onFailure)
     {
         string path = $"users/{username}";
@@ -85,5 +83,12 @@ public class DatabaseManager : MonoBehaviour
                 onFailure?.Invoke();
             }
         ));
+    }
+
+    public IEnumerator SaveUser(UserModel user, Action<bool> onComplete)
+    {
+        string jsonData = JsonUtility.ToJson(user);
+        yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
+        PlayerPrefs.SetString("user", jsonData);
     }
 }

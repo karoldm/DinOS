@@ -7,7 +7,7 @@ using TMPro;
 using System;
 
 
-public class LevelThreeController : MonoBehaviour
+public class LevelThreeController : UserController
 {
     private static LevelThreeController instance;
 
@@ -242,7 +242,11 @@ public class LevelThreeController : MonoBehaviour
         {
             award.Unlock();
             dialog.showDialog(LevelThreeDialog.DialogType.award);
+            user.levelThree.awards.Add(LevelData.Award.COMUNICATION);
         }
+
+        user.levelThree.score = score;
+        UpdateUser();
 
         foreach (VerticalLayoutGroup queue in queues)
         {
