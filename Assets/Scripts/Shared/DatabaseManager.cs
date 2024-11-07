@@ -11,44 +11,47 @@ public class DatabaseManager : MonoBehaviour
     public IEnumerator WriteData(string path, string jsonData, Action<bool> onComplete)
     {
         string url = $"{databaseUrl}{path}.json";
-        UnityWebRequest request = new UnityWebRequest(url, "PUT");
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
-        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
-        request.downloadHandler = new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
+        using (UnityWebRequest request = new UnityWebRequest(url, "PUT"))
         {
-            Debug.Log("Data written successfully");
-            onComplete?.Invoke(true);
-        }
-        else
-        {
-            Debug.LogError("Error writing data: " + request.error);
-            onComplete?.Invoke(false);
-        }
+            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+            request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Data written successfully");
+                onComplete?.Invoke(true);
+            }
+            else
+            {
+                Debug.LogError("Error writing data: " + request.error);
+                onComplete?.Invoke(false);
+            }
+        } 
     }
 
     // Coroutine for reading data from the database
     public IEnumerator ReadData(string path, Action<string> onSuccess, Action<string> onFailure)
     {
         string url = $"{databaseUrl}{path}.json";
-        UnityWebRequest request = UnityWebRequest.Get(url);
-
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
-            Debug.Log("Data received: " + request.downloadHandler.text);
-            onSuccess?.Invoke(request.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError("Error reading data: " + request.error);
-            onFailure?.Invoke(request.error);
-        }
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Data received: " + request.downloadHandler.text);
+                onSuccess?.Invoke(request.downloadHandler.text);
+            }
+            else
+            {
+                Debug.LogError("Error reading data: " + request.error);
+                onFailure?.Invoke(request.error);
+            }
+        } 
     }
 
     // Coroutine-based method to create a user
