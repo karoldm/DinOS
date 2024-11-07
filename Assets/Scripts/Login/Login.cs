@@ -6,11 +6,13 @@ public class Login : MonoBehaviour
 {
     private DatabaseManager db;
     private UserModel user = new UserModel(username: "", password: "");
+    private int attempts = 0;
+
+    public GameObject aboutModal;
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
     public GameObject wrongPasswordMessage;
     public GameObject emptyDataMessage;
-    private int attempts = 0;
 
     void Start()
     {
@@ -31,6 +33,16 @@ public class Login : MonoBehaviour
         this.user.password = passwordField.text;
     }
 
+    public void OpenAboutModal()
+    {
+        this.aboutModal.SetActive(true);
+    }
+
+    public void CloseAboutModal()
+    {
+        this.aboutModal.SetActive(false);
+    }
+
     private void LoginUser(UserModel dbUser)
     {
         Debug.Log("User logged!");
@@ -49,7 +61,7 @@ public class Login : MonoBehaviour
         {
             if (success)
             {
-                TryLogin(); // Retry login after creating user
+                TryLogin();
             }
             else if (attempts <= 3)
             {
