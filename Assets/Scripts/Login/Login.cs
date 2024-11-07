@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
@@ -45,8 +46,8 @@ public class Login : MonoBehaviour
 
     private void LoginUser(UserModel dbUser)
     {
-        Debug.Log("User logged!");
-        // Handle post-login actions here
+        PlayerPrefs.SetString(dbUser.username, JsonUtility.ToJson(dbUser));
+        SceneManager.LoadScene("Home");
     }
 
     private void HandleWrongPassword()
