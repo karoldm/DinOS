@@ -1,28 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class LevelData : MonoBehaviour
+[System.Serializable]
+public class LevelData
 {   
-    public enum Award
-    {
-        RR, 
-        SJF,
-        BP, 
-        FCFS,
-        SEGMENTATION,
-        DEADLOCK,
-        COMUNICATION,
-        SECMEMORY
-    }
 
-    public int score;
-    public HashSet<Award> awards;
+    public int score = 0;
+    [SerializeField] public List<String> awards = new List<String>();
 
     public LevelData()
     {
-        this.score = 0;
-        this.awards = new HashSet<Award>();
+       
+    }
+
+    public LevelData(List<String> awards, int score)
+    {
+        this.score = score;
+        this.awards = awards;
     }
 
     // Start is called before the first frame update

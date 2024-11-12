@@ -61,7 +61,7 @@ public class LevelThreeController : UserController
 
     public void LoadInitialScene()
     {
-        SceneManager.LoadScene("Initial");
+        SceneManager.LoadScene("Home");
 
     }
 
@@ -242,7 +242,10 @@ public class LevelThreeController : UserController
         {
             award.Unlock();
             dialog.showDialog(LevelThreeDialog.DialogType.award);
-            user.levelThree.awards.Add(LevelData.Award.COMUNICATION);
+            if (!user.levelThree.awards.Contains("COMUNICATION"))
+            {
+                user.levelThree.awards.Add("COMUNICATION");
+            }
         }
 
         user.levelThree.score = score;

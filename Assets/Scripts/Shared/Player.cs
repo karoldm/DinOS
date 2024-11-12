@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 
             if (tilemapInitialPortal.GetTile(obstacleMap) != null)
             {
-                SceneManager.LoadScene("Initial");
+                SceneManager.LoadScene("Home");
             }
 
         }

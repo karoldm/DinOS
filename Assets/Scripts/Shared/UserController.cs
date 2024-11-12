@@ -7,13 +7,25 @@ public class UserController : MonoBehaviour
     protected UserModel user;
     private DatabaseManager db;
 
-    void Start()
+    void Awake()
     {
         string userJson = PlayerPrefs.GetString("user", string.Empty);
+
         if (!string.IsNullOrEmpty(userJson))
         {
+            Debug.Log(userJson);
+
             user = JsonUtility.FromJson<UserModel>(userJson);
         }
+        else
+        {
+            Debug.LogError("Failed to load user from playerPrefs.");
+        }
+    }
+
+    void Start()
+    {
+       
     }
 
     void Update()
@@ -28,6 +40,15 @@ public class UserController : MonoBehaviour
 
     protected void UpdateUser()
     {
-        StartCoroutine(this.HandleSaveUser());
+        db = DatabaseManager.Instance;
+
+        if (db != null)
+        {
+            StartCoroutine(this.HandleSaveUser());
+        }
+        else
+        {
+            Debug.LogError("DatabaseManager instance is null. Cannot update user.");
+        }
     }
 }

@@ -1123,10 +1123,10 @@ MonoBehaviour:
   slotProcessExe: {fileID: 6508647}
   dialog: {fileID: 1669596732}
   timeText: {fileID: 145100747}
-  starRR: {fileID: 0}
-  starSJF: {fileID: 0}
-  starFCFS: {fileID: 0}
-  starPriority: {fileID: 0}
+  starRR: {fileID: 2065427897}
+  starSJF: {fileID: 90296017}
+  starFCFS: {fileID: 609955206}
+  starPriority: {fileID: 836504418}
 --- !u!1 &251243781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 561433164}
+  - component: {fileID: 561433165}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1517,6 +1518,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &561433165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561433163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531fd7c0e0f363d46bedf6788ffb3336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577544933
 GameObject:
   m_ObjectHideFlags: 0

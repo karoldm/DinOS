@@ -121,7 +121,10 @@ public class ControllerLevelFour : UserController
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
-            user.levelFour.awards.Add(LevelData.Award.SECMEMORY);
+            if (!user.levelFour.awards.Contains("SECMEMORY"))
+            {
+                user.levelFour.awards.Add("SECMEMORY");
+            }
         }
         UpdateUser();
     }
@@ -160,7 +163,7 @@ public class ControllerLevelFour : UserController
 
     public void LoadInitialScene()
     {
-        SceneManager.LoadScene("Initial");
+        SceneManager.LoadScene("Home");
 
     }
 

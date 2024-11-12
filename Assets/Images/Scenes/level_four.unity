@@ -106691,6 +106691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943461909}
   - component: {fileID: 943461910}
+  - component: {fileID: 943461911}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -106747,8 +106748,20 @@ MonoBehaviour:
   timeText: {fileID: 1056730066}
   timeContainer: {fileID: 1968363646}
   startButton: {fileID: 522054212}
-  awardSecMemory: {fileID: 0}
+  awardSecMemory: {fileID: 1656597771}
   dialog: {fileID: 2047615644}
+--- !u!114 &943461911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943461906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531fd7c0e0f363d46bedf6788ffb3336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &947198172
 GameObject:
   m_ObjectHideFlags: 0

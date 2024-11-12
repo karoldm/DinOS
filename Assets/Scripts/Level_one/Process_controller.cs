@@ -146,28 +146,39 @@ public class Process_controller : UserController
             {
                starRR.Unlock();
                dialog.showDialog(Dialog.DialogType.RR);
-               user.levelOne.awards.Add(LevelData.Award.RR);
+               if (!user.levelOne.awards.Contains("RR")) {
+                    user.levelOne.awards.Add("RR");
+               }
             }
 
             else if (isSJF)
             {
                starSJF.Unlock();
                dialog.showDialog(Dialog.DialogType.SJF);
-               user.levelOne.awards.Add(LevelData.Award.SJF);
+                if (!user.levelOne.awards.Contains("SJF"))
+                {
+                    user.levelOne.awards.Add("SJF");
+                }
             }
 
             else if (isFCFS)
             {
                starFCFS.Unlock();
                dialog.showDialog(Dialog.DialogType.FCFS);
-               user.levelOne.awards.Add(LevelData.Award.FCFS);
+                if (!user.levelOne.awards.Contains("FCFS"))
+                {
+                    user.levelOne.awards.Add("FCFS");
+                }
             }
 
             else if (isByPriority)
             {
                starPriority.Unlock();
                dialog.showDialog(Dialog.DialogType.BP);
-               user.levelOne.awards.Add(LevelData.Award.BP);
+                if (!user.levelOne.awards.Contains("BP"))
+                {
+                    user.levelOne.awards.Add("BP");
+                }
             }
             else
             {

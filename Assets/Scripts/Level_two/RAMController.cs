@@ -61,7 +61,10 @@ public class RAMController : UserController
         {
             dialog.showDialog(DialogLevelTwo.DialogType.segmentation);
             awardSegmentation.Unlock();
-            user.levelTwo.awards.Add(LevelData.Award.SEGMENTATION);
+            if (!user.levelTwo.awards.Contains("SEGMENTATION"))
+            {
+                user.levelTwo.awards.Add("SEGMENTATION");
+            }
         }
 
         user.levelTwo.score = score;
@@ -113,7 +116,7 @@ public class RAMController : UserController
 
     public void LoadInitialScene()
     {
-        SceneManager.LoadScene("Initial");
+        SceneManager.LoadScene("Home");
 
     }
 
@@ -123,7 +126,10 @@ public class RAMController : UserController
         {
             dialog.showDialog(DialogLevelTwo.DialogType.dinnerProblem);
             awardDeadlock.Unlock();
-            user.levelTwo.awards.Add(LevelData.Award.DEADLOCK);
+            if (!user.levelTwo.awards.Contains("DEADLOCK"))
+            {
+                user.levelTwo.awards.Add("DEADLOCK");
+            }
             UpdateUser();
         }
         Reset();

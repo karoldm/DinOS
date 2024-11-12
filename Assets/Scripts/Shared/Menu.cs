@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject modal;
+    public ProfileModal modal;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +20,13 @@ public class Menu : MonoBehaviour
 
     public void OpenModal()
     {
-        this.modal.SetActive(true);
+        this.modal.gameObject.SetActive(true);
     }
 
     public void CloseModal()
     {
-        this.modal.SetActive(false);
+        this.modal.gameObject.SetActive(false);
+        this.modal.CloseAllContents();
     }
 
     public void Exit()

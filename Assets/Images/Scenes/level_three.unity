@@ -90005,6 +90005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086843432}
   - component: {fileID: 2086843433}
+  - component: {fileID: 2086843434}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -90072,8 +90073,20 @@ MonoBehaviour:
   firstSelected: {fileID: 0}
   secondSelected: {fileID: 0}
   scoreText: {fileID: 825926188}
-  award: {fileID: 0}
+  award: {fileID: 1851517366}
   dialog: {fileID: 1272373389}
+--- !u!114 &2086843434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086843430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531fd7c0e0f363d46bedf6788ffb3336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2113416462
 GameObject:
   m_ObjectHideFlags: 0

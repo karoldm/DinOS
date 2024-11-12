@@ -5,9 +5,35 @@ using UnityEngine.Networking;
 
 public class DatabaseManager : MonoBehaviour
 {
+    private static DatabaseManager instance;
+
+
+    public static DatabaseManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<DatabaseManager>();
+
+                if (instance == null)
+                {
+                    Debug.LogError("No instance of DatabaseManager found in the scene.");
+                }
+
+            }
+            return instance;
+        }
+    }
+
+
+    private void Awake()
+    {
+       
+    }
+
     private string databaseUrl = ENV.DATABASE_URL;
 
-    // Coroutine for writing data to the database
     public IEnumerator WriteData(string path, string jsonData, Action<bool> onComplete)
     {
         string url = $"{databaseUrl}{path}.json";
@@ -33,7 +59,6 @@ public class DatabaseManager : MonoBehaviour
         } 
     }
 
-    // Coroutine for reading data from the database
     public IEnumerator ReadData(string path, Action<string> onSuccess, Action<string> onFailure)
     {
         string url = $"{databaseUrl}{path}.json";
@@ -88,6 +113,9 @@ public class DatabaseManager : MonoBehaviour
     public IEnumerator SaveUser(UserModel user, Action<bool> onComplete)
     {
         string jsonData = JsonUtility.ToJson(user);
+        Debug.Log(user.levelOne.awards.ToString());
+        Debug.Log("json data " + jsonData);
+
         yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
         PlayerPrefs.SetString("user", jsonData);
     }
