@@ -88769,7 +88769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851517363}
   - component: {fileID: 1851517365}
-  - component: {fileID: 1851517364}
+  - component: {fileID: 1851517366}
   m_Layer: 0
   m_Name: emblema_locked
   m_TagString: Untagged
@@ -88792,19 +88792,6 @@ Transform:
   m_Father: {fileID: 1979036037}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1851517364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851517362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016dfc97123a98f4c9c5b6a78e64ac18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockedImage: {fileID: 21300000, guid: d2bb9d1202e20af4ab669a09f66b480b, type: 3}
 --- !u!212 &1851517365
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88857,6 +88844,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1851517366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851517362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104450aa39b58464391f2df489835a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockedImage: {fileID: 21300000, guid: d2bb9d1202e20af4ab669a09f66b480b, type: 3}
 --- !u!1 &1874830536
 GameObject:
   m_ObjectHideFlags: 0
@@ -90072,7 +90072,7 @@ MonoBehaviour:
   firstSelected: {fileID: 0}
   secondSelected: {fileID: 0}
   scoreText: {fileID: 825926188}
-  award: {fileID: 1851517364}
+  award: {fileID: 0}
   dialog: {fileID: 1272373389}
 --- !u!1 &2113416462
 GameObject:

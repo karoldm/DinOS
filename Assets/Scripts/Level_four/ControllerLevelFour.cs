@@ -22,7 +22,7 @@ public class ControllerLevelFour : UserController
     public GameObject timeContainer;
     public GameObject startButton;
     private bool hasError = false;
-    public AwardSecMemory awardSecMemory;
+    public Award awardSecMemory;
     public DialogLevelFour dialog;
 
 

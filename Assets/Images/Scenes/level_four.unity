@@ -106747,7 +106747,7 @@ MonoBehaviour:
   timeText: {fileID: 1056730066}
   timeContainer: {fileID: 1968363646}
   startButton: {fileID: 522054212}
-  awardSecMemory: {fileID: 1656597771}
+  awardSecMemory: {fileID: 0}
   dialog: {fileID: 2047615644}
 --- !u!1 &947198172
 GameObject:
@@ -123938,7 +123938,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1656597767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ddb516583248f459857043cace4571, type: 3}
+  m_Script: {fileID: 11500000, guid: 104450aa39b58464391f2df489835a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 2245efc97799c854d9fc89b528912952, type: 3}

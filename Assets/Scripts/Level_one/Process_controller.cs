@@ -22,10 +22,10 @@ public class Process_controller : UserController
     public Dialog dialog;
     public TextMeshProUGUI timeText;
 
-    public Star starRR;
-    public Star starSJF;
-    public Star starFCFS;
-    public Star starPriority;
+    public Award starRR;
+    public Award starSJF;
+    public Award starFCFS;
+    public Award starPriority;
 
     private List<Process_item> itensExecuted = new List<Process_item>();
     

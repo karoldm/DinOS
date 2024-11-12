@@ -23,7 +23,7 @@ public class LevelThreeController : UserController
     public TextMeshProUGUI scoreText;
     private int score = 0;
     private bool wrongFlag = false; 
-    public AwardLevelThree award;
+    public Award award;
     private int totalAirplanes = 0;
     private int maxAirplanes = 32;
     public LevelThreeDialog dialog;
