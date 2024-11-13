@@ -11,6 +11,7 @@ public class UserModel
     public LevelData levelTwo;
     public LevelData levelThree;
     public LevelData levelFour;
+    public string lastDateLogged;
 
     public UserModel(string username, string password)
     {
@@ -20,9 +21,10 @@ public class UserModel
         this.levelTwo = new LevelData();
         this.levelThree = new LevelData();
         this.levelFour = new LevelData();
+        this.lastDateLogged = System.DateTime.Now.ToString("dd/MM/yyyy");
     }
 
-    public UserModel(string username, string password, LevelData levelOne, LevelData levelTwo, LevelData levelThree, LevelData levelFour)
+    public UserModel(string username, string password, LevelData levelOne, LevelData levelTwo, LevelData levelThree, LevelData levelFour, string lastDateLogged)
     {
         this.username = username;
         this.password = password;
@@ -30,6 +32,7 @@ public class UserModel
         this.levelTwo = levelTwo;
         this.levelThree = levelThree;
         this.levelFour = levelFour;
+        this.lastDateLogged = lastDateLogged;
     }
 
     public static UserModel FromJson(string json)

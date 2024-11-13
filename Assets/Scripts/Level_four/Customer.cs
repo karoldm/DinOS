@@ -45,14 +45,9 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         return this.action;
     }   
 
-    private Action getRandomAction()
-    {
-        return (Action)Random.Range(0, 2);
-    }
-
     private int GetRandId()
     {
-        return Random.Range(0,5);
+        return Random.Range(0,3);
     }
 
     public void SetActive()

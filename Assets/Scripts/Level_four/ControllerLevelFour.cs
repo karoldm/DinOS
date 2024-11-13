@@ -47,18 +47,6 @@ public class ControllerLevelFour : UserController
         }
     }
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Start()
     {
         this.virtualTable.Close();

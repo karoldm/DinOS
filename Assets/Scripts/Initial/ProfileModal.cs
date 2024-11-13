@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ProfileModal : UserController
 {
@@ -15,19 +16,39 @@ public class ProfileModal : UserController
     public GameObject faseThreeContent;
     public GameObject faseFourContent;
 
-    private Color buttonColor = new Color(255, 219, 174);
-    private Color buttonSelectedColor = new Color(241, 184, 112);
+    public TextMeshProUGUI scoreLevelTwo;
+    public TextMeshProUGUI scoreLevelThree;
+    public TextMeshProUGUI scoreLevelFour;
+    public TextMeshProUGUI usernameMenu;
+    public TextMeshProUGUI usernameModal;
+    public TextMeshProUGUI lastDateLogged;
 
-    public ProgressBar progressBar;
+    public ProgressBar progressBarModal;
+    public ProgressBar progressBarMenu;
 
     void Start()    
     {
-        int unlockedAwards = user.levelOne.awards.Count + user.levelTwo.awards.Count + user.levelThree.awards.Count + user.levelFour.awards.Count;
-        float percent = unlockedAwards / 8;
-        progressBar.UpdateProgressBar(percent);
+        usernameMenu.text = user.username;
+        usernameModal.text = user.username;
+        lastDateLogged.text = user.lastDateLogged;
+        InitProgressBar();
+        InitScores();
+        InitAwards();  
+    }
 
+
+    private void InitProgressBar()
+    {
+        int unlockedAwards = user.levelOne.awards.Count + user.levelTwo.awards.Count + user.levelThree.awards.Count + user.levelFour.awards.Count;
+        float percent = unlockedAwards / 8f;
+        progressBarModal.UpdateProgressBar(percent);
+        progressBarMenu.UpdateProgressBar(percent);
+    }
+
+    private void InitAwards()
+    {
         Award[] awardsLevelOne = faseOneContent.GetComponentsInChildren<Award>();
-        foreach(Award award in awardsLevelOne)
+        foreach (Award award in awardsLevelOne)
         {
             if (user.levelOne.awards.Contains(award.gameObject.name))
             {
@@ -62,6 +83,26 @@ public class ProfileModal : UserController
             }
         }
     }
+
+    private void InitScores()
+    {
+
+        if (scoreLevelTwo != null)
+        {
+            scoreLevelTwo.text = user.levelTwo.score.ToString();
+        }
+
+        if (scoreLevelThree != null)
+        {
+            scoreLevelThree.text = user.levelThree.score.ToString();
+        }
+
+        if (scoreLevelFour != null)
+        {
+            scoreLevelFour.text = user.levelOne.score.ToString();
+        }
+    }
+
 
     void Update()
     {

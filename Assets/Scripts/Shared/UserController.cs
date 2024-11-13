@@ -13,9 +13,11 @@ public class UserController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(userJson))
         {
-            Debug.Log(userJson);
+            Debug.Log("userJson" + userJson);
 
             user = JsonUtility.FromJson<UserModel>(userJson);
+
+            Debug.Log("user" + user);
         }
         else
         {
