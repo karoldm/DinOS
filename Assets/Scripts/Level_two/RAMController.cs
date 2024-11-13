@@ -33,6 +33,16 @@ public class RAMController : UserController
     {
         dialog.showDialog(DialogLevelTwo.DialogType.intro);
         AddInitialTasks();
+
+        if (user.levelTwo.awards.Contains("SEGMENTATION"))
+        {
+            awardSegmentation.Unlock();
+        }
+
+        if (user.levelTwo.awards.Contains("DEADLOCK"))
+        {
+            awardDeadlock.Unlock();
+        }
     }
 
     public bool GamingRunning()

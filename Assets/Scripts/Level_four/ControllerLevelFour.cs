@@ -63,6 +63,11 @@ public class ControllerLevelFour : UserController
     {
         this.virtualTable.Close();
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
+
+        if (user.levelFour.awards.Contains("SECMEMORY"))
+        {
+            awardSecMemory.Unlock();
+        }
     }
 
     void Update()

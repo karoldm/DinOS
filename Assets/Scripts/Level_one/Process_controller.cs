@@ -32,6 +32,26 @@ public class Process_controller : UserController
     public void Start()
     {
         dialog.showDialog(Dialog.DialogType.intro);
+
+        if (user.levelOne.awards.Contains("RR"))
+        {
+            starRR.Unlock();
+        }
+
+        if (user.levelOne.awards.Contains("SJF"))
+        {
+            starSJF.Unlock();
+        }
+
+        if (user.levelOne.awards.Contains("BP"))
+        {
+            starPriority.Unlock();
+        }
+
+        if (user.levelOne.awards.Contains("FCFS"))
+        {
+            starFCFS.Unlock();
+        }
     }
 
     public void Update()

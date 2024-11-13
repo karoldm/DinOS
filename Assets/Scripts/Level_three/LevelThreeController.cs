@@ -52,6 +52,11 @@ public class LevelThreeController : UserController
     {
         dialog.showDialog(LevelThreeDialog.DialogType.intro);
         InvokeRepeating("AddAirplane", 0f, interval);
+
+        if (user.levelThree.awards.Contains("COMUNICATION"))
+        {
+            award.Unlock();
+        }
     }
 
     void Update()
