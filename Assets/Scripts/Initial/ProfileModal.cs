@@ -19,16 +19,13 @@ public class ProfileModal : UserController
     public TextMeshProUGUI scoreLevelTwo;
     public TextMeshProUGUI scoreLevelThree;
     public TextMeshProUGUI scoreLevelFour;
-    public TextMeshProUGUI usernameMenu;
     public TextMeshProUGUI usernameModal;
     public TextMeshProUGUI lastDateLogged;
 
     public ProgressBar progressBarModal;
-    public ProgressBar progressBarMenu;
 
     void Start()    
     {
-        usernameMenu.text = user.username;
         usernameModal.text = user.username;
         lastDateLogged.text = user.lastDateLogged;
         InitProgressBar();
@@ -42,7 +39,6 @@ public class ProfileModal : UserController
         int unlockedAwards = user.levelOne.awards.Count + user.levelTwo.awards.Count + user.levelThree.awards.Count + user.levelFour.awards.Count;
         float percent = unlockedAwards / 8f;
         progressBarModal.UpdateProgressBar(percent);
-        progressBarMenu.UpdateProgressBar(percent);
     }
 
     private void InitAwards()
@@ -99,7 +95,7 @@ public class ProfileModal : UserController
 
         if (scoreLevelFour != null)
         {
-            scoreLevelFour.text = user.levelOne.score.ToString();
+            scoreLevelFour.text = user.levelFour.score.ToString();
         }
     }
 

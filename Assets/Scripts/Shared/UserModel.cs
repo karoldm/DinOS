@@ -39,6 +39,7 @@ public class UserModel
     {
         UserModel user = JsonUtility.FromJson<UserModel>(json);
 
+        user.lastDateLogged = System.DateTime.Now.ToString("dd/MM/yyyy");
         // Garante que todos os níveis sejam inicializados
         if (user.levelOne == null) user.levelOne = new LevelData();
         if (user.levelTwo == null) user.levelTwo = new LevelData();
