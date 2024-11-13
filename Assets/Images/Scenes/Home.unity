@@ -4491,6 +4491,8 @@ MonoBehaviour:
   scoreLevelThree: {fileID: 718243453}
   scoreLevelFour: {fileID: 1343770927}
   usernameMenu: {fileID: 505881391}
+  usernameModal: {fileID: 2077085625}
+  lastDateLogged: {fileID: 832871820}
   progressBarModal: {fileID: 1220292160}
   progressBarMenu: {fileID: 862422501}
 --- !u!1 &1130636556
