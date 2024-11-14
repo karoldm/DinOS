@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class UserController : MonoBehaviour
 {
@@ -13,11 +15,7 @@ public class UserController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(userJson))
         {
-            Debug.Log("userJson" + userJson);
-
             user = JsonUtility.FromJson<UserModel>(userJson);
-
-            Debug.Log("user" + user);
         }
         else
         {
@@ -51,6 +49,31 @@ public class UserController : MonoBehaviour
         else
         {
             Debug.LogError("DatabaseManager instance is null. Cannot update user.");
+        }
+    }
+
+    protected void GetAllUsers(Action<List<UserModel>> onComplete, Action onFailure)
+    {
+        db = DatabaseManager.Instance;
+
+        if (db != null)
+        {
+            StartCoroutine(db.GetAllUsers(
+                listUsers =>
+                {
+                    onComplete?.Invoke(listUsers); 
+                },
+                () =>
+                {
+                    Debug.LogError("Failed to retrieve users.");
+                    onFailure?.Invoke(); 
+                }
+            ));
+        }
+        else
+        {
+            Debug.LogError("DatabaseManager instance is null. Cannot get all users.");
+            onFailure?.Invoke();
         }
     }
 }

@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections.Generic;
+using SimpleJSON;
+
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -114,9 +117,45 @@ public class DatabaseManager : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(user);
         Debug.Log(user.levelOne.awards.ToString());
-        Debug.Log("json data " + jsonData);
 
         yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
         PlayerPrefs.SetString("user", jsonData);
     }
+
+    public IEnumerator GetAllUsers(Action<List<UserModel>> onComplete, Action onFailure)
+    {
+        string path = "users";
+
+        yield return StartCoroutine(ReadData(path,
+            jsonData =>
+            {
+                if (jsonData != "null")
+                {
+                    var users = new List<UserModel>();
+
+                    // Parse the JSON data using SimpleJSON
+                    var jsonParsed = JSON.Parse(jsonData);
+                    foreach (var keyValuePair in jsonParsed)
+                    {
+                        string userJson = keyValuePair.Value.ToString();
+                        UserModel user = JsonUtility.FromJson<UserModel>(userJson);
+                        users.Add(user);
+                    }
+
+                    onComplete?.Invoke(users);
+                }
+                else
+                {
+                    Debug.LogWarning("No users found in the database.");
+                    onComplete?.Invoke(new List<UserModel>()); // Return an empty list if no users are found
+                }
+            },
+            error =>
+            {
+                Debug.LogError("Error reading user data: " + error);
+                onFailure?.Invoke();
+            }
+        ));
+    }
+
 }

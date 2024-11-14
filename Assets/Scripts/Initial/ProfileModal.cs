@@ -36,7 +36,7 @@ public class ProfileModal : UserController
 
     private void InitProgressBar()
     {
-        int unlockedAwards = user.levelOne.awards.Count + user.levelTwo.awards.Count + user.levelThree.awards.Count + user.levelFour.awards.Count;
+        int unlockedAwards = user.GetAwardsAmount();
         float percent = unlockedAwards / 8f;
         progressBarModal.UpdateProgressBar(percent);
     }
@@ -105,19 +105,6 @@ public class ProfileModal : UserController
         
     }
 
-    private void ChangeButtonColor(GameObject button, Color color)
-    {
-        Image buttonImage = button.GetComponent<Image>();
-        if (buttonImage != null)
-        {
-            buttonImage.color = color;
-        }
-        else
-        {
-            Debug.LogError("Image component missing on the button.");
-        }
-    }
-
     public void CloseAllContents()
     {
         faseOneContent.SetActive(false);
@@ -149,4 +136,16 @@ public class ProfileModal : UserController
         this.CloseAllContents();
         this.faseFourContent.SetActive(true);
     }
+
+    public void OpenModal()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void CloseModal()
+    {
+        gameObject.SetActive(false);
+        CloseAllContents();
+    }
+
 }

@@ -48,4 +48,9 @@ public class UserModel
 
         return user;
     }
+
+    public int GetAwardsAmount()
+    {
+        return levelOne.awards.Count + levelTwo.awards.Count + levelThree.awards.Count + levelFour.awards.Count; 
+    }
 }
