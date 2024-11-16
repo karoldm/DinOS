@@ -116,7 +116,7 @@ public class Process_controller : UserController
             // First Come First Serve
             for (int i = 0; i < itens.Count; i++)
             {
-                if (itens[i].ID != itensExecuted[i].ID)
+                if (itens[i].ID != itensExecuted[i].ID ||itens.Count != itensExecuted.Count)
                 {
                     isFCFS = false;
                     break;
@@ -126,7 +126,7 @@ public class Process_controller : UserController
             // Shortest Job First
             for (int i = 1; i < itensExecuted.Count; i++)
             {
-                if (itensExecuted[i-1].timeToExecute > itensExecuted[i].timeToExecute)
+                if (itensExecuted[i-1].timeToExecute > itensExecuted[i].timeToExecute || itens.Count != itensExecuted.Count)
                 {
                     isSJF = false;
                     break;
@@ -136,7 +136,7 @@ public class Process_controller : UserController
             // Priority
             for (int i = 1; i < itensExecuted.Count; i++)
             {
-                if (itensExecuted[i - 1].priority < itensExecuted[i].priority)
+                if (itensExecuted[i - 1].priority <= itensExecuted[i].priority)
                 {
                     isByPriority = false;
                     break;
@@ -149,7 +149,6 @@ public class Process_controller : UserController
 
             if (order.Length != queueExe.Count)
             {
-                Debug.Log("false");
                 isRR = false;
             }
             else 
