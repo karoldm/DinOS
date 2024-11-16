@@ -32485,7 +32485,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Cancelamento automatico '
+  m_Text: 'Ativar quantum '
 --- !u!222 &1434110298
 CanvasRenderer:
   m_ObjectHideFlags: 0

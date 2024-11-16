@@ -23,7 +23,7 @@ public class Dialog : MonoBehaviour
             "Olha só, no momento temos 4 planos de voos esperando para iniciarem, que tal você tentar  selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
             "Para iniciar um plano de voo você precisa arrastá-lo até o painel de execução à sua direita.  No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se  de usar as informações que você possui para executar os planos da forma mais eficiente  possível!",
             "Lembre-se que você pode interromper um voo a qualquer momento e devolver ele para o  final da fila! Por questões de segurança, você deve esperar certo tempo antes de  interromper um voo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela  metade.",
-            "Mas não se preocupe! Para interromper um voo você pode só ativar o “cancelamento  automático” que ele será agendado para sempre ser interrompido no tempo correto.",
+            "Mas não se preocupe! Para interromper um voo você pode só ativar o “quantum” que ele será agendado para sempre ser interrompido no tempo correto.",
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
