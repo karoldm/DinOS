@@ -98255,10 +98255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2026da3fa8cd9c1409a8f9012ea73c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: "A nossa tabela virtual serve para mapear endere\xE7os virutais de processos
+  text: "A nossa tabela virtual serve para mapear endere\xE7os virtuais de processos
     em endere\xE7os f\xEDsicos. A mem\xF3ria virtual permite que processos usem mais
     mem\xF3ria do que a RAM dispon\xEDvel, armazenando temporariamente dados menos
-    utilizados no armazenamento secund\xE1rio."
+    usados no armazenamento secund\xE1rio."
   panel: {fileID: 418038888}
 --- !u!114 &670763158
 MonoBehaviour:

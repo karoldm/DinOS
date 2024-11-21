@@ -17,7 +17,7 @@ public class LevelThreeDialog : MonoBehaviour
         {
           "Conquista desbloqueada: Mestre em comunicações!",
           "Parabéns! Você está sempre garantindo que as coisas estejam no lugar correto e se  comuniquem da melhor forma possível!",
-          "Sabia que uma comunicação organizada é um dos pontos mais críticos para qualquer sistema ou organização dar certo? Imagine só se os drivers do seu Sistema Computacional não se comunicassem corretamente com os seus dispositivos externos? As coisas seriam uma bagunça… Por sorte os Sistemas Operacionais possuem os sistemas de Entrada e Saída para gerenciar isso, e para nossa sorte temos você por aqui!",
+          "Sabia que uma comunicação organizada é um dos pontos mais críticos para qualquer sistema ou organização dar certo? Imagine só se os drivers do seu Sistema Computacional não se comunicassem corretamente com os seus dispositivos externos? As coisas seriam uma bagunça… Por sorte os Sistemas Operacionais possuem o Software de Entrada e Saída para gerenciar isso, e para nossa sorte temos você por aqui!\r\n",
           "Parabéns por usar corretamente as chamadas de rádio (ou de sistema se preferir) e garantir uma comunicação precisa entre nossos pilotos e nossos funcionários.",
         };
     private LinkedList<string> awardDialog = new LinkedList<string>(awardTexts);

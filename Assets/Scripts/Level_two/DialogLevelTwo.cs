@@ -18,7 +18,7 @@ public class DialogLevelTwo : MonoBehaviour
         {
           "Conquista desbloqueada: Segmentação Zero!",
           "É muito raro conseguir aproveitar 100% dos funcionários e garantir que não estamos  desperdiçando tempo e recursos!",
-          "Tal como nos sistemas computacionais, onde a memória RAM é um recurso caro e precisa ser gerenciado com cuidado para um melhor aproveitamento, nossos funcionários também precisam ser alocados com cuidado, evitando “espaços desperdiçados” e bloqueio de tarefas por conta dos recursos disponíveis. E você fez isso tão bem quanto um gerenciador de memória, parabéns!",
+          "Tal como nos sistemas computacionais, onde a memória RAM é um recurso caro e precisa ser gerenciado com cuidado para um melhor aproveitamento, as tarefas atribuídas aos nossos funcionários também devem ser alocadas com cuidado para evitar que eles fiquem ociosos ou que acabem concorrendo pelo mesmo terminal. E você fez isso tão bem quanto um gerenciador de memória, parabéns! \r\n",
         };
     private LinkedList<string> segmentationDialog = new LinkedList<string>(segmentationTexts);
 
@@ -30,17 +30,17 @@ public class DialogLevelTwo : MonoBehaviour
             "Graças à nossa tecnologia avançada, podemos realizar essas tarefas a partir de terminais localizados aqui mesmo! Que tal tentar?",
             "Cada voo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu próprio terminal (identificado pela cor e pelo ícone da tarefa).",
             "Você pode associar os terminais às diferentes partes do processador, onde cada uma é responsável por realizar uma computação diferente. ",
-            "Nossos companheiros podem te ajudar a realizar essas tarefas, mas cada um deles só pode  realizar uma tarefa de cada, e enquanto estiver ocupado com uma tarefa não pode receber  outras! Além disso, cada terminal só pode ser usado por um Dino por vez.",
-            "Assim como os espaços da memória RAM, cada Dino tem uma capacidade diferente, como se fossem partições da memória, se atente a essa capacidade quando for atribuir uma tarefa. A capacidade de um Dino é indicada abaixo dele e mostra quantos  pontos de dificuldade ele consegue suportar de uma vez!",
+            "Nossos companheiros podem lhe ajudar a realizar essas tarefas, mas cada um deles só pode  realizar uma tarefa de cada, e enquanto estiver ocupado com uma tarefa não pode receber  outras! Além disso, cada terminal só pode ser usado por um Dino por vez.",
+            "Assim como os espaços da memória RAM podem ser divididos em blocos ou partições para diferentes processos, cada Dino representa um bloco com tamanho fixo. Se atente a essa capacidade quando for atribuir uma tarefa a um Dino. A capacidade de um Dino é indicada abaixo dele e mostra quantos pontos de dificuldade ele consegue suportar de uma vez!",
             "Muito cuidado com tarefas dependentes! Algumas de nossas tarefas dependem de outras de  modo que serão executadas imediatamente em seguida. Essas tarefas são marcadas com uma seta.",
-            "Para iniciar, basta arrastar uma tarefa de um dos voos até um Dino, e esperar ele concluir. Lembre-se que você consegue ver quanto tempo a tarefa vai levar e quantos pontos ela vai te  dar antes mesmo de executá-la!",
+            "Para iniciar, basta arrastar uma tarefa de um dos voos até um Dino, e esperar ele concluir. Lembre-se que você consegue ver quanto tempo a tarefa vai levar e quantos pontos ela vai lhe dar antes mesmo de executá-la!",
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] dinnerProblemTexts =
         {
            "Ops! You are dead(lock)!",
-           "Parece que dois ou mais dinossauros dependem um do terminal do outro para concluir suas  tarefas, e desse modo nenhum deles pode avançar! As tarefas precisam ser alocadas com  cuidado para não ocorrer situações como essas, uma vez que os recursos do processador são limitados e atendem um processo por vez, se dois processos passarem a depender um do recurso do outro, o Sistema Operacional estará em um impasse!", 
+           "Parece que dois ou mais dinossauros dependem um do terminal do outro para concluir suas  tarefas, e desse modo nenhum deles pode avançar! As tarefas precisam ser alocadas com  cuidado para não ocorrerem situações como essas, uma vez que os recursos do processador são limitados e atendem um processo por vez, se dois processos passarem a depender um do recurso do outro, o Sistema Operacional estará em um impasse!", 
            "Conquista desbloqueada: Problema do jantar dos filósofos!",
         };
     private LinkedList<string> dinnerProblemDialog = new LinkedList<string>(dinnerProblemTexts);

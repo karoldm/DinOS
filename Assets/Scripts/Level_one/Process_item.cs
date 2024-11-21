@@ -42,12 +42,13 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (this.isExe) return;
         processImage.raycastTarget = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
+        if (this.isExe) return;
         processImage.raycastTarget = true;
 
         Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
@@ -128,7 +129,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public void AbortExe()
     {
         process_controller.ClearSlotExe();
-        isExe = false;
+        this.isExe = false;
         process_controller.UpdateTimeText("");
 
         process_controller.queueExe.Add(this.ID);
@@ -137,5 +138,6 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         int index = process_controller.GetLastQueuePosition();
 
         process_controller.slots[index].SetSlot(this);
+        processImage.raycastTarget = true;
     }
 }

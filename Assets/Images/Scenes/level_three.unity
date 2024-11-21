@@ -1498,9 +1498,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2026da3fa8cd9c1409a8f9012ea73c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: " Os funcion\xE1rios que se comunicam com os pilotos (atrav\xE9s de r\xE1dios
-    ou sinais) representam os drivers do sistema, que mediam a comunica\xE7\xE3o
-    entre o sistema operacional e os perif\xE9ricos."
+  text: "Os funcion\xE1rios que se comunicam com os pilotos (por meio de r\xE1dios
+    ou sinais) representam as rotinas de tratamento de interrup\xE7\xE3o (Interrupt
+    Service Routines - ISRs). As ISRs s\xE3o basicamente trechos de c\xF3digo que
+    tratam os eventos (ou interrup\xE7\xF5es) gerados pelos dispositivos perif\xE9ricos.
+    Quando um perif\xE9rico precisa se comunicar com o sistema operacional, ele gera
+    uma interrup\xE7\xE3o, essa interrup\xE7\xE3o gera uma troca pelo sistema para
+    o modo \u201Ckernel\u201D (um modo com mais privil\xE9gios dentro de um SO) e,
+    por meio de uma tabela de interrup\xE7\xF5es, identifica a rotina adequada para
+    processar o evento."
   panel: {fileID: 1339480736}
 --- !u!114 &258790807
 MonoBehaviour:
@@ -2235,10 +2241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2026da3fa8cd9c1409a8f9012ea73c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: "Os pilotos que operam os avi\xF5es representam o protocolo de comunica\xE7\xE3o
-    espec\xEDfico dos perif\xE9ricos.Desse modo, quando uma chamada de sistema \xE9
-    executada, o driver do computador deve traduzir o comando para uma \u201Clinguagem\u201D
-    que o perif\xE9rico entenda."
+  text: "Os pilotos que operam os avi\xF5es representam os drivers do sistema, que
+    mediam a comunica\xE7\xE3o entre o sistema operacional e os perif\xE9ricos, assim
+    como os pilotos precisam mediar a comunica\xE7\xE3o entre o avi\xE3o e a torre
+    de controle."
   panel: {fileID: 1259757359}
 --- !u!114 &370014307
 MonoBehaviour:
