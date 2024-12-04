@@ -45,20 +45,25 @@ public class RankModal : UserController
         RectTransform rectTransform = horizontalLayout.GetComponent<RectTransform>();
         if (rectTransform != null)
         {
-            rectTransform.sizeDelta = new Vector2(400, 32); 
+            rectTransform.sizeDelta = new Vector2(763, 32); 
         }
 
         HorizontalLayoutGroup layoutGroup = horizontalLayout.AddComponent<HorizontalLayoutGroup>();
+        layoutGroup.childControlWidth = true;
+        layoutGroup.childControlHeight = true;
+        layoutGroup.childForceExpandWidth = true;
+        layoutGroup.childForceExpandHeight = true;
         layoutGroup.spacing = 64;
+        layoutGroup.childAlignment = TextAnchor.MiddleCenter;
 
-        AddText(username, horizontalLayout);
-        AddText(scoreFaseII.ToString(), horizontalLayout);
-        AddText(scoreFaseIII.ToString(), horizontalLayout);
-        AddText(scoreFaseIV.ToString(), horizontalLayout);
-        AddText(awardsAmount.ToString(), horizontalLayout);
+        AddText(username, horizontalLayout, true);
+        AddText(scoreFaseII.ToString(), horizontalLayout, false);
+        AddText(scoreFaseIII.ToString(), horizontalLayout, false);
+        AddText(scoreFaseIV.ToString(), horizontalLayout, false);
+        AddText(awardsAmount.ToString(), horizontalLayout, false);
     }
 
-    public void AddText(string text, GameObject horizontalLayout)
+    public void AddText(string text, GameObject horizontalLayout, bool alignRight)
     {
         GameObject textObj = new GameObject(text, typeof(RectTransform));
         textObj.transform.SetParent(horizontalLayout.transform);
@@ -70,8 +75,23 @@ public class RankModal : UserController
         textMeshPro.color = Color.black;
         textMeshPro.alignment = TextAlignmentOptions.Center;
 
+        textMeshPro.enableAutoSizing = false;
+
+        textMeshPro.overflowMode = TextOverflowModes.Truncate; 
+        textMeshPro.enableWordWrapping = false; 
+        textMeshPro.alignment = alignRight ? TextAlignmentOptions.Right : TextAlignmentOptions.Center;
+
         RectTransform textRect = textObj.GetComponent<RectTransform>();
-        textRect.sizeDelta = new Vector2(90, 32);
+        textRect.sizeDelta = new Vector2(100, 32); 
+        textRect.anchorMin = new Vector2(0.5f, 0.5f);
+        textRect.anchorMax = new Vector2(0.5f, 0.5f);
+        textRect.pivot = new Vector2(0.5f, 0.5f);
+
+        LayoutElement layoutElement = textObj.AddComponent<LayoutElement>();
+        layoutElement.preferredWidth = 80; 
+        layoutElement.preferredHeight = 32; 
+        layoutElement.flexibleWidth = 0; 
+        layoutElement.flexibleHeight = 0;
     }
 
     public void OpenRankModal()
