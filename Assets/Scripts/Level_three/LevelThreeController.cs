@@ -57,6 +57,7 @@ public class LevelThreeController : UserController
         {
             award.Unlock();
         }
+        this.scoreText.text = user.levelThree.score.ToString();
     }
 
     void Update()
@@ -260,6 +261,9 @@ public class LevelThreeController : UserController
         {
             HideAllElements(queue);
         }
+
+        this.scoreText.text = "0";
+        this.score = 0;
     }
 
     public void HideAllElements(VerticalLayoutGroup queue)

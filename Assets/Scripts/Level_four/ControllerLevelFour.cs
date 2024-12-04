@@ -57,6 +57,8 @@ public class ControllerLevelFour : UserController
         {
             awardSecMemory.Unlock();
         }
+
+        this.pointsText.text = user.levelFour.score.ToString();
     }
 
     void Update()
@@ -144,6 +146,8 @@ public class ControllerLevelFour : UserController
         timeContainer.SetActive(true);
         startButton.SetActive(false);
         this.gameOver = false;
+        this.pointsText.text = "0";
+        this.points = 0;
         this.AddDino();
         this.AddDino();
         this.AddDino();

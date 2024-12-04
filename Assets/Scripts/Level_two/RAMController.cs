@@ -43,6 +43,7 @@ public class RAMController : UserController
         {
             awardDeadlock.Unlock();
         }
+        this.scoreText.text = user.levelTwo.score.ToString();
     }
 
     public bool GamingRunning()
@@ -119,6 +120,8 @@ public class RAMController : UserController
     public void InitGame()
     {
         gamingRunning = true;
+        this.scoreText.text = "0";
+        this.score = 0;
 
         timeContainer.SetActive(true);
         startButton.SetActive(false);
