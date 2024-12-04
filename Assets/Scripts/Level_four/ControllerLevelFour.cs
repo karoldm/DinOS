@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class ControllerLevelFour : UserController
 {
@@ -234,12 +235,11 @@ public class ControllerLevelFour : UserController
         }
 
         int? id = this.currentShelf.Read();
-
         if (id != null)
         {
             if(id != this.GetFirstCustomerOfQueue().GetFileId())
             {
-                this.points -= 3;
+                this.points = Math.Max(this.points - 3, 0);
                 this.hasError = true;
                 return;
             }
@@ -248,6 +248,7 @@ public class ControllerLevelFour : UserController
                 this.currentShelf.shelfNumber.ToString(),
                 this.openedBookcase.address.ToString()
             );
+
             if (isInVirtualTable)
             {
                 this.points += 2;
@@ -255,7 +256,8 @@ public class ControllerLevelFour : UserController
             }
             else
             {
-                this.points -= 2;
+                this.points = Math.Max(this.points - 3, 0);
+                this.hasError = true;
             }   
             this.pointsText.text = this.points.ToString();
             RemoveFirstDino();
