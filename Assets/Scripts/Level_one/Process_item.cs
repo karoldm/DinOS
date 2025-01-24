@@ -98,6 +98,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
     public void Show()
     {
         gameObject.SetActive(true);
+        processImage.raycastTarget = true;
     }
 
     public void SetTimeLeft(float time)
