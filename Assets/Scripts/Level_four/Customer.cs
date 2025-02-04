@@ -6,14 +6,14 @@ using TMPro;
 
 public class Customer : MonoBehaviour, IPointerClickHandler
 {
-    public enum Action { ler, escrever };
+    public enum Action { READ, WRITE};
 
-    private int fileId;
     private Action action;
     private ControllerLevelFour controller;
+    private PlanFile planFile;
+    public PlanFile planFileModel;
     public GameObject infoPanel;
-    public TextMeshProUGUI processText;
-    public TextMeshProUGUI actionText;
+    public TextMeshProUGUI infoText;
 
     void Awake()
     {
@@ -35,19 +35,14 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public int GetFileId()
+    public PlanFile GetPlanFile()
     {
-        return this.fileId;
+        return this.planFile ;
     }
 
     public Action GetAction()
     {
         return this.action;
-    }   
-
-    private int GetRandId()
-    {
-        return Random.Range(0,3);
     }
 
     public void SetActive()
@@ -68,24 +63,31 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             return; 
         }
 
-        this.fileId = GetRandId();
-        if (this.controller.FileIdExist(this.fileId))
+        this.planFile = Instantiate(
+            this.planFileModel,
+            this.planFileModel.transform.position,
+            this.planFileModel.transform.rotation
+        );
+
+        this.planFile.Initialize();
+
+        if (this.planFile.GetHasPriority() && this.controller.FileWithPriorityExist())
         {
-            this.action = Action.ler;
+            this.action = Action.READ;
         }
         else {
-            this.action = Action.escrever;
+            this.action = Action.WRITE;
         }
-        this.processText.text = "Plano de voo: " + this.fileId.ToString();
-        this.actionText.text = "Operação: " + this.action.ToString();
+
+        this.infoText.text = "Olá, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
+            +" com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
     }
 
     public void OnPointerClick(PointerEventData eventData) 
     {
         if(this == controller.GetFirstCustomerOfQueue())
         {
-            this.Init();
-            controller.SetCurrentFileId(this.fileId);
+            controller.SetCurrentCustomer(this);
             this.infoPanel.SetActive(true);
         }
     }

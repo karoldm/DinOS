@@ -8,23 +8,22 @@ using System;
 
 public class ControllerLevelFour : UserController
 {
-    public List<Bookcase> bookcases = new List<Bookcase>();
     public VerticalLayoutGroup dinoQueue;
-    private int? currentFileID;
+    private Customer currentCustomer;
     public Customer modelDino;
-    private Bookcase openedBookcase;
-    private Shelf currentShelf;
     private int points = 0;
     public TextMeshProUGUI pointsText;
-    public VirtualTable virtualTable;
     private bool gameOver = true;
     private float leftTime = 60f;
     public TextMeshProUGUI timeText;
     public GameObject timeContainer;
     public GameObject startButton;
-    private bool hasError = false;
+    //private bool hasError = false;
     public Award awardSecMemory;
     public DialogLevelFour dialog;
+
+    public VerticalLayoutGroup swapArea;
+    public VerticalLayoutGroup secondMemoryArea;
 
 
     private static ControllerLevelFour instance;
@@ -50,7 +49,6 @@ public class ControllerLevelFour : UserController
 
     void Start()
     {
-        this.virtualTable.Close();
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
         if (user.levelFour.awards.Contains("SECMEMORY"))
@@ -77,28 +75,6 @@ public class ControllerLevelFour : UserController
         }
     }
 
-    private void CheckCurrentFiles()
-    {
-        foreach (Bookcase bookcase in bookcases)
-        {
-            foreach (Shelf shelf in bookcase.shelfs)
-            {
-                int? id = shelf.GetCurrentFileId();
-                if (id != null)
-                {
-                    bool isInVirtualTable = this.virtualTable.Find(
-                        id.ToString(),
-                        shelf.shelfNumber.ToString(),
-                        bookcase.address.ToString()
-                    );
-                    if (!isInVirtualTable)
-                    {
-                        hasError = true;
-                    }
-                }
-            }
-        }
-    }
 
     private void FinishGame()
     {
@@ -109,11 +85,9 @@ public class ControllerLevelFour : UserController
         this.timeText.text = "";
         timeContainer.SetActive(false);
         startButton.SetActive(true);
-        CheckCurrentFiles();
         ClearDinoQueue();
-        virtualTable.Clear();
-        ClearBookcases();
-        if(!hasError && awardSecMemory.IsLocked())
+
+        /*if(!hasError && awardSecMemory.IsLocked())
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
@@ -121,16 +95,8 @@ public class ControllerLevelFour : UserController
             {
                 user.levelFour.awards.Add("SECMEMORY");
             }
-        }
+        }*/
         UpdateUser();
-    }
-
-    private void ClearBookcases()
-    {
-        foreach (Bookcase bookcase in bookcases)
-        {
-            bookcase.Clear();
-        }
     }
 
     private void ClearDinoQueue()
@@ -154,18 +120,13 @@ public class ControllerLevelFour : UserController
         this.AddDino();
     }
 
-    public void SetCurrentFileId(int fileId)
-    {
-        this.currentFileID = fileId;
-    }
-
     public void LoadInitialScene()
     {
         SceneManager.LoadScene("Home");
 
     }
 
-    void AddDino()
+    private void AddDino()
     {
         if (dinoQueue == null)
         {
@@ -174,11 +135,12 @@ public class ControllerLevelFour : UserController
         }
 
         Customer dino = Instantiate(modelDino, dinoQueue.transform);
+        dino.Init();
         dino.SetActive();
         UpdateQueue();
     }
 
-    public void UpdateQueue()
+    private void UpdateQueue()
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(dinoQueue.GetComponent<RectTransform>());
     }
@@ -200,77 +162,53 @@ public class ControllerLevelFour : UserController
         UpdateQueue();
     }
 
+    public void SetCurrentCustomer(Customer customer)
+    {
+        this.currentCustomer = customer;
+        if(currentCustomer == null)
+        {
+            this.RemoveFirstDino();
+        }
+    }
+
+    public Customer GetCurrentCustomer()
+    {
+        return this.currentCustomer;
+    }
+
     public void Write()
     {
-        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.ler)
+        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.READ)
         {
             return;
         }
-        if (this.currentFileID != null)
+        /*if (this.currentFileID != null)
         {
-            this.currentShelf.Write((int)this.currentFileID);
             points++;
             pointsText.text = points.ToString();
-            this.currentFileID = null;
+            this.PlanFile = null;
             RemoveFirstDino();
+
             if (!this.gameOver)
             {
                 AddDino();
             }
-        }
-        this.currentShelf = null;
+        }*/
     }
 
-    public void SetCurrentShelf(Shelf shelf)
-    {
-        this.currentShelf = shelf;
-    }
-
-    public void SetOpenedBookcase(Bookcase bookcase)
-    {
-        this.openedBookcase = bookcase;
-    }
 
     public void Read()
     {
-        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.escrever)
+        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.WRITE)
         {
             return;
         }
 
-        int? id = this.currentShelf.Read();
-        if (id != null)
+        RemoveFirstDino();
+        if (!this.gameOver)
         {
-            if(id != this.GetFirstCustomerOfQueue().GetFileId())
-            {
-                this.points = Math.Max(this.points - 3, 0);
-                this.hasError = true;
-                return;
-            }
-            bool isInVirtualTable = this.virtualTable.Find(
-                id.ToString(),
-                this.currentShelf.shelfNumber.ToString(),
-                this.openedBookcase.address.ToString()
-            );
-
-            if (isInVirtualTable)
-            {
-                this.points += 2;
-                virtualTable.Remove(id.ToString());
-            }
-            else
-            {
-                this.points = Math.Max(this.points - 3, 0);
-                this.hasError = true;
-            }   
-            this.pointsText.text = this.points.ToString();
-            RemoveFirstDino();
-            if (!this.gameOver)
-            {
-                AddDino();
-            }
+            AddDino();
         }
-        this.currentShelf = null;
     }
 
     private int QueueSize()
@@ -278,43 +216,9 @@ public class ControllerLevelFour : UserController
         return dinoQueue.transform.childCount;
     }
 
-    public void OpenBookcaseA()
+   
+    public bool FileWithPriorityExist()
     {
-        this.openedBookcase = this.bookcases.Find(b => b.address == 'A');
-        this.openedBookcase.gameObject.SetActive(true);
-    }
-
-    public void OpenBookcaseB()
-    {
-        this.openedBookcase = this.bookcases.Find(b => b.address == 'B');
-        this.openedBookcase.gameObject.SetActive(true);
-    }
-
-    public void OpenBookcaseC()
-    {
-        this.openedBookcase = this.bookcases.Find(b => b.address == 'C');
-        this.openedBookcase.gameObject.SetActive(true);
-    }
-
-    public void OpenBookcaseD()
-    {
-        this.openedBookcase = this.bookcases.Find(b => b.address == 'D');
-        this.openedBookcase.gameObject.SetActive(true);
-    }
-
-    public bool FileIdExist(int fileId)
-    {
-        foreach(Bookcase bookcase in bookcases)
-        {
-            foreach(Shelf shelf in bookcase.shelfs)
-            {
-                if (shelf.GetCurrentFileId() == fileId)
-                {
-
-                    return true;
-                }
-            }
-        }
-        return false;
+        return this.swapArea.transform.childCount > 0;
     }
 }
