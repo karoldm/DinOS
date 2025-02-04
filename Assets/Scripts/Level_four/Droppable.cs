@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class Droppable : MonoBehaviour, IPointerClickHandler
 {
     private ControllerLevelFour controller;
-    public VerticalLayoutGroup queue;
+    public int limit;
 
 
     void Awake()
@@ -35,10 +35,12 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (transform.childCount >= limit) return;
+
         Customer currentCustomer = controller.GetCurrentCustomer();
-        if (currentCustomer != null)
+        if (currentCustomer != null && currentCustomer.GetAction() == Customer.Action.WRITE)
         {
-            PlanFile planFile = Instantiate(currentCustomer.GetPlanFile(), queue.transform);
+            PlanFile planFile = Instantiate(currentCustomer.GetPlanFile(), transform);
             this.UpdateQueue();
 
             controller.SetCurrentCustomer(null);
@@ -48,6 +50,6 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
 
     private void UpdateQueue()
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(queue.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

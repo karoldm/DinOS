@@ -152,7 +152,7 @@ RectTransform:
   m_GameObject: {fileID: 114258598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943461909}
@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -1857, y: -1003}
-  m_SizeDelta: {x: 37.3043, y: 160.9695}
+  m_AnchoredPosition: {x: -349.11636, y: 60.001846}
+  m_SizeDelta: {x: 80, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114258600
 MonoBehaviour:
@@ -188,8 +188,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 35.44234, y: 163.31311, z: 1}
-  m_Center: {x: 0.039754868, y: 2.544983, z: 0}
+  m_Size: {x: 89.579475, y: 102.511826, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114258602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,9 +463,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244321448}
-  - component: {fileID: 244321449}
   - component: {fileID: 244321450}
   - component: {fileID: 244321451}
+  - component: {fileID: 244321452}
   m_Layer: 0
   m_Name: SecondMemoryQueue
   m_TagString: Untagged
@@ -481,8 +481,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244321447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -22.10287}
-  m_LocalScale: {x: 2.5350187, y: 5.0700374, z: 0.25350186}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 938329343}
@@ -490,35 +490,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143.25656, y: -41.252}
-  m_SizeDelta: {x: 101.1555, y: 32.1939}
+  m_AnchoredPosition: {x: 143.50665, y: -41.252}
+  m_SizeDelta: {x: 271.6033, y: 185.2805}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &244321449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244321447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 1
-    m_Right: 1
-    m_Top: 1
-    m_Bottom: 1
-  m_ChildAlignment: 0
-  m_Spacing: 1
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
 --- !u!114 &244321450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f0f60e7162d524ab7f1ed933ed59d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  queue: {fileID: 244321449}
+  limit: 20
 --- !u!65 &244321451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -543,8 +517,32 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100.97987, y: 32.169224, z: 1}
-  m_Center: {x: 0.30649415, y: -0.061595153, z: 0}
+  m_Size: {x: 274.47665, y: 185.13254, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &244321452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244321447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: -20
+    m_Right: -10
+    m_Top: -20
+    m_Bottom: -20
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 80, y: 90}
+  m_Spacing: {x: -30, y: -30}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &267726205
 GameObject:
   m_ObjectHideFlags: 0
@@ -83298,7 +83296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xE1rea swap"
+  m_text: "sagu\xE3o\n\xE1rea swap"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -83623,9 +83621,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 645861496}
-  - component: {fileID: 645861497}
   - component: {fileID: 645861498}
   - component: {fileID: 645861499}
+  - component: {fileID: 645861500}
   m_Layer: 0
   m_Name: SwapQueue
   m_TagString: Untagged
@@ -83641,8 +83639,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645861495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -22.10287}
-  m_LocalScale: {x: 2.5350187, y: 5.0700374, z: 0.25350186}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 938329343}
@@ -83650,35 +83648,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: -41.251526}
-  m_SizeDelta: {x: 37.3043, y: 32.1939}
+  m_AnchoredPosition: {x: -79.219086, y: -41.25148}
+  m_SizeDelta: {x: 106.0257, y: 172.7603}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &645861497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 645861495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 1
-    m_Right: 1
-    m_Top: 1
-    m_Bottom: 1
-  m_ChildAlignment: 0
-  m_Spacing: 1
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
 --- !u!114 &645861498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83691,7 +83663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f0f60e7162d524ab7f1ed933ed59d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  queue: {fileID: 645861497}
+  limit: 6
 --- !u!65 &645861499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -83703,8 +83675,32 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 37.380756, y: 32.266205, z: 1}
-  m_Center: {x: 0.19771424, y: -0.013105012, z: 0}
+  m_Size: {x: 112.349846, y: 177.68713, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &645861500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645861495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: -20
+    m_Right: -20
+    m_Top: -20
+    m_Bottom: -20
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 80, y: 90}
+  m_Spacing: {x: -30, y: -30}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &670552108
 GameObject:
   m_ObjectHideFlags: 0
@@ -84743,8 +84739,8 @@ MonoBehaviour:
   startButton: {fileID: 522054212}
   awardSecMemory: {fileID: 1656597771}
   dialog: {fileID: 2047615644}
-  swapArea: {fileID: 645861497}
-  secondMemoryArea: {fileID: 244321449}
+  swapArea: {fileID: 645861500}
+  secondMemoryArea: {fileID: 244321452}
 --- !u!114 &943461911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86853,7 +86849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "mem\xF3ria secund\xE1ria"
+  m_text: "armaz\xE9m\nmem\xF3ria secund\xE1ria"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

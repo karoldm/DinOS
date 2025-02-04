@@ -22,8 +22,8 @@ public class ControllerLevelFour : UserController
     public Award awardSecMemory;
     public DialogLevelFour dialog;
 
-    public VerticalLayoutGroup swapArea;
-    public VerticalLayoutGroup secondMemoryArea;
+    public GridLayoutGroup swapArea;
+    public GridLayoutGroup secondMemoryArea;
 
 
     private static ControllerLevelFour instance;
@@ -160,6 +160,11 @@ public class ControllerLevelFour : UserController
 
         Destroy(dinoQueue.transform.GetChild(1).gameObject);
         UpdateQueue();
+
+        if (!this.gameOver)
+        {
+            AddDino();
+        }
     }
 
     public void SetCurrentCustomer(Customer customer)
@@ -178,11 +183,11 @@ public class ControllerLevelFour : UserController
 
     public void Write()
     {
-        if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.READ)
+        /*if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.READ)
         {
             return;
         }
-        /*if (this.currentFileID != null)
+        if (this.currentFileID != null)
         {
             points++;
             pointsText.text = points.ToString();
@@ -196,10 +201,9 @@ public class ControllerLevelFour : UserController
         }*/
     }
 
-
     public void Read()
     {
-        if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.WRITE)
+        /*if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.WRITE)
         {
             return;
         }
@@ -208,7 +212,7 @@ public class ControllerLevelFour : UserController
         if (!this.gameOver)
         {
             AddDino();
-        }
+        }*/
     }
 
     private int QueueSize()
@@ -216,9 +220,37 @@ public class ControllerLevelFour : UserController
         return dinoQueue.transform.childCount;
     }
 
-   
     public bool FileWithPriorityExist()
     {
-        return this.swapArea.transform.childCount > 0;
+        foreach (Transform child in this.swapArea.transform)
+        {
+            if (child.GetComponent<PlanFile>()?.GetHasPriority() == true)
+                return true;
+        }
+
+        foreach (Transform child in this.secondMemoryArea.transform)
+        {
+            if (child.GetComponent<PlanFile>()?.GetHasPriority() == true)
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool FileWithNoPriorityExist()
+    {
+        foreach (Transform child in this.swapArea.transform)
+        {
+            if (child.GetComponent<PlanFile>()?.GetHasPriority() == false)
+                return true;
+        }
+
+        foreach (Transform child in this.secondMemoryArea.transform)
+        {
+            if (child.GetComponent<PlanFile>()?.GetHasPriority() == false)
+                return true;
+        }
+
+        return false;
     }
 }

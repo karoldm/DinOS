@@ -50,6 +50,20 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         gameObject.SetActive(true);
     }
 
+    private Action GetRandAction(bool hasPriority)
+    {
+        Action action = Random.Range(0, 2) == 1 ? Action.READ : Action.WRITE;
+        if (action == Action.READ && hasPriority && !controller.FileWithPriorityExist())
+        {
+            action = Action.WRITE;
+        }
+        else if(action == Action.READ && !hasPriority && !controller.FileWithNoPriorityExist())
+        {
+            action = Action.WRITE;
+        }
+        return action;
+    }
+
     public void Init()
     {
         if (this.controller == null)
@@ -70,14 +84,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         );
 
         this.planFile.Initialize();
-
-        if (this.planFile.GetHasPriority() && this.controller.FileWithPriorityExist())
-        {
-            this.action = Action.READ;
-        }
-        else {
-            this.action = Action.WRITE;
-        }
+        this.action = GetRandAction(this.planFile.GetHasPriority());
 
         this.infoText.text = "Olá, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
             +" com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
