@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 244321450}
   - component: {fileID: 244321451}
   - component: {fileID: 244321452}
+  - component: {fileID: 244321453}
   m_Layer: 0
   m_Name: SecondMemoryQueue
   m_TagString: Untagged
@@ -543,6 +544,19 @@ MonoBehaviour:
   m_Spacing: {x: -30, y: -30}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &244321453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244321447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &267726205
 GameObject:
   m_ObjectHideFlags: 0
@@ -80227,6 +80241,7 @@ GameObject:
   - component: {fileID: 522054216}
   - component: {fileID: 522054215}
   - component: {fileID: 522054214}
+  - component: {fileID: 522054218}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -80364,6 +80379,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522054212}
   m_CullTransparentMesh: 1
+--- !u!114 &522054218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522054212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &544437486
 GameObject:
   m_ObjectHideFlags: 0
@@ -83624,6 +83652,7 @@ GameObject:
   - component: {fileID: 645861498}
   - component: {fileID: 645861499}
   - component: {fileID: 645861500}
+  - component: {fileID: 645861501}
   m_Layer: 0
   m_Name: SwapQueue
   m_TagString: Untagged
@@ -83701,6 +83730,19 @@ MonoBehaviour:
   m_Spacing: {x: -30, y: -30}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &645861501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645861495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &670552108
 GameObject:
   m_ObjectHideFlags: 0
@@ -84901,6 +84943,7 @@ GameObject:
   - component: {fileID: 1010688510}
   - component: {fileID: 1010688512}
   - component: {fileID: 1010688509}
+  - component: {fileID: 1010688513}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -85038,6 +85081,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1010688513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010688507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1053985997
 GameObject:
   m_ObjectHideFlags: 0
@@ -85456,6 +85512,7 @@ GameObject:
   - component: {fileID: 1182363544}
   - component: {fileID: 1182363543}
   - component: {fileID: 1182363542}
+  - component: {fileID: 1182363546}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -85593,6 +85650,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182363540}
   m_CullTransparentMesh: 1
+--- !u!114 &1182363546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182363540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1197703111
 GameObject:
   m_ObjectHideFlags: 0
@@ -86619,6 +86689,7 @@ GameObject:
   - component: {fileID: 1796366990}
   - component: {fileID: 1796366989}
   - component: {fileID: 1796366988}
+  - component: {fileID: 1796366991}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -86727,6 +86798,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1796366991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796366986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1885633016
 GameObject:
   m_ObjectHideFlags: 0

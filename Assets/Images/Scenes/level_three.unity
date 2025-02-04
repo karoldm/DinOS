@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 180643355}
   - component: {fileID: 180643356}
   - component: {fileID: 180643357}
+  - component: {fileID: 180643358}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -990,6 +991,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.447726, y: 1.5895561, z: 0.2}
   m_Center: {x: 0.75511205, y: -0.26352865, z: 0}
+--- !u!114 &180643358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180643353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &190171211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1106,7 @@ GameObject:
   - component: {fileID: 199142586}
   - component: {fileID: 199142588}
   - component: {fileID: 199142589}
+  - component: {fileID: 199142590}
   m_Layer: 0
   m_Name: airplane_red
   m_TagString: Untagged
@@ -1220,6 +1235,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &199142590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199142583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &213180086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,6 +3306,7 @@ GameObject:
   - component: {fileID: 512013633}
   - component: {fileID: 512013636}
   - component: {fileID: 512013635}
+  - component: {fileID: 512013637}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -3343,6 +3372,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512013632}
   m_CullTransparentMesh: 1
+--- !u!114 &512013637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512013632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &519320893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3608,6 +3650,7 @@ GameObject:
   - component: {fileID: 551012811}
   - component: {fileID: 551012813}
   - component: {fileID: 551012812}
+  - component: {fileID: 551012814}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -3732,6 +3775,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551012810}
   m_CullTransparentMesh: 1
+--- !u!114 &551012814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551012810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &565275733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,6 +4168,7 @@ GameObject:
   - component: {fileID: 691680342}
   - component: {fileID: 691680344}
   - component: {fileID: 691680345}
+  - component: {fileID: 691680346}
   m_Layer: 0
   m_Name: airplane_blue
   m_TagString: Untagged
@@ -4240,6 +4297,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &691680346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691680339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &709599123
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,6 +5494,7 @@ GameObject:
   - component: {fileID: 839243714}
   - component: {fileID: 839243715}
   - component: {fileID: 839243717}
+  - component: {fileID: 839243718}
   m_Layer: 0
   m_Name: airplane_yellow
   m_TagString: Untagged
@@ -5552,6 +5623,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &839243718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839243711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &844432697
 GameObject:
   m_ObjectHideFlags: 0
@@ -84765,6 +84849,7 @@ GameObject:
   - component: {fileID: 891089635}
   - component: {fileID: 891089637}
   - component: {fileID: 891089636}
+  - component: {fileID: 891089638}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -84889,6 +84974,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891089634}
   m_CullTransparentMesh: 1
+--- !u!114 &891089638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891089634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &926694901
 GameObject:
   m_ObjectHideFlags: 0
@@ -85804,6 +85902,7 @@ GameObject:
   - component: {fileID: 1191074648}
   - component: {fileID: 1191074650}
   - component: {fileID: 1191074647}
+  - component: {fileID: 1191074651}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -85941,6 +86040,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1191074651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191074645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1207040551
 GameObject:
   m_ObjectHideFlags: 0
@@ -86357,6 +86469,7 @@ GameObject:
   - component: {fileID: 1245156355}
   - component: {fileID: 1245156356}
   - component: {fileID: 1245156357}
+  - component: {fileID: 1245156358}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -86467,6 +86580,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4710426, y: 1.5752707, z: 0.2}
   m_Center: {x: 0.7667703, y: -0.25638562, z: 0}
+--- !u!114 &1245156358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245156353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1259757359
 GameObject:
   m_ObjectHideFlags: 0
@@ -87704,6 +87830,7 @@ GameObject:
   - component: {fileID: 1656301292}
   - component: {fileID: 1656301294}
   - component: {fileID: 1656301293}
+  - component: {fileID: 1656301295}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -87828,6 +87955,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656301291}
   m_CullTransparentMesh: 1
+--- !u!114 &1656301295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656301291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1663023911
 GameObject:
   m_ObjectHideFlags: 0
@@ -88522,6 +88662,7 @@ GameObject:
   - component: {fileID: 1822908445}
   - component: {fileID: 1822908448}
   - component: {fileID: 1822908447}
+  - component: {fileID: 1822908449}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -88587,6 +88728,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822908444}
   m_CullTransparentMesh: 1
+--- !u!114 &1822908449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822908444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1832721061
 GameObject:
   m_ObjectHideFlags: 0
@@ -89013,6 +89167,7 @@ GameObject:
   - component: {fileID: 1875163479}
   - component: {fileID: 1875163480}
   - component: {fileID: 1875163481}
+  - component: {fileID: 1875163482}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -89123,6 +89278,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4831579, y: 1.670642, z: 0.2}
   m_Center: {x: 0.7728279, y: -0.30407074, z: 0}
+--- !u!114 &1875163482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875163477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1876050256
 GameObject:
   m_ObjectHideFlags: 0
@@ -89201,6 +89369,7 @@ GameObject:
   - component: {fileID: 1914612674}
   - component: {fileID: 1914612676}
   - component: {fileID: 1914612675}
+  - component: {fileID: 1914612677}
   m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
@@ -89325,6 +89494,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914612673}
   m_CullTransparentMesh: 1
+--- !u!114 &1914612677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914612673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1917985902
 GameObject:
   m_ObjectHideFlags: 0
@@ -89336,6 +89518,7 @@ GameObject:
   - component: {fileID: 1917985903}
   - component: {fileID: 1917985906}
   - component: {fileID: 1917985905}
+  - component: {fileID: 1917985907}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -89401,6 +89584,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917985902}
   m_CullTransparentMesh: 1
+--- !u!114 &1917985907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917985902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1931228391
 GameObject:
   m_ObjectHideFlags: 0
@@ -89795,6 +89991,7 @@ GameObject:
   - component: {fileID: 2031835432}
   - component: {fileID: 2031835435}
   - component: {fileID: 2031835434}
+  - component: {fileID: 2031835436}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -89860,6 +90057,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031835431}
   m_CullTransparentMesh: 1
+--- !u!114 &2031835436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031835431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2062861928
 GameObject:
   m_ObjectHideFlags: 0
@@ -89873,6 +90083,7 @@ GameObject:
   - component: {fileID: 2062861931}
   - component: {fileID: 2062861933}
   - component: {fileID: 2062861934}
+  - component: {fileID: 2062861935}
   m_Layer: 0
   m_Name: airplane_green
   m_TagString: Untagged
@@ -90001,6 +90212,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2062861935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062861928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2086843430
 GameObject:
   m_ObjectHideFlags: 0
@@ -90105,6 +90329,7 @@ GameObject:
   - component: {fileID: 2113416464}
   - component: {fileID: 2113416465}
   - component: {fileID: 2113416466}
+  - component: {fileID: 2113416467}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -90133,7 +90358,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.9375, y: 1.109181}
+  m_SizeDelta: {x: 0.9375, y: 1.0167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &2113416464
 SpriteRenderer:
@@ -90215,6 +90440,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4509847, y: 1.6300993, z: 0}
   m_Center: {x: 0.7567414, y: -0.2837995, z: 0}
+--- !u!114 &2113416467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113416462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2119733329
 GameObject:
   m_ObjectHideFlags: 0
@@ -90406,6 +90644,7 @@ GameObject:
   - component: {fileID: 2139039070}
   - component: {fileID: 2139039069}
   - component: {fileID: 2139039072}
+  - component: {fileID: 2139039073}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -90543,3 +90782,16 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2139039073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139039067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
