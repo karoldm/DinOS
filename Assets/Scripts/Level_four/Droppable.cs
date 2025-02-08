@@ -40,10 +40,22 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
         Customer currentCustomer = controller.GetCurrentCustomer();
         if (currentCustomer != null && currentCustomer.GetAction() == Customer.Action.WRITE)
         {
-            PlanFile planFile = Instantiate(currentCustomer.GetPlanFile(), transform);
+            PlanFile planFile = currentCustomer.GetPlanFile();
+            planFile.transform.SetParent(transform);
+            planFile.transform.localScale = new Vector3(0.4f, 0.5f, 1f);
             this.UpdateQueue();
 
             controller.SetCurrentCustomer(null);
+        }
+
+        PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
+        if(selectedPlanFile != null)
+        {
+            selectedPlanFile.transform.SetParent(transform);
+            selectedPlanFile.transform.localScale = new Vector3(0.4f, 0.5f, 1f);
+            this.UpdateQueue();
+
+            controller.SetSelectedPlanFile(null);
         }
     }
 

@@ -21,6 +21,7 @@ public class ControllerLevelFour : UserController
     //private bool hasError = false;
     public Award awardSecMemory;
     public DialogLevelFour dialog;
+    private PlanFile selectedPlanFile;
 
     public GridLayoutGroup swapArea;
     public GridLayoutGroup secondMemoryArea;
@@ -179,6 +180,16 @@ public class ControllerLevelFour : UserController
     public Customer GetCurrentCustomer()
     {
         return this.currentCustomer;
+    }
+
+    public void SetSelectedPlanFile(PlanFile file)
+    {
+        this.selectedPlanFile = file;
+    }
+
+    public PlanFile GetSelectedPlanFile()
+    {
+        return this.selectedPlanFile;
     }
 
     public void Write()

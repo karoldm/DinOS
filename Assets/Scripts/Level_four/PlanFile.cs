@@ -5,11 +5,24 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class PlanFile : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class PlanFile : MonoBehaviour, IPointerClickHandler
 {
     private bool hasPriority;
     public Sprite imageNoPriority;
     public Sprite imagePriority;
+    private Image image;
+    private ControllerLevelFour controller;
+    private Vector3 scaleIncrement = new Vector3(0.1f, 0.1f, 0.1f);
+
+    void Awake()
+    {
+        controller = ControllerLevelFour.Instance;
+
+        if (controller == null)
+        {
+            Debug.LogError("ControllerLevelFour instance not found in scene.");
+        }
+    }
 
     private bool GenerateRandomHasPriority()
     {
@@ -20,13 +33,13 @@ public class PlanFile : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     {
         this.hasPriority = GenerateRandomHasPriority();
 
-        Image imageComponent = GetComponent<Image>();
+        this.image = GetComponent<Image>();
 
-        if (imageComponent != null)
+        if (this.image != null)
         {
-            imageComponent.sprite = this.hasPriority ? this.imagePriority : this.imageNoPriority;
+            this.image.sprite = this.hasPriority ? this.imagePriority : this.imageNoPriority;
             Debug.Log("Priority: " + this.hasPriority);
-            Debug.Log("Priority: " + imageComponent.sprite);
+            Debug.Log("Priority: " + this.image.sprite);
             gameObject.SetActive(true);
         }
         else
@@ -50,15 +63,9 @@ public class PlanFile : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
+        controller.SetSelectedPlanFile(this);
+        transform.localScale += scaleIncrement;
     }
 }
