@@ -10,7 +10,6 @@ public class CursorPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("hovering");
         Cursor.SetCursor(customCursor, hotspot, CursorMode.Auto);
     }
 

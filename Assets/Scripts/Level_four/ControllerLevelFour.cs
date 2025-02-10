@@ -9,18 +9,20 @@ using System;
 public class ControllerLevelFour : UserController
 {
     public VerticalLayoutGroup dinoQueue;
-    private Customer currentCustomer;
-    public Customer modelDino;
-    private int points = 0;
     public TextMeshProUGUI pointsText;
-    private bool gameOver = true;
-    private float leftTime = 60f;
+    public Customer modelDino;
+    public DialogLevelFour dialog;
     public TextMeshProUGUI timeText;
     public GameObject timeContainer;
     public GameObject startButton;
-    //private bool hasError = false;
+
+    private float leftTime = 60f;
     public Award awardSecMemory;
-    public DialogLevelFour dialog;
+    private int points = 0;
+    //private bool hasError = false;
+    private bool gameOver = true;
+
+    private Customer currentCustomer;
     private PlanFile selectedPlanFile;
 
     public GridLayoutGroup swapArea;
@@ -52,12 +54,12 @@ public class ControllerLevelFour : UserController
     {
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
-        if (user.levelFour.awards.Contains("SECMEMORY"))
+       /* if (user.levelFour.awards.Contains("SECMEMORY"))
         {
             awardSecMemory.Unlock();
         }
 
-        this.pointsText.text = user.levelFour.score.ToString();
+        this.pointsText.text = user.levelFour.score.ToString();*/
     }
 
     void Update()
@@ -129,6 +131,8 @@ public class ControllerLevelFour : UserController
 
     private void AddDino()
     {
+        Debug.Log("add dino");
+
         if (dinoQueue == null)
         {
             Debug.LogError("dinoQueue is null");
@@ -160,6 +164,7 @@ public class ControllerLevelFour : UserController
         if (QueueSize() <= 0) return;
 
         Destroy(dinoQueue.transform.GetChild(1).gameObject);
+
         UpdateQueue();
 
         if (!this.gameOver)
@@ -171,10 +176,6 @@ public class ControllerLevelFour : UserController
     public void SetCurrentCustomer(Customer customer)
     {
         this.currentCustomer = customer;
-        if(currentCustomer == null)
-        {
-            this.RemoveFirstDino();
-        }
     }
 
     public Customer GetCurrentCustomer()
@@ -190,6 +191,20 @@ public class ControllerLevelFour : UserController
     public PlanFile GetSelectedPlanFile()
     {
         return this.selectedPlanFile;
+    }
+
+    public void ComputeError()
+    {
+        this.points--;
+        pointsText.text = points.ToString();
+        this.RemoveFirstDino();
+    }
+
+    public void ComputeSuccess()
+    {
+        this.points++;
+        pointsText.text = points.ToString();
+        this.RemoveFirstDino();
     }
 
     public void Write()

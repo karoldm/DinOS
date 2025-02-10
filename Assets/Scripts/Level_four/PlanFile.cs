@@ -38,8 +38,6 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
         if (this.image != null)
         {
             this.image.sprite = this.hasPriority ? this.imagePriority : this.imageNoPriority;
-            Debug.Log("Priority: " + this.hasPriority);
-            Debug.Log("Priority: " + this.image.sprite);
             gameObject.SetActive(true);
         }
         else
