@@ -19,7 +19,7 @@ public class ControllerLevelFour : UserController
     private float leftTime = 60f;
     public Award awardSecMemory;
     private int points = 0;
-    //private bool hasError = false;
+    private bool hasError = false;
     private bool gameOver = true;
 
     private Customer currentCustomer;
@@ -54,12 +54,12 @@ public class ControllerLevelFour : UserController
     {
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
-       /* if (user.levelFour.awards.Contains("SECMEMORY"))
+        if (user.levelFour.awards.Contains("SECMEMORY"))
         {
             awardSecMemory.Unlock();
         }
 
-        this.pointsText.text = user.levelFour.score.ToString();*/
+        this.pointsText.text = user.levelFour.score.ToString();
     }
 
     void Update()
@@ -88,9 +88,11 @@ public class ControllerLevelFour : UserController
         this.timeText.text = "";
         timeContainer.SetActive(false);
         startButton.SetActive(true);
-        ClearDinoQueue();
+        ClearQueue(dinoQueue);
+        ClearQueue(swapArea);
+        ClearQueue(secondMemoryArea);
 
-        /*if(!hasError && awardSecMemory.IsLocked())
+        if (!hasError && awardSecMemory.IsLocked())
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
@@ -98,17 +100,18 @@ public class ControllerLevelFour : UserController
             {
                 user.levelFour.awards.Add("SECMEMORY");
             }
-        }*/
+        }
         UpdateUser();
     }
 
-    private void ClearDinoQueue()
+    private void ClearQueue(LayoutGroup queue)
     {
-        for (int i = 1; i < dinoQueue.transform.childCount; i++)
+        for (int i = 1; i < queue.transform.childCount; i++)
         {
             Destroy(dinoQueue.transform.GetChild(i).gameObject);
         }
     }
+
 
     public void InitGame()
     {
@@ -201,6 +204,7 @@ public class ControllerLevelFour : UserController
         this.points--;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();
+        hasError = true;
     }
 
     public void ComputeSuccess()
@@ -210,40 +214,6 @@ public class ControllerLevelFour : UserController
         this.points++;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();
-    }
-
-    public void Write()
-    {
-        /*if (this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.READ)
-        {
-            return;
-        }
-        if (this.currentFileID != null)
-        {
-            points++;
-            pointsText.text = points.ToString();
-            this.PlanFile = null;
-            RemoveFirstDino();
-
-            if (!this.gameOver)
-            {
-                AddDino();
-            }
-        }*/
-    }
-
-    public void Read()
-    {
-        /*if(this.GetFirstCustomerOfQueue().GetAction() == Customer.Action.WRITE)
-        {
-            return;
-        }
-
-        RemoveFirstDino();
-        if (!this.gameOver)
-        {
-            AddDino();
-        }*/
     }
 
     private int QueueSize()
