@@ -103,7 +103,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         this.action = GetRandAction(this.planFile.GetHasPriority());
         if (this.action == Action.READ)
         {
-            this.customerWaitTime = this.planFile.GetHasPriority() ? 10f : 10f;
+            this.customerWaitTime = this.planFile.GetHasPriority() ? 5f : 10f;
         }
 
         this.leftTime = customerWaitTime; 
