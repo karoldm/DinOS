@@ -9,7 +9,7 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
 {
     private ControllerLevelFour controller;
     public int limit;
-
+    public bool isSwapArea;
 
     void Awake()
     {
@@ -33,6 +33,14 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
         
     }
 
+    private void PutPlanFile(PlanFile file)
+    {
+        file.transform.SetParent(transform);
+        file.transform.localScale = new Vector3(0.4f, 0.5f, 1f);
+        file.SetTimeToFetch(isSwapArea ? 1f : 3f);
+        this.UpdateQueue();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (transform.childCount >= limit) return;
@@ -45,21 +53,17 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
                 return;
             }
             PlanFile planFile = currentCustomer.GetPlanFile();
-            planFile.transform.SetParent(transform);
-            planFile.transform.localScale = new Vector3(0.4f, 0.5f, 1f);
-            this.UpdateQueue();
+            this.PutPlanFile(planFile);
 
             controller.SetCurrentCustomer(null);
             controller.ComputeSuccess();
         }
 
         PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
+
         if(selectedPlanFile != null)
         {
-            selectedPlanFile.transform.SetParent(transform);
-            selectedPlanFile.transform.localScale = new Vector3(0.4f, 0.5f, 1f);
-            this.UpdateQueue();
-
+            this.PutPlanFile(selectedPlanFile);
             controller.SetSelectedPlanFile(null);
         }
     }

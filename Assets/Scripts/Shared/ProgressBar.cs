@@ -18,4 +18,14 @@ public class ProgressBar : MonoBehaviour
         float clampedProgress = Mathf.Clamp01(progress);
         progressBar.fillAmount = clampedProgress;
     }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hidden()
+    {
+        gameObject.SetActive(false);
+    }
 }

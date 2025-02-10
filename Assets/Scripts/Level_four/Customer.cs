@@ -15,13 +15,11 @@ public class Customer : MonoBehaviour, IPointerClickHandler
     private PlanFile planFile;
     private Action action;
     private ControllerLevelFour controller;
-    private float leftTime; // Time for the customer
-    private bool counting = false;
-    private bool planFileBeingFetched = false;
-    private float planFileFetchTime = 5f;
-    private float customerWaitTime; // Store initial wait time for the customer
 
-    private Vector3 originalScale;
+    private bool counting = false;
+    private float customerWaitTime; 
+    private float leftTime; // Time for the customer
+    private bool planFileBeingFetched = false;
 
     void Awake()
     {
@@ -31,8 +29,6 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogError("ControllerLevelFour instance not found in scene.");
         }
-
-        originalScale = transform.localScale;
     }
 
     void Update()
@@ -46,12 +42,10 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                // If customer's waiting time finished, but the file isn't fetched yet
+                // If customer's waiting time finished, but the file isn't start fetching yet
                 if (!planFileBeingFetched)
                 {
                     controller.ComputeError();
-                    controller.SetCurrentCustomer(null);
-                    controller.SetSelectedPlanFile(null);
                 }
             }
         }
@@ -88,8 +82,6 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 
     public void Init()
     {
-        Debug.Log("init customer");
-
         if (this.controller == null)
         {
             this.controller = ControllerLevelFour.Instance;
@@ -111,74 +103,74 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         this.action = GetRandAction(this.planFile.GetHasPriority());
         if (this.action == Action.READ)
         {
-            this.customerWaitTime = this.planFile.GetHasPriority() ? 2f : 4f;
+            this.customerWaitTime = this.planFile.GetHasPriority() ? 10f : 10f;
         }
 
-        this.leftTime = customerWaitTime; // Set the initial wait time for the customer
+        this.leftTime = customerWaitTime; 
         this.infoText.text = "Olá, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
             + " com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (controller.GetCurrentCustomer() == this)
+        PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
+        if (selectedPlanFile != null)
         {
-            controller.SetCurrentCustomer(null);
-            this.infoPanel.SetActive(false);
-            return;
+            selectedPlanFile.OriginalSize();
         }
 
-        if (this == controller.GetFirstCustomerOfQueue())
+        if (controller.GetCurrentCustomer() == this)
         {
-            PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
             if (selectedPlanFile != null)
             {
-                if (controller.GetCurrentCustomer().GetAction() == Action.WRITE)
+                selectedPlanFile.OriginalSize();
+
+                if (this.action == Action.WRITE || 
+                    selectedPlanFile.GetHasPriority() != this.planFile.GetHasPriority()
+                    )
                 {
                     controller.ComputeError();
                     return;
                 }
 
-                controller.SetSelectedPlanFile(null);
+                selectedPlanFile.StartFetching();
+                this.planFileBeingFetched = true;
+                StartCoroutine(FetchPlanFile());
+            }
+        }
+
+        else if (this == controller.GetFirstCustomerOfQueue())
+        {
+             controller.SetCurrentCustomer(this);
+             this.infoPanel.SetActive(true);
+
+             if(this.action == Action.READ)
+             {
                 this.counting = true;
-            }
-            else
-            {
-                controller.SetCurrentCustomer(this);
-                this.infoPanel.SetActive(true);
-                if(this.action == Action.READ)
-                {
-                    this.counting = true;
-                }
-            }
+             }
+       
         }
     }
 
     private IEnumerator FetchPlanFile()
     {
-        Debug.Log("Fetching Plan File...");
 
+        PlanFile file = controller.GetSelectedPlanFile();
         // Wait for the recovery time of the plan file
-        yield return new WaitForSeconds(planFileFetchTime);
+        yield return new WaitForSeconds(file.GetTimeToFetch());
 
         // Once the plan file is ready, check if the customer is still waiting
         if (leftTime > 0)
         {
             // Plan file is ready before the customer time finishes
+            Destroy(file.gameObject);
             controller.ComputeSuccess();
         }
         else
         {
             // Customer's waiting time finished before the plan file is fetched
+            file.Reset();
             controller.ComputeError();
         }
-
-        // Clean up and reset all necessary data
-        controller.SetCurrentCustomer(null);
-        controller.SetSelectedPlanFile(null);
-
-        // Reset customer scale and close the info panel
-        transform.localScale = originalScale;
-        this.infoPanel.SetActive(false);
     }
 }

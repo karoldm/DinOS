@@ -13,6 +13,19 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
     private Image image;
     private ControllerLevelFour controller;
     private Vector3 scaleIncrement = new Vector3(0.1f, 0.1f, 0.1f);
+    private float leftTime;
+    private float timeToFetch;
+    public ProgressBar progressBar;
+    private bool fetching = false;
+
+    void Update()
+    {
+        if (fetching && leftTime > 0)
+        {
+            leftTime -= Time.deltaTime;
+            progressBar.UpdateProgressBar((leftTime / timeToFetch));
+        }
+    }
 
     void Awake()
     {
@@ -22,6 +35,17 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
         {
             Debug.LogError("ControllerLevelFour instance not found in scene.");
         }
+    }
+
+    public float GetTimeToFetch()
+    {
+        return this.timeToFetch;
+    }
+
+    public void SetTimeToFetch(float time)
+    {
+        this.timeToFetch = time;
+        this.leftTime = time;
     }
 
     private bool GenerateRandomHasPriority()
@@ -51,19 +75,43 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
         return this.hasPriority;
     }
 
-    void Start()
+    public void StartFetching()
     {
-
+        this.fetching = true;
+        this.progressBar.UpdateProgressBar(1);
+        this.progressBar.Show();
     }
 
-    void Update()
+    public void Reset()
     {
+        this.fetching = false;
+        this.leftTime = this.timeToFetch;
+        transform.localScale = new Vector3(0.4f, 0.5f, 1f);
+    }
 
+    public void OriginalSize()
+    {
+        transform.localScale = new Vector3(0.4f, 0.5f, 1f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        controller.SetSelectedPlanFile(this);
-        transform.localScale += scaleIncrement;
+        PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
+
+        if (selectedPlanFile != null)
+        {
+            selectedPlanFile.OriginalSize();
+        }
+
+        if(controller.GetSelectedPlanFile() == this)
+        {
+            controller.SetSelectedPlanFile(null);
+            this.OriginalSize();
+        }
+        else
+        {
+            controller.SetSelectedPlanFile(this);
+            transform.localScale += scaleIncrement;
+        }
     }
 }

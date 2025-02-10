@@ -164,8 +164,10 @@ public class ControllerLevelFour : UserController
         if (QueueSize() <= 0) return;
 
         Destroy(dinoQueue.transform.GetChild(1).gameObject);
-
         UpdateQueue();
+
+        SetCurrentCustomer(null);
+        SetSelectedPlanFile(null);
 
         if (!this.gameOver)
         {
@@ -195,6 +197,7 @@ public class ControllerLevelFour : UserController
 
     public void ComputeError()
     {
+        Debug.Log("ComputeError");
         this.points--;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();
@@ -202,6 +205,8 @@ public class ControllerLevelFour : UserController
 
     public void ComputeSuccess()
     {
+        Debug.Log("ComputeSuccess");
+
         this.points++;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();
