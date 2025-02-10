@@ -7,12 +7,14 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 {
     public enum Action { READ, WRITE };
 
-    private Action action;
-    private ControllerLevelFour controller;
-    private PlanFile planFile;
     public PlanFile planFileModel;
     public GameObject infoPanel;
     public TextMeshProUGUI infoText;
+    public TextMeshProUGUI countdownText;
+
+    private PlanFile planFile;
+    private Action action;
+    private ControllerLevelFour controller;
     private float leftTime; // Time for the customer
     private bool counting = false;
     private bool planFileBeingFetched = false;
@@ -40,7 +42,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             if (leftTime > 0)
             {
                 leftTime -= Time.deltaTime;
-                infoText.text = infoText.text + ": " + Mathf.Round(leftTime).ToString();
+                countdownText.text = Mathf.Round(leftTime).ToString();
             }
             else
             {
