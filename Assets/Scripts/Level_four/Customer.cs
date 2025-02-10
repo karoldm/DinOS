@@ -108,7 +108,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 
         this.leftTime = customerWaitTime; 
         this.infoText.text = "Olá, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
-            + " com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
+            + " um plano de voo com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
     }
 
     public void OnPointerClick(PointerEventData eventData)
