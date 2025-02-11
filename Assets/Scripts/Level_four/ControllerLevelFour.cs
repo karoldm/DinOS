@@ -81,16 +81,15 @@ public class ControllerLevelFour : UserController
 
     private void FinishGame()
     {
-        user.levelFour.score = points;
-
         gameOver = true;
+        user.levelFour.score = points;
         this.leftTime = 60f;
         this.timeText.text = "";
         timeContainer.SetActive(false);
         startButton.SetActive(true);
-        ClearQueue(dinoQueue);
-        ClearQueue(swapArea);
-        ClearQueue(secondMemoryArea);
+        ClearQueue(1, dinoQueue);
+        ClearQueue(0, swapArea);
+        ClearQueue(0, secondMemoryArea);
 
         if (!hasError && awardSecMemory.IsLocked())
         {
@@ -104,11 +103,11 @@ public class ControllerLevelFour : UserController
         UpdateUser();
     }
 
-    private void ClearQueue(LayoutGroup queue)
+    private void ClearQueue(int initialIndex, LayoutGroup queue)
     {
-        for (int i = 1; i < queue.transform.childCount; i++)
+        for (int i = initialIndex; i < queue.transform.childCount; i++)
         {
-            Destroy(dinoQueue.transform.GetChild(i).gameObject);
+            Destroy(queue.transform.GetChild(i).gameObject);
         }
     }
 
