@@ -70,7 +70,7 @@ public class Dialog : MonoBehaviour
     private LinkedList<string> currentDialog;
     private LinkedListNode<string> currentNode;
 
-    Process_controller processController;
+    private Process_controller processController;
 
     private static Dialog instance;
     public static Dialog Instance => instance;
@@ -113,6 +113,7 @@ public class Dialog : MonoBehaviour
         else
         {
             this.hidden();
+            processController.InitTutotial();
         }
     }
 

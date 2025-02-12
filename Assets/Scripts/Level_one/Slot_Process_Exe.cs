@@ -75,6 +75,7 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
 
                 processController.HandleItemFinished();
                 processController.ResetProgressBar();
+                processController.ShowTutorial();
             }
         }
     }
@@ -102,6 +103,7 @@ public class Slot_Process_Exe : MonoBehaviour, IDropHandler
             }
 
             processController.UpdateQueue(currentItemExe);
+            processController.HiddenTutorial();
         }
     }
 }

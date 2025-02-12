@@ -27,6 +27,8 @@ public class Process_controller : UserController
     public Award starFCFS;
     public Award starPriority;
 
+    public GameObject cursorAnimation;
+
     private List<Process_item> itensExecuted = new List<Process_item>();
     
     public void Start()
@@ -77,6 +79,24 @@ public class Process_controller : UserController
         }
     }
 
+    public void ShowTutorial()
+    {
+        if (user.levelOne.firstTime)
+        {
+            cursorAnimation.SetActive(true);
+        }
+    }
+
+    public void HiddenTutorial()
+    {
+        cursorAnimation.SetActive(false);
+    }
+
+    public void InitTutotial()
+    {
+        ShowTutorial();
+    }
+ 
     public bool CheckItensFinished()
     {
         return (itens.Count == itensExecuted.Count);
@@ -204,6 +224,7 @@ public class Process_controller : UserController
                 dialog.showDialog(Dialog.DialogType.None);
             }
             ResetGame();
+            user.levelOne.firstTime = false;
             UpdateUser();
         }
     }
