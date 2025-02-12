@@ -148,7 +148,9 @@ public class Player : MonoBehaviour
 
         while((targetPosition - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, this.speed * Time.deltaTime);
+            float adjustedSpeed = speed * (Application.targetFrameRate / 60f);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, adjustedSpeed * Time.deltaTime);
+
             yield return null;
         }
         transform.position = targetPosition;

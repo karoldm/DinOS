@@ -83869,8 +83869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: -0.000002861}
-  m_SizeDelta: {x: 200.8864, y: 112.05}
+  m_AnchoredPosition: {x: 0.9951, y: 0.4975}
+  m_SizeDelta: {x: 262.5818, y: 138.9173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727931558
 MonoBehaviour:
@@ -83919,8 +83919,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 6.5
+  m_fontSizeBase: 6.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -86349,7 +86349,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2026da3fa8cd9c1409a8f9012ea73c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: swap
+  text: "A \xE1rea de swap \xE9 uma \xE1rea da mem\xF3ria secund\xE1ria pr\xE9-alocada
+    e usada especificamente para armazenar dados da mem\xF3ria RAM temporariamente.
+    A \xE1rea de swap serve como um extens\xE3o da mem\xF3ria RAM e \xE9 usada para
+    evitar overflow da mem\xF3ria O acesso \xE1 ela \xE9 mais lento do que o da mem\xF3ria
+    RAM, mas o sistema operacional organiza essas p\xE1ginas para minimizar a fragmenta\xE7\xE3o,
+    permitindo acessos mais eficientes do que em um HDD comum, onde os arquivos podem
+    estar espalhados. "
   panel: {fileID: 2072942224}
 --- !u!114 &1683643753
 MonoBehaviour:
@@ -87510,8 +87516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 102.49831, y: -79.71921}
-  m_SizeDelta: {x: 204.9966, y: 109.7858}
+  m_AnchoredPosition: {x: 131.36, y: -94.1479}
+  m_SizeDelta: {x: 262.71, y: 138.6433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072942226
 MonoBehaviour:
