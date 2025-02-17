@@ -207,6 +207,7 @@ public class Dino : MonoBehaviour
 
         UpdateCurrentTasks();
         MoveToDest();
+        controller.HiddenTutorial(queueIndex);
     }
 
     private void UpdateCurrentTasks()

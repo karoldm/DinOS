@@ -27,7 +27,11 @@ public class RAMController : UserController
     public TextMeshProUGUI timeText;
     bool gamingRunning = false;
     public GameObject timeContainer;
-    public GameObject startButton;  
+    public GameObject startButton;
+
+    public GameObject tutorial1;
+    public GameObject tutorial2;
+    public GameObject tutorial3;
 
     void Start()
     {
@@ -58,11 +62,23 @@ public class RAMController : UserController
 
     private void AddInitialTasks()
     {
+   
+        if (user.levelTwo.firstTime)
+        {
+            AddElementToQueue(0, 0, 10);
+            AddElementToQueue(1, 1, 5);
+            AddElementToQueue(2, 2, 15);
+        }
+
        for (int i = 0; i < queues.Count; i++)
        {
             AddElementToQueue(i, GetRandInt(0, 2));
             AddElementToQueue(i, GetRandInt(0, 2));
-            AddElementToQueue(i, GetRandInt(0, 2));
+
+            if(!user.levelTwo.firstTime)
+            {
+                AddElementToQueue(i, GetRandInt(0, 2));
+            }
        }
     }
 
@@ -79,6 +95,7 @@ public class RAMController : UserController
         }
 
         user.levelTwo.score = score;
+        user.levelTwo.firstTime = false;
         UpdateUser();
 
         timeContainer.SetActive(false);
@@ -125,6 +142,36 @@ public class RAMController : UserController
 
         timeContainer.SetActive(true);
         startButton.SetActive(false);
+
+        this.ShowTutorial();
+    }
+
+    public void ShowTutorial()
+    {
+        if (user.levelTwo.firstTime)
+        {
+            tutorial1.SetActive(true);
+            tutorial2.SetActive(true);
+            tutorial3.SetActive(true);
+        }
+    }
+
+    public void HiddenTutorial(int index)
+    {
+        if(index == 2)
+        {
+            tutorial1.SetActive(false);
+
+        } 
+        else if(index == 1)
+        {
+            tutorial2.SetActive(false);
+            
+        }
+        else
+        {
+            tutorial3.SetActive(false);
+        }
     }
 
     public void LoadInitialScene()
@@ -178,7 +225,7 @@ public class RAMController : UserController
     }
 
 
-    public void AddElementToQueue(int indexQueue, int indexTask)
+    public void AddElementToQueue(int indexQueue, int indexTask, int? score = null)
     {
         if (indexQueue < 0 || indexQueue >= queues.Count)
         {
@@ -221,7 +268,7 @@ public class RAMController : UserController
         }
 
         AirportTask task = Instantiate(tasks[indexTask], queues[indexQueue].transform);
-        task.InstanciateTask(indexTask, indexQueue);
+        task.InstanciateTask(indexTask, indexQueue, score);
         ForceRebuildLayoutQueue(indexQueue);
         task.UpdateStartPosition();
 
