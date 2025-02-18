@@ -294,6 +294,7 @@ public class LevelThreeController : UserController
         }
 
         user.levelThree.score = score;
+        user.levelThree.firstTime = false;
         UpdateUser();
 
         foreach (VerticalLayoutGroup queue in queues)
