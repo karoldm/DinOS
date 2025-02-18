@@ -28,7 +28,7 @@ public class LevelThreeController : UserController
     private int maxAirplanes = 32;
     public LevelThreeDialog dialog;
 
-
+    public GameObject cursorTutorial;
 
     public static LevelThreeController Instance
     {
@@ -51,6 +51,15 @@ public class LevelThreeController : UserController
     void Start()
     {
         dialog.showDialog(LevelThreeDialog.DialogType.intro);
+
+        if (user.levelThree.firstTime)
+        {
+            AddElementToQueue(0, 1);
+            AddElementToQueue(1, 0);
+            AddElementToQueue(2, 3);
+            AddElementToQueue(3, 2);
+        }
+
         InvokeRepeating("AddAirplane", 0f, interval);
 
         if (user.levelThree.awards.Contains("COMUNICATION"))
@@ -65,6 +74,33 @@ public class LevelThreeController : UserController
 
     }
 
+    public void ShowTutorial()
+    {
+        if (user.levelThree.firstTime)
+        {
+            cursorTutorial.SetActive(true);
+        }
+    }
+
+    public void TutorialNextStep(int xincrement, int yincrement)
+    {
+        if (cursorTutorial.activeSelf == false)
+        {
+            return;
+        }
+
+        Vector3 newPosition = cursorTutorial.transform.position;
+        newPosition.x += xincrement;
+        newPosition.y += yincrement;
+        cursorTutorial.transform.position = newPosition;
+    }
+    
+
+    public void HiddenTutorial()
+    {
+        cursorTutorial.SetActive(false);
+    }
+
     public void LoadInitialScene()
     {
         SceneManager.LoadScene("Home");
@@ -74,6 +110,7 @@ public class LevelThreeController : UserController
     public void SetSelectedCall(AirplaneCall call)
     {
         this.selectedCall = call;
+        TutorialNextStep(10, -300);
     }
 
     public AirplaneCall GetSelectedCall()
@@ -113,6 +150,8 @@ public class LevelThreeController : UserController
     {
         if (firstSelected != null && secondSelected != null)
         {
+            TutorialNextStep(750, -300);
+
             VerticalLayoutGroup queue1 = firstSelected.GetQueue();
             VerticalLayoutGroup queue2 = secondSelected.GetQueue();
 
@@ -182,7 +221,7 @@ public class LevelThreeController : UserController
     }
 
 
-    public void AddElementToQueue(int indexQueue)
+    public void AddElementToQueue(int indexQueue, int? airplaneIndex = null)
     {
         if (indexQueue < 0 || indexQueue >= queues.Count)
         {
@@ -191,7 +230,7 @@ public class LevelThreeController : UserController
             return;
         }
 
-        int index = GetRandInt(0, 3);
+        int index = airplaneIndex ?? GetRandInt(0, 3);
 
 
         if (index < 0 || index >= listTypeOfAirplanes.Count)

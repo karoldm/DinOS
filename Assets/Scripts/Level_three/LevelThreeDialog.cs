@@ -93,6 +93,7 @@ public class LevelThreeDialog : MonoBehaviour
         else
         {
             this.hidden();
+            controller.ShowTutorial();
         }
     }
 

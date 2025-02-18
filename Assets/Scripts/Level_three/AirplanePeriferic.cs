@@ -93,11 +93,16 @@ public class AirplanePeriferic : MonoBehaviour, IPointerClickHandler
         else if(controller.firstSelected == this)
         {
             controller.firstSelected = null;
+            transform.localScale -= scaleIncrement;
         }
         else
         {
             controller.firstSelected = this;
             transform.localScale += scaleIncrement;
+
+            if (queue == controller.queues[0]) {
+                controller.TutorialNextStep(240, 0);
+            }
         }
     }
 

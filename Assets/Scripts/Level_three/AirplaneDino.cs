@@ -36,6 +36,8 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        controller.HiddenTutorial();
+
         if (isBusy) return;
 
         this.call = controller.GetSelectedCall();
@@ -110,6 +112,7 @@ public class AirplaneDino : MonoBehaviour, IPointerClickHandler
 
     public void ClearProgressBar()
     {
+        Debug.Log("clear progress bar");
         progressBar.UpdateProgressBar(0f);
     }
 }
