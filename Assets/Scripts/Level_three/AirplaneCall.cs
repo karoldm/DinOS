@@ -78,9 +78,15 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       
-        transform.localScale += scaleIncrement;
-        controller.SetSelectedCall(this);
-       
+        if (controller.GetSelectedCall() == this)
+        {
+            transform.localScale -= scaleIncrement;
+            controller.SetSelectedCall(null);
+        }
+        else
+        {
+            transform.localScale += scaleIncrement;
+            controller.SetSelectedCall(this);
+        }
     }
 }
