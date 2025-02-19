@@ -66,6 +66,11 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
             this.PutPlanFile(selectedPlanFile);
             controller.SetSelectedPlanFile(null);
         }
+
+        if (controller.GetStep() % 2 != 0)
+        {
+            controller.NextStepTutorial();
+        }
     }
 
 

@@ -48,14 +48,9 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
         this.leftTime = time;
     }
 
-    private bool GenerateRandomHasPriority()
+    public void Initialize(bool initialHasPriority)
     {
-        return Random.Range(0, 2) == 1;
-    }
-
-    public void Initialize()
-    {
-        this.hasPriority = GenerateRandomHasPriority();
+        this.hasPriority = initialHasPriority;
 
         this.image = GetComponent<Image>();
 
@@ -112,6 +107,7 @@ public class PlanFile : MonoBehaviour, IPointerClickHandler
         {
             controller.SetSelectedPlanFile(this);
             transform.localScale += scaleIncrement;
+            controller.NextStepTutorial();
         }
     }
 }

@@ -28,6 +28,63 @@ public class ControllerLevelFour : UserController
     public GridLayoutGroup swapArea;
     public GridLayoutGroup secondMemoryArea;
 
+    public GameObject cursorTutorial;
+    private Dictionary<int, Vector3> tutorialSteps = new Dictionary<int, Vector3>();
+    private int currentStep = 0;
+
+    Queue<(Customer.Action Action, bool Priority)> operations = new Queue<(Customer.Action, bool)>(new List<(Customer.Action, bool)>
+        {
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.WRITE, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+             (Customer.Action.READ, false),
+             (Customer.Action.WRITE, true),
+             (Customer.Action.READ, true),
+        });
 
     private static ControllerLevelFour instance;
 
@@ -55,11 +112,11 @@ public class ControllerLevelFour : UserController
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
         if (user.levelFour.awards.Contains("SECMEMORY"))
-        {
-            awardSecMemory.Unlock();
-        }
+         {
+             awardSecMemory.Unlock();
+         }
 
-        this.pointsText.text = user.levelFour.score.ToString();
+         this.pointsText.text = user.levelFour.score.ToString();
     }
 
     void Update()
@@ -78,6 +135,18 @@ public class ControllerLevelFour : UserController
         }
     }
 
+    void Awake()
+    {
+        tutorialSteps.Add(1, new Vector3(900, -200, 0));
+        tutorialSteps.Add(2, new Vector3(-900, +200, 0));
+        tutorialSteps.Add(3, new Vector3(1500, -200, 0));
+        tutorialSteps.Add(4, new Vector3(-1500, +200, 0));
+
+        tutorialSteps.Add(5, new Vector3(900, -200, 0));
+        tutorialSteps.Add(6, new Vector3(-900, +200, 0));
+        tutorialSteps.Add(7, new Vector3(1780, -230, 0));
+        tutorialSteps.Add(8, new Vector3(-1780, +230, 0));
+    }
 
     private void FinishGame()
     {
@@ -90,6 +159,7 @@ public class ControllerLevelFour : UserController
         ClearQueue(1, dinoQueue);
         ClearQueue(0, swapArea);
         ClearQueue(0, secondMemoryArea);
+        HiddenTutorial();
 
         if (!hasError && awardSecMemory.IsLocked())
         {
@@ -100,6 +170,7 @@ public class ControllerLevelFour : UserController
                 user.levelFour.awards.Add("SECMEMORY");
             }
         }
+        user.levelFour.firstTime = false;
         UpdateUser();
     }
 
@@ -119,10 +190,22 @@ public class ControllerLevelFour : UserController
         this.gameOver = false;
         this.pointsText.text = "0";
         this.points = 0;
-        this.AddDino();
-        this.AddDino();
-        this.AddDino();
-        this.AddDino();
+
+        if(user.levelFour.firstTime)
+        {
+            this.AddDino(true, Customer.Action.WRITE);
+            this.AddDino(false, Customer.Action.WRITE);
+            this.AddDino(true, Customer.Action.READ);
+            this.AddDino(false, Customer.Action.READ);
+            this.ShowTutorial();
+        }
+        else
+        {
+            this.AddDino();
+            this.AddDino();
+            this.AddDino();
+            this.AddDino();
+        }
     }
 
     public void LoadInitialScene()
@@ -131,9 +214,8 @@ public class ControllerLevelFour : UserController
 
     }
 
-    private void AddDino()
+    private void AddDino(bool? initialHasPriority = null, Customer.Action? initialAction = null)
     {
-        Debug.Log("add dino");
 
         if (dinoQueue == null)
         {
@@ -142,7 +224,8 @@ public class ControllerLevelFour : UserController
         }
 
         Customer dino = Instantiate(modelDino, dinoQueue.transform);
-        dino.Init();
+        var (action, priority) = operations.Dequeue();
+        dino.Init(initialHasPriority ?? priority, initialAction ?? action);
         dino.SetActive();
         UpdateQueue();
     }
@@ -220,37 +303,43 @@ public class ControllerLevelFour : UserController
         return dinoQueue.transform.childCount;
     }
 
-    public bool FileWithPriorityExist()
+    public void ShowTutorial()
     {
-        foreach (Transform child in this.swapArea.transform)
+        if (user.levelFour.firstTime && tutorialSteps.Count > currentStep)
         {
-            if (child.GetComponent<PlanFile>()?.GetHasPriority() == true)
-                return true;
+            this.cursorTutorial.SetActive(true);
         }
-
-        foreach (Transform child in this.secondMemoryArea.transform)
-        {
-            if (child.GetComponent<PlanFile>()?.GetHasPriority() == true)
-                return true;
-        }
-
-        return false;
     }
 
-    public bool FileWithNoPriorityExist()
+    public void HiddenTutorial()
     {
-        foreach (Transform child in this.swapArea.transform)
+        this.cursorTutorial.SetActive(false);
+    }
+
+    public bool IsTutorial()
+    {
+        return this.cursorTutorial.activeSelf;
+    }
+
+    public void NextStepTutorial()
+    {
+        if (!this.IsTutorial()) return;
+
+        currentStep++;
+
+        if(tutorialSteps.Count < currentStep)
         {
-            if (child.GetComponent<PlanFile>()?.GetHasPriority() == false)
-                return true;
+            HiddenTutorial();
+            return;
         }
 
-        foreach (Transform child in this.secondMemoryArea.transform)
-        {
-            if (child.GetComponent<PlanFile>()?.GetHasPriority() == false)
-                return true;
-        }
+        Vector3 pos = this.cursorTutorial.transform.position;
+        Vector3 newPos = tutorialSteps[currentStep];
+        this.cursorTutorial.transform.position = new Vector3(pos.x + newPos.x, pos.y + newPos.y, pos.z);
+    }
 
-        return false;
+    public int GetStep()
+    {
+        return this.currentStep;
     }
 }

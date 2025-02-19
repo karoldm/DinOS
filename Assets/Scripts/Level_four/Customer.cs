@@ -37,6 +37,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         {
             if (leftTime > 0)
             {
+                if (controller.IsTutorial()) return;
                 leftTime -= Time.deltaTime;
                 countdownText.text = Mathf.Round(leftTime).ToString();
             }
@@ -66,21 +67,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         gameObject.SetActive(true);
     }
 
-    private Action GetRandAction(bool hasPriority)
-    {
-        Action action = Random.Range(0, 2) == 1 ? Action.READ : Action.WRITE;
-        if (action == Action.READ && hasPriority && !controller.FileWithPriorityExist())
-        {
-            action = Action.WRITE;
-        }
-        else if (action == Action.READ && !hasPriority && !controller.FileWithNoPriorityExist())
-        {
-            action = Action.WRITE;
-        }
-        return action;
-    }
-
-    public void Init()
+    public void Init(bool initialHasPriority, Action initialAction)
     {
         if (this.controller == null)
         {
@@ -99,8 +86,9 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             this.planFileModel.transform.rotation
         );
 
-        this.planFile.Initialize();
-        this.action = GetRandAction(this.planFile.GetHasPriority());
+        this.planFile.Initialize(initialHasPriority);
+        this.action = initialAction;
+
         if (this.action == Action.READ)
         {
             this.customerWaitTime = this.planFile.GetHasPriority() ? 5f : 10f;
@@ -113,6 +101,9 @@ public class Customer : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // just the first customer can be clicked
+        if (this != controller.GetFirstCustomerOfQueue()) return;
+
         PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
         if (selectedPlanFile != null)
         {
@@ -138,26 +129,31 @@ public class Customer : MonoBehaviour, IPointerClickHandler
                 StartCoroutine(FetchPlanFile());
             }
         }
-
-        else if (this == controller.GetFirstCustomerOfQueue())
+        else
         {
-             controller.SetCurrentCustomer(this);
-             this.infoPanel.SetActive(true);
+            controller.SetCurrentCustomer(this);
+            this.infoPanel.SetActive(true);
 
-             if(this.action == Action.READ)
-             {
-                this.counting = true;
-             }
-       
+            if(this.action == Action.READ)
+            {
+               this.counting = true;
+            }
+        }
+        if(controller.GetStep() % 2 == 0)
+        {
+            controller.NextStepTutorial();
         }
     }
 
     private IEnumerator FetchPlanFile()
     {
+        controller.HiddenTutorial();
 
         PlanFile file = controller.GetSelectedPlanFile();
         // Wait for the recovery time of the plan file
         yield return new WaitForSeconds(file.GetTimeToFetch());
+
+        controller.ShowTutorial();
 
         // Once the plan file is ready, check if the customer is still waiting
         if (leftTime > 0)
