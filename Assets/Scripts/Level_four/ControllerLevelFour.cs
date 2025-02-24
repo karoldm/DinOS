@@ -8,6 +8,8 @@ using System;
 
 public class ControllerLevelFour : UserController
 {
+    public enum ErrorType { TIMEOUT, READ_WHEN_MUST_WRITE, WRITE_WHEN_MUST_READ, DIFFERENT_PRIORITY }
+
     public VerticalLayoutGroup dinoQueue;
     public TextMeshProUGUI pointsText;
     public Customer modelDino;
@@ -111,6 +113,8 @@ public class ControllerLevelFour : UserController
     {
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
+        if (user == null) return;
+
         if (user.levelFour.awards.Contains("SECMEMORY"))
          {
              awardSecMemory.Unlock();
@@ -151,7 +155,10 @@ public class ControllerLevelFour : UserController
     private void FinishGame()
     {
         gameOver = true;
-        user.levelFour.score = points;
+        if(user != null)
+        {
+            user.levelFour.score = points;
+        }
         this.leftTime = 60f;
         this.timeText.text = "";
         timeContainer.SetActive(false);
@@ -165,12 +172,15 @@ public class ControllerLevelFour : UserController
         {
             dialog.showDialog(DialogLevelFour.DialogType.award);
             awardSecMemory.Unlock();
-            if (!user.levelFour.awards.Contains("SECMEMORY"))
+            if (user != null && !user.levelFour.awards.Contains("SECMEMORY"))
             {
                 user.levelFour.awards.Add("SECMEMORY");
             }
         }
-        user.levelFour.firstTime = false;
+        if(user != null)
+        {
+            user.levelFour.firstTime = false;
+        }
         UpdateUser();
     }
 
@@ -191,7 +201,7 @@ public class ControllerLevelFour : UserController
         this.pointsText.text = "0";
         this.points = 0;
 
-        if(user.levelFour.firstTime)
+        if(user != null && user.levelFour.firstTime)
         {
             this.AddDino(true, Customer.Action.WRITE);
             this.AddDino(false, Customer.Action.WRITE);
@@ -280,12 +290,12 @@ public class ControllerLevelFour : UserController
         return this.selectedPlanFile;
     }
 
-    public void ComputeError()
+    public void ComputeError(ErrorType errorType)
     {
-        Debug.Log("ComputeError");
         this.points--;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();
+        dialog.ShowFeedbackDialog(errorType);
         hasError = true;
     }
 
@@ -305,7 +315,7 @@ public class ControllerLevelFour : UserController
 
     public void ShowTutorial()
     {
-        if (user.levelFour.firstTime && tutorialSteps.Count > currentStep)
+        if (user != null && user.levelFour.firstTime && tutorialSteps.Count > currentStep)
         {
             this.cursorTutorial.SetActive(true);
         }

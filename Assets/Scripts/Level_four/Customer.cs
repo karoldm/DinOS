@@ -46,7 +46,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
                 // If customer's waiting time finished, but the file isn't start fetching yet
                 if (!planFileBeingFetched)
                 {
-                    controller.ComputeError();
+                    controller.ComputeError(ControllerLevelFour.ErrorType.TIMEOUT);
                 }
             }
         }
@@ -116,11 +116,15 @@ public class Customer : MonoBehaviour, IPointerClickHandler
             {
                 selectedPlanFile.OriginalSize();
 
-                if (this.action == Action.WRITE || 
-                    selectedPlanFile.GetHasPriority() != this.planFile.GetHasPriority()
-                    )
+                if (this.action == Action.WRITE)
                 {
-                    controller.ComputeError();
+                    controller.ComputeError(ControllerLevelFour.ErrorType.READ_WHEN_MUST_WRITE);
+                    return;
+                }
+
+                if(selectedPlanFile.GetHasPriority() != this.planFile.GetHasPriority())
+                {
+                    controller.ComputeError(ControllerLevelFour.ErrorType.DIFFERENT_PRIORITY);
                     return;
                 }
 
@@ -166,7 +170,7 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         {
             // Customer's waiting time finished before the plan file is fetched
             file.Reset();
-            controller.ComputeError();
+            controller.ComputeError(ControllerLevelFour.ErrorType.TIMEOUT);
         }
     }
 }

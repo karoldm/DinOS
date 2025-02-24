@@ -44,6 +44,13 @@ public class LevelThreeDialog : MonoBehaviour
         };
     private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
+    private static string[] feedbackTexts =
+        {
+            "Erro de coordenação! O avião está tentando pousar na pista errada!\r\nAssim como no aeroporto, onde cada avião precisa de uma pista específica para pousar com segurança, no mundo dos sistemas operacionais, cada periférico (avião) precisa do driver correto (piloto) para se comunicar com o sistema operacional (aeroporto). Se o avião tentar pousar na pista errada, o aeroporto não conseguirá atendê-lo, causando confusão e possíveis \"acidentes\" no sistema.",
+            "No jogo, sua missão é garantir que cada avião (periférico) tenha o piloto (driver) certo e pouse na pista correta (interface do SO) para que o aeroporto (sistema operacional) possa gerenciar tudo sem problemas. Afinal, um pouso na pista errada pode levar a um caos generalizado"
+        };
+    private LinkedList<string> feedbackDialog = new LinkedList<string>(feedbackTexts);
+
     public Button button;
     public TextMeshProUGUI dialogText;
 
@@ -93,7 +100,10 @@ public class LevelThreeDialog : MonoBehaviour
         else
         {
             this.hidden();
-            controller.ShowTutorial();
+            if(this.currentDialog != this.feedbackDialog)
+            {
+                controller.ShowTutorial();
+            }
         }
     }
 
@@ -133,5 +143,13 @@ public class LevelThreeDialog : MonoBehaviour
             this.nextText();
             this.show();
         }
+    }
+
+    public void ShowFeedbackDialog()
+    {
+        this.currentDialog = this.feedbackDialog;
+        this.currentNode = this.currentDialog.First;
+        this.nextText();
+        this.show();
     }
 }

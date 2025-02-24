@@ -57,6 +57,10 @@ public class RAMController : UserController
 
     public void SetHasSegmentation()
     {
+        if (!this.hasSegmentation)
+        {
+            this.dialog.ShowFeedback();
+        }
         this.hasSegmentation = true;
     }
 
@@ -244,7 +248,7 @@ public class RAMController : UserController
         AirportTask firstChild = GetFirstTaskOfQueue(indexQueue);
         AirportTask lastChild = GetLastTaskOfQueue(indexQueue);
 
-        bool willHadNext = GetRandInt(0, 1) == 0 ? false : true;
+        bool willHadNext = user.levelTwo.firstTime ? false : ( GetRandInt(0, 1) == 0 ? false : true );
 
         int sum = 0;
         if (willHadNext)

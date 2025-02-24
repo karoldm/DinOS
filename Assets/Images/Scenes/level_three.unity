@@ -1683,7 +1683,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 1
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -3155,8 +3155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.99819946, y: 106.69035}
-  m_SizeDelta: {x: -27.1563, y: 183.2607}
+  m_AnchoredPosition: {x: 0.99819946, y: 127.995255}
+  m_SizeDelta: {x: -27.1563, y: 225.8705}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &478552089
 MonoBehaviour:
@@ -3510,8 +3510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0251, y: 0.9573}
-  m_SizeDelta: {x: 188.4144, y: 92.3997}
+  m_AnchoredPosition: {x: -0.8578, y: -0.708}
+  m_SizeDelta: {x: 250.0297, y: 157.3457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519320895
 MonoBehaviour:
@@ -87625,8 +87625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 90.65, y: -64.9}
-  m_SizeDelta: {x: 181.29977, y: 82.3474}
+  m_AnchoredPosition: {x: 125.77198, y: -99.89423}
+  m_SizeDelta: {x: 251.5438, y: 152.3358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339480738
 MonoBehaviour:
@@ -88905,8 +88905,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -74}
-  m_SizeDelta: {x: -25.368, y: 130.52179}
+  m_AnchoredPosition: {x: 0, y: -92.70674}
+  m_SizeDelta: {x: -25.368, y: 167.9352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1727686302
 GameObject:
@@ -90335,7 +90335,7 @@ Animator:
   m_GameObject: {fileID: 1921323427}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0942e9f7f5927794182b993a41ea4109, type: 2}
+  m_Controller: {fileID: 9100000, guid: afc4bf70f0c6c494c8206919dbafcae2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -90777,7 +90777,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 1
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0

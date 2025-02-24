@@ -49,7 +49,7 @@ public class Droppable : MonoBehaviour, IPointerClickHandler
         if (currentCustomer != null)
         {
             if (currentCustomer.GetAction() == Customer.Action.READ) {
-                controller.ComputeError();
+                controller.ComputeError(ControllerLevelFour.ErrorType.WRITE_WHEN_MUST_READ);
                 return;
             }
             PlanFile planFile = currentCustomer.GetPlanFile();

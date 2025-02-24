@@ -39,6 +39,9 @@ public class DialogLevelFour : MonoBehaviour
         };
     private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
+
+    private LinkedList<string> feedbackDialog = new LinkedList<string>();
+
     public Button button;
     public TextMeshProUGUI dialogText;
 
@@ -127,5 +130,30 @@ public class DialogLevelFour : MonoBehaviour
             this.nextText();
             this.show();
         }
+    }
+
+    public void ShowFeedbackDialog(ControllerLevelFour.ErrorType errorType)
+    {
+        switch (errorType)
+        {
+            case ControllerLevelFour.ErrorType.TIMEOUT:
+                feedbackDialog.AddLast("Tempo esgotado!\r\nO cliente esperou demais para receber o plano de voo, e ele não pôde ser lido a tempo. Lembre-se: planos de voo de alta prioridade devem ser mantidos no saguão (swap) para acesso rápido, enquanto os de baixa prioridade podem ser armazenados no armazém (memória secundária). Organize os planos de voo de acordo com suas prioridades para evitar atrasos críticos!");
+                break;
+            case ControllerLevelFour.ErrorType.DIFFERENT_PRIORITY:
+                feedbackDialog.AddLast("Prioridade incorreta!\r\nO cliente solicitou um plano de voo de prioridade diferente da que você serviu. Certifique-se de verificar a prioridade do plano antes de atendê-la!");
+                break;
+            case ControllerLevelFour.ErrorType.READ_WHEN_MUST_WRITE:
+                feedbackDialog.AddLast("Ops! Parece que houve uma confusão na operação!\r\nO cliente solicitou a escrita de um plano de voo, mas você tentou ler. Lembre-se: quando a torre pede para escrever, o plano de voo precisa ser armazenado corretamente no saguão (swap) ou no armazém (memória secundária), dependendo da prioridade.");
+                break;
+            case ControllerLevelFour.ErrorType.WRITE_WHEN_MUST_READ:
+                feedbackDialog.AddLast("Erro na operação!\r\nO cliente solicitou a leitura de um plano de voo, mas você tentou escrever. Quando a torre pede para ler, o objetivo é recuperar o plano de voo rapidamente, especialmente se for de alta prioridade. Certifique-se de identificar corretamente se a operação é de leitura ou escrita antes de agir!");
+                break;
+        }
+
+        this.currentDialog = this.feedbackDialog;
+        this.currentNode = this.currentDialog.First;
+        this.nextText();
+        this.show();
+        feedbackDialog.Clear();
     }
 }

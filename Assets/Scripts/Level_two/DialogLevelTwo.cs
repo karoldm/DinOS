@@ -51,6 +51,14 @@ public class DialogLevelTwo : MonoBehaviour
         };
     private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
+
+    private static string[] feedbackTexts =
+        {
+            "Ops! O Dino poderia lidar com tarefas mais complexas!\r\nNo aeroporto da memória RAM, cada Dino (bloco de memória) tem uma capacidade específica para realizar tarefas (processos). Delegar uma tarefa pequena a um Dino com grande capacidade é como colocar um avião de carga para transportar uma mala de mão: ineficiente e um desperdício de recursos!",
+            "No jogo, você precisa garantir que cada Dino receba tarefas adequadas ao seu tamanho. Tarefas grandes devem ser atribuídas a Dinos com maior capacidade, enquanto tarefas menores podem ser executadas por Dinos menores. Assim, o aeroporto (sistema) opera de forma eficiente, sem desperdiçar memória ou deixar processos importantes esperando!"
+        };
+    private LinkedList<string> feedbackDialog = new LinkedList<string>(feedbackTexts);
+
     public Button button;
     public TextMeshProUGUI dialogText;
 
@@ -141,5 +149,13 @@ public class DialogLevelTwo : MonoBehaviour
             this.nextText();
             this.show();
         }
+    }
+
+    public void ShowFeedback()
+    {
+        this.currentDialog = this.feedbackDialog;
+        this.currentNode = this.currentDialog.First;
+        this.nextText();
+        this.show();
     }
 }

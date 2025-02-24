@@ -249,6 +249,10 @@ public class LevelThreeController : UserController
     {
         if (!airplane.GetCorrectQueue())
         {
+            if (this.wrongFlag == false)
+            {
+                dialog.ShowFeedbackDialog();
+            }
             this.wrongFlag = true;
         }
         this.score += (airplane.GetCorrectQueue() ? 1 : -1) * airplane.GetScore();
