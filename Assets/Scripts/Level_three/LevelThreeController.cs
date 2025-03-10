@@ -25,8 +25,9 @@ public class LevelThreeController : UserController
     private bool wrongFlag = false; 
     public Award award;
     private int totalAirplanes = 0;
-    private int maxAirplanes = 32;
+    private int maxAirplanes = 20;
     public LevelThreeDialog dialog;
+    public TextMeshProUGUI airplanesText;
 
     public GameObject cursorTutorial;
 
@@ -256,14 +257,16 @@ public class LevelThreeController : UserController
             this.wrongFlag = true;
         }
         this.score += (airplane.GetCorrectQueue() ? 1 : -1) * airplane.GetScore();
+
         if (this.score < 0) this.score = 0;
         this.scoreText.text = score.ToString();
 
         RemoveChildOfQueue(airplane.GetQueue());
 
         totalAirplanes++;
+        airplanesText.text = "Atendidos " + totalAirplanes.ToString() + "/" + maxAirplanes.ToString();
 
-        if(totalAirplanes >= maxAirplanes)
+        if (totalAirplanes >= maxAirplanes)
         {
             EndGame();
         }
