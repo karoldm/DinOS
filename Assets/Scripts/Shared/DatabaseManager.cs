@@ -116,7 +116,8 @@ public class DatabaseManager : MonoBehaviour
     public IEnumerator SaveUser(UserModel user, Action<bool> onComplete)
     {
         string jsonData = JsonUtility.ToJson(user);
-        Debug.Log(user.levelOne.awards.ToString());
+
+        Debug.Log(user);
 
         yield return StartCoroutine(WriteData($"users/{user.username}", jsonData, onComplete));
         PlayerPrefs.SetString("user", jsonData);

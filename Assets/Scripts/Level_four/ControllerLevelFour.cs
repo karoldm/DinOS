@@ -109,8 +109,23 @@ public class ControllerLevelFour : UserController
         }
     }
 
+    private void SetStepsTutorial()
+    {
+        tutorialSteps.Add(1, new Vector3(900, -200, 0));
+        tutorialSteps.Add(2, new Vector3(-900, +200, 0));
+        tutorialSteps.Add(3, new Vector3(1500, -200, 0));
+        tutorialSteps.Add(4, new Vector3(-1500, +200, 0));
+
+        tutorialSteps.Add(5, new Vector3(900, -200, 0));
+        tutorialSteps.Add(6, new Vector3(-900, +200, 0));
+        tutorialSteps.Add(7, new Vector3(1780, -230, 0));
+        tutorialSteps.Add(8, new Vector3(-1780, +230, 0));
+    }
+
     void Start()
     {
+        this.SetStepsTutorial();
+
         this.dialog.showDialog(DialogLevelFour.DialogType.intro);
 
         if (user == null) return;
@@ -139,25 +154,13 @@ public class ControllerLevelFour : UserController
         }
     }
 
-    void Awake()
-    {
-        tutorialSteps.Add(1, new Vector3(900, -200, 0));
-        tutorialSteps.Add(2, new Vector3(-900, +200, 0));
-        tutorialSteps.Add(3, new Vector3(1500, -200, 0));
-        tutorialSteps.Add(4, new Vector3(-1500, +200, 0));
-
-        tutorialSteps.Add(5, new Vector3(900, -200, 0));
-        tutorialSteps.Add(6, new Vector3(-900, +200, 0));
-        tutorialSteps.Add(7, new Vector3(1780, -230, 0));
-        tutorialSteps.Add(8, new Vector3(-1780, +230, 0));
-    }
-
     private void FinishGame()
     {
         gameOver = true;
         if(user != null)
         {
             user.levelFour.score = points;
+            user.levelFour.firstTime = false;
         }
         this.leftTime = 60f;
         this.timeText.text = "";
@@ -176,10 +179,6 @@ public class ControllerLevelFour : UserController
             {
                 user.levelFour.awards.Add("SECMEMORY");
             }
-        }
-        if(user != null)
-        {
-            user.levelFour.firstTime = false;
         }
         UpdateUser();
     }

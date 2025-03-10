@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 50000f;
+    public float speed = 500f;
 
     private bool isMoving;
     private Vector2 input;
