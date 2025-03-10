@@ -2,20 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Award : MonoBehaviour
+public class Award : MonoBehaviour, IPointerClickHandler
 {
-    public Sprite unlockedImage;
+    public Sprite unlockedImage; 
     private bool locked = true;
+    public DialogAwardInfo dialog;
+    public string name;
+    public string description;
+
+    private Image imageComponent;
 
     void Start()
     {
+        imageComponent = GetComponentInChildren<Image>();
 
+        if (imageComponent == null)
+        {
+            Debug.LogError("Image component not found on the GameObject.");
+        }
     }
 
     void Update()
     {
-
     }
 
     public bool IsLocked()
@@ -26,9 +36,10 @@ public class Award : MonoBehaviour
     public void Unlock()
     {
         this.locked = false;
-        if (gameObject.GetComponent<SpriteRenderer>() == null)
+
+        if (imageComponent == null)
         {
-            Debug.LogError("SpriteRenderer component not found on the GameObject.");
+            Debug.LogError("Image component not found on the GameObject.");
             return;
         }
 
@@ -38,6 +49,19 @@ public class Award : MonoBehaviour
             return;
         }
 
-        gameObject.GetComponent<SpriteRenderer>().sprite = unlockedImage;
+        imageComponent.sprite = unlockedImage;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(this.locked)
+        {
+            dialog.SetText(name + ": Você ainda não desbloqueou essa conquista...");
+               
+        } else
+        {
+            dialog.SetText(description);
+        }
+        dialog.Show();
     }
 }

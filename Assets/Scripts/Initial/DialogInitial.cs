@@ -20,25 +20,25 @@ public class DialogInitial : MonoBehaviour
 
     private static string[] processTexts =
         {
-            "Aqui é onde acompanhamos e controlamos os voos que precisam ser executados ou que já estão em execução.", 
+            "Torre de controle: Aqui é onde acompanhamos e controlamos os voos que precisam ser executados ou que já estão em execução.", 
     };
     private LinkedList<string> processDialog = new LinkedList<string>(processTexts);
 
     private static string[] secMemoryTexts =
         {
-            "Aqui é a área administrativa do nosso aeroporto, onde os planos de voo são gerados e armazenados para que a torre de controle possa recuperá-los posteriormente.",
+            "Armazem e área administrativa: Aqui é a área administrativa do nosso aeroporto, onde os planos de voo são gerados e armazenados para que a torre de controle possa recuperá-los posteriormente.",
     };
     private LinkedList<string> secMemoryDialog = new LinkedList<string>(secMemoryTexts);
 
     private static string[] ESTexts =
         {
-            "Aqui é onde acompanhamos os pousos e decolagens dos aviões.",
+            "Pista de decolagem e pouso: Aqui é onde acompanhamos os pousos e decolagens dos aviões.",
     };
     private LinkedList<string> ESDialog = new LinkedList<string>(ESTexts);
 
     private static string[] ramTexts =
        {
-            "Aqui é onde realizamos as tarefas necessárias para permitir que os aviões decolem e cheguem ao destino corretamente e sem problemas.",
+            "Preparação dos voos: Aqui é onde realizamos as tarefas necessárias para permitir que os aviões decolem e cheguem ao destino corretamente e sem problemas.",
     };
     private LinkedList<string> ramDialog = new LinkedList<string>(ramTexts);
 
