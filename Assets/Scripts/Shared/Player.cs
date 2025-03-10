@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 500f;
+    public float speed = 100f; 
+    public float webSpeedMultiplier = 2f; 
 
     private bool isMoving;
     private Vector2 input;
@@ -22,6 +23,13 @@ public class Player : MonoBehaviour
 
     public DialogInitial initialDialog;
 
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 120; // Increase FPS limit
+    }
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -34,53 +42,50 @@ public class Player : MonoBehaviour
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
-            if (input.x != 0) input.y = 0;  
+            if (input.x != 0) input.y = 0; // Prevent diagonal movement
 
-            input.Normalize();
-
-            animator.SetFloat("MoveX", input.x);
-            animator.SetFloat("MoveY", input.y);
-
-            var targetPosition = transform.position;
-            targetPosition.x += input.x;
-            targetPosition.y += input.y;
-
-            bool collision = false;
-
-            for(int i = 0; i <  tilemapObjects.Count; i++)
-
+            if (input != Vector2.zero)
             {
-                if(tilemapObjects[i] != null)
-                {
-                    Vector3Int obstacleMap = tilemapObjects[i].WorldToCell(targetPosition);
+                animator.SetFloat("MoveX", input.x);
+                animator.SetFloat("MoveY", input.y);
 
-                    if (tilemapObjects[i].GetTile(obstacleMap) != null)
+                var targetPosition = transform.position;
+                targetPosition.x += input.x;
+                targetPosition.y += input.y;
+
+                bool collision = false;
+
+                for (int i = 0; i < tilemapObjects.Count; i++)
+                {
+                    if (tilemapObjects[i] != null)
                     {
-                        collision = true;
-                        break;
+                        Vector3Int obstacleMap = tilemapObjects[i].WorldToCell(targetPosition);
+                        if (tilemapObjects[i].GetTile(obstacleMap) != null)
+                        {
+                            collision = true;
+                            break;
+                        }
                     }
                 }
-            }
 
-            if (input != Vector2.zero && !collision)
-            {
-                StartCoroutine(Move(targetPosition));
-            }
-
-
-            if (collision)
-            {
-                CheckPortal(targetPosition);
+                if (!collision)
+                {
+                    StartCoroutine(Move(targetPosition));
+                }
+                else
+                {
+                    CheckPortal(targetPosition);
+                }
             }
         }
 
-        animator.SetBool("IsMoving", isMoving); 
+        animator.SetBool("IsMoving", isMoving);
     }
+
 
     private void CheckPortal(Vector3 targetPosition)
     {
         if (initialDialog != null && initialDialog.gameObject.activeInHierarchy) return;
-
 
         if (tilemapProcessPortal != null)
         {
@@ -91,7 +96,6 @@ public class Player : MonoBehaviour
                 initialDialog.showDialog(DialogInitial.InitialDialogType.process);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.process);
             }
-
         }
 
         if (tilemapRAMPortal != null)
@@ -103,7 +107,6 @@ public class Player : MonoBehaviour
                 initialDialog.showDialog(DialogInitial.InitialDialogType.RAM);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.RAM);
             }
-
         }
 
         if (tilemapSecMemoryPortal != null)
@@ -115,7 +118,6 @@ public class Player : MonoBehaviour
                 initialDialog.showDialog(DialogInitial.InitialDialogType.SecMemory);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.SecMemory);
             }
-
         }
 
         if (tilemapESPortal != null)
@@ -127,7 +129,6 @@ public class Player : MonoBehaviour
                 initialDialog.showDialog(DialogInitial.InitialDialogType.ES);
                 initialDialog.SetCurrentSceneType(DialogInitial.InitialDialogType.ES);
             }
-
         }
 
         if (tilemapInitialPortal != null)
@@ -138,7 +139,6 @@ public class Player : MonoBehaviour
             {
                 SceneManager.LoadScene("Home");
             }
-
         }
     }
 
@@ -146,14 +146,18 @@ public class Player : MonoBehaviour
     {
         isMoving = true;
 
-        while((targetPosition - transform.position).sqrMagnitude > Mathf.Epsilon)
+        float adjustedSpeed = speed;
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-            yield return null;
+            adjustedSpeed *= webSpeedMultiplier;
         }
-        transform.position = targetPosition;
 
+        float stepTime = 1f / adjustedSpeed; // Time to complete the move
+        yield return new WaitForSeconds(stepTime); // Ensures movement is frame-independent
+
+        transform.position = targetPosition; // Instantly move to target position
         isMoving = false;
     }
+
+
 }
