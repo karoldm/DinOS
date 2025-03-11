@@ -18,18 +18,6 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     private int indexQueue;
     private AirportTask next;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetNext(AirportTask task)
     {
         this.next = task;
