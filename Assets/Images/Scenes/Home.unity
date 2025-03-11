@@ -1189,8 +1189,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2017,8 +2017,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3655,6 +3655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 2245efc97799c854d9fc89b528912952, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!212 &636734657
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4153,6 +4156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: d2bb9d1202e20af4ab669a09f66b480b, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &678594204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4935,6 +4941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: f60761b6c9daab4479fa6991fefdab1c, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &785892266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5210,6 +5219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 7d9d0133b66c86a47b705338cca70bb6, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &836048023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6147,8 +6159,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6165,8 +6177,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6232,8 +6244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5.4327087, y: 15.92564}
-  m_SizeDelta: {x: -73.326904, y: 174.1855}
+  m_AnchoredPosition: {x: -6.0119934, y: 18.7195}
+  m_SizeDelta: {x: -72.1683, y: 100.9944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &971702555
 GameObject:
@@ -6559,8 +6571,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7946,6 +7958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5ca46e8bc829d448d41db59b59491c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 100
+  webSpeedMultiplier: 2
   tilemapObjects:
   - {fileID: 1856045092}
   - {fileID: 1826663232}
@@ -40583,8 +40597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1.1690979, y: 136.74474}
-  m_SizeDelta: {x: -17.4344, y: 251.4895}
+  m_AnchoredPosition: {x: 1.1690979, y: 90.70443}
+  m_SizeDelta: {x: -17.4344, y: 159.4089}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298872780
 MonoBehaviour:
@@ -41666,6 +41680,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 9543940d80eaeac42b7fe7fcb7af0df5, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &1397143481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42091,6 +42108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 9db5fa34f9f37ca45b1a7d5c8aa73178, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &1471026107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42412,8 +42432,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -43416,6 +43436,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: d57fc0786e411f540bd4e733b7fc1acc, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &1669527733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44792,6 +44815,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: b6261498def75834ca18f8ed57bb841f, type: 3}
+  dialog: {fileID: 0}
+  name: 
+  description: 
 --- !u!114 &1789029397
 MonoBehaviour:
   m_ObjectHideFlags: 0
