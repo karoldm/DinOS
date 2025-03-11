@@ -228,8 +228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -106.17203}
-  m_SizeDelta: {x: -33.9512, y: 177.8368}
+  m_AnchoredPosition: {x: 0, y: -150.2105}
+  m_SizeDelta: {x: -33.9512, y: 265.9138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4752395266912068979
 CanvasRenderer:
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -288,8 +288,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -367,8 +367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 2.7514038, y: 137.37897}
-  m_SizeDelta: {x: -22.9139, y: 244.6009}
+  m_AnchoredPosition: {x: 2.7514038, y: 182.8854}
+  m_SizeDelta: {x: -22.9139, y: 335.6138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4528598616767362165
 CanvasRenderer:
@@ -436,7 +436,6 @@ GameObject:
   - component: {fileID: 5403664680300413407}
   - component: {fileID: 8306684117721609338}
   - component: {fileID: 7320028204644449482}
-  - component: {fileID: 4218625195589582156}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -574,19 +573,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &4218625195589582156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4446916751596586177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &6181202998858889087
 GameObject:
   m_ObjectHideFlags: 0
