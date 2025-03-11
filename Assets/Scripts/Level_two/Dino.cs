@@ -241,7 +241,7 @@ public class Dino : MonoBehaviour
     public void Reset()
     {
         StopAllCoroutines();
-        capacityText.text = "0";
+        capacityText.text = "0 |" + this.max.ToString(); ;
         animator.SetBool("IsMoving", false);
         this.dest = null;
         this.nextDest = null;
