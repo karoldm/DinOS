@@ -16,7 +16,7 @@ public class DialogLevelFour : MonoBehaviour
     private static string[] introTexts =
         {
           "Bem-vindo ao local onde tudo começa. Aqui é a área administrativa do aeroporto, onde os clientes agendam seus voos, gerando os planos de voo para a torre de controle. Esses planos precisam ser armazenados corretamente para que possam ser recuperados quando necessário.",
-          "Para otimizar essa organização, o aeroporto utiliza dois espaços distintos:\n Saguão (Área de Swap) – Um local de acesso rápido, ideal para planos de voo de alta prioridade.\n Armazém (Memória Secundária / Disco Rígido) – Um espaço maior, porém de recuperação mais lenta, onde ficam armazenados planos de voo de baixa prioridade.",
+          "Para otimizar essa organização, o aeroporto utiliza dois espaços distintos:\nSaguão (Área de Swap) – Um local de acesso rápido, ideal para planos de voo de alta prioridade.\nArmazém (Memória Secundária / Disco Rígido) – Um espaço maior, porém de recuperação mais lenta, onde ficam armazenados planos de voo de baixa prioridade.",
           "Para iniciar um atendimento, basta clicar no Dino. Em seguida será exibido um Dialog com as informações necessárias (se a solicitação é para armazenar ou recuperar um plano de voo e qual a sua prioridade).",
           "Para escrever um arquivo, clique na área desejada (saguão ou armazém).\nPara ler um plano de voo, clique nele e depois no cliente.\nPara mover um plano de voo, clique nele e depois na área desejada.\n",
           "Cuidado para não tentar armazenar nas áreas quando a operação for de leitura e vice-versa.\nSe atente também a prioridade do plano de voo solicitado, não tente recuperar um plano de voo de prioriadde baixa quando for solicitado um de prioridade alta, por exemplo",

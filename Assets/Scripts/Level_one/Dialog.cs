@@ -18,13 +18,11 @@ public class Dialog : MonoBehaviour
 
     private static string[] introTexts =
         {
-            "Olá, seja bem-vindo à Torre de Controle! Por aqui nós conseguimos acompanhar  quando um novo voo é agendado e chega para nós por meio dos planos de voos.",
+            "Olá, seja bem-vindo à Torre de Controle (ou ao nosso processador)! Por aqui nós conseguimos acompanhar  quando um novo voo é agendado e chega para nós como um plano de voo.",
             "Os planos de voos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a prioridade dele. Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro  para podermos agradar a todos os clientes possíveis!",
-            "Olha só, no momento temos 4 planos de voos esperando para iniciarem, que tal você tentar  selecionar um de cada vez e ver se consegue um resultado tão bom quanto o meu :)",
-            "Para iniciar um plano de voo você precisa arrastá-lo até o painel de execução à sua direita.  No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se  de usar as informações que você possui para executar os planos da forma mais eficiente  possível!",
-            "Lembre-se que você pode interromper um voo a qualquer momento e devolver ele para o  final da fila! Por questões de segurança, você deve esperar certo tempo antes de  interromper um voo, isso garante que nenhuma instrução dada ao piloto fique cortada ou pela  metade.",
-            "Mas não se preocupe! Para interromper um voo você pode só ativar o “ativar quantum” que ele será agendado para sempre ser interrompido no tempo correto. Lembre-se de ativar o quantum antes e iniciar a execução do primeiro voo! \r\n",
-    };
+            "Para iniciar a operação de um plano de voo você precisa arrastá-lo até o painel de execução à sua direita.  No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se  de usar as informações que você possui (prioridade e tempo de execução) para executar os planos da forma mais eficiente  possível!",
+            "Algumas estratégias de execução exigem que os voos sejam intercalados, para interromper um voo você pode só ativar o “ativar quantum” que ele será agendado para sempre ser interrompido no tempo correto. Lembre-se de ativar o quantum antes e iniciar a execução do primeiro voo!",
+        };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] FCFSTexts =

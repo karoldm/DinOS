@@ -1196,7 +1196,6 @@ GameObject:
   - component: {fileID: 199142586}
   - component: {fileID: 199142588}
   - component: {fileID: 199142589}
-  - component: {fileID: 199142590}
   m_Layer: 0
   m_Name: airplane_red
   m_TagString: Untagged
@@ -1325,19 +1324,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &199142590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199142583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &213180086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: d2bb9d1202e20af4ab669a09f66b480b, type: 3}
   dialog: {fileID: 786669664}
-  name: "Mestre em Comunica\xE7\xF5es"
+  title: "Mestre em Comunica\xE7\xF5es"
   description: "Conquista desbloqueada: Mestre em comunica\xE7\xF5es! Parab\xE9ns!
     Voc\xEA est\xE1 sempre garantindo que as coisas estejam no lugar correto e se 
     comuniquem da melhor forma poss\xEDvel! Sabia que uma comunica\xE7\xE3o organizada
@@ -2821,7 +2807,6 @@ GameObject:
   - component: {fileID: 439511192}
   - component: {fileID: 439511195}
   - component: {fileID: 439511194}
-  - component: {fileID: 439511193}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -2849,19 +2834,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &439511193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439511191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!114 &439511194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,7 +4672,6 @@ GameObject:
   - component: {fileID: 691680342}
   - component: {fileID: 691680344}
   - component: {fileID: 691680345}
-  - component: {fileID: 691680346}
   m_Layer: 0
   m_Name: airplane_blue
   m_TagString: Untagged
@@ -4829,19 +4800,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &691680346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691680339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &709599123
 GameObject:
   m_ObjectHideFlags: 0
@@ -89847,7 +89805,6 @@ GameObject:
   - component: {fileID: 1822908445}
   - component: {fileID: 1822908448}
   - component: {fileID: 1822908447}
-  - component: {fileID: 1822908449}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -89913,19 +89870,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822908444}
   m_CullTransparentMesh: 1
---- !u!114 &1822908449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822908444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1832721061
 GameObject:
   m_ObjectHideFlags: 0
@@ -91365,7 +91309,6 @@ GameObject:
   - component: {fileID: 2062861931}
   - component: {fileID: 2062861933}
   - component: {fileID: 2062861934}
-  - component: {fileID: 2062861935}
   m_Layer: 0
   m_Name: airplane_green
   m_TagString: Untagged
@@ -91494,19 +91437,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2062861935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062861928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2086843430
 GameObject:
   m_ObjectHideFlags: 0
@@ -91930,7 +91860,6 @@ GameObject:
   - component: {fileID: 2139039070}
   - component: {fileID: 2139039069}
   - component: {fileID: 2139039072}
-  - component: {fileID: 2139039073}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -92068,16 +91997,3 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
---- !u!114 &2139039073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139039067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}

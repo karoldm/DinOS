@@ -83511,7 +83511,6 @@ GameObject:
   - component: {fileID: 513354027}
   - component: {fileID: 513354029}
   - component: {fileID: 513354028}
-  - component: {fileID: 513354030}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -83577,18 +83576,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513354026}
   m_CullTransparentMesh: 1
---- !u!114 &513354030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513354026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &522054212
 GameObject:
   m_ObjectHideFlags: 0
@@ -83602,7 +83589,6 @@ GameObject:
   - component: {fileID: 522054216}
   - component: {fileID: 522054215}
   - component: {fileID: 522054214}
-  - component: {fileID: 522054218}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -83740,18 +83726,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522054212}
   m_CullTransparentMesh: 1
---- !u!114 &522054218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522054212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &544437486
 GameObject:
   m_ObjectHideFlags: 0
@@ -88735,7 +88709,6 @@ GameObject:
   - component: {fileID: 1106772214}
   - component: {fileID: 1106772216}
   - component: {fileID: 1106772215}
-  - component: {fileID: 1106772217}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -88801,18 +88774,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106772213}
   m_CullTransparentMesh: 1
---- !u!114 &1106772217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106772213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1182363540
 GameObject:
   m_ObjectHideFlags: 0
@@ -88826,7 +88787,6 @@ GameObject:
   - component: {fileID: 1182363544}
   - component: {fileID: 1182363543}
   - component: {fileID: 1182363542}
-  - component: {fileID: 1182363546}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -88964,18 +88924,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182363540}
   m_CullTransparentMesh: 1
---- !u!114 &1182363546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182363540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1197703111
 GameObject:
   m_ObjectHideFlags: 0
@@ -89697,7 +89645,6 @@ GameObject:
   - component: {fileID: 1478354296}
   - component: {fileID: 1478354299}
   - component: {fileID: 1478354298}
-  - component: {fileID: 1478354297}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -89725,18 +89672,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1478354297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478354295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1478354298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90164,7 +90099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 2245efc97799c854d9fc89b528912952, type: 3}
   dialog: {fileID: 173508942}
-  name: "Organiza\xE7\xE3o \xE9 Tudo"
+  title: "Organiza\xE7\xE3o \xE9 Tudo"
   description: "Conquista desbloqueada: Organiza\xE7\xE3o \xE9 tudo! Parab\xE9ns,
     voc\xEA finalizou com gl\xF3ria o atendimento de todos os nossos clientes! Voc\xEA
     conseguiu manter tudo organizado por aqui e n\xE3o causou nenhum transtorno.

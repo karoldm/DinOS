@@ -25,16 +25,14 @@ public class LevelThreeDialog : MonoBehaviour
 
     private static string[] introTexts =
      {
-        "Bem-vindo a uma das partes mais agitadas do nosso aeroporto! Aqui é onde nossos  aviões decolam, pousam ou fazem paradas. Tudo aqui é gerenciado pela torre de controle e  ela garante que os pilotos conduzam os aviões para a pista correta.",
-        "Aqui temos diversos tipos de aviões: de passeios, de carga, particulares e comerciais. Cada  um é indicado por uma cor (sendo elas verde, azul, amarelo e vermelho, respectivamente), desse modo, cada  pista possui uma bandeira da mesma cor para indicar ao piloto que é ali que o avião deve  pousar.",
-        "Para não haver problemas de comunicação com nossos funcionários, os pilotos devem vestir  um uniforme da mesma cor que a bandeira, indicando o tipo de avião que ele está pilotando. Desse modo, um piloto com uniforme azul, só pode pousar ou decolar da pista indicada pela  bandeira azul.",
-        "Exatamente como ocorre quando você precisa conectar algum dispositivo externo no seu computador e para que o SO consiga se comunicar com ele, o sistema computacional deve possuir um driver e o dispositivo deve estar em conformidade com o protocolo de comunicação deste driver.",
-        "Toda vez que um piloto precisa usar a pista, ele deve se comunicar com a torre de controle  por meio de chamados de rádio. A nossa torre irá analisar qual funcionário vai atender à solicitação e enviar um chamado para o mesmo na pista.",
-        "Cada funcionário demora uma quantidade diferente de tempo para executar um chamado, e  esse tempo é indicado logo abaixo de cada um no nosso painel.",
-        "Vale lembrar que os voos possuem prioridade por chamado, por exemplo, um chamado de  pouso de emergência com certeza tem uma prioridade maior do que um chamado de  permissão para decolar.",
-        "Veja, temos vários aviões chegando no momento, que tal tentar gerenciar nossos funcionários  e atender os chamados? Lembre-se que o avião deve estar na pista correta para ser atendido,  você pode colocá-lo na pista correta trocando eles de lugar com um clique (clique em um avião e depois clique em outro para trocá-los de lugar). Aviões em processo de atendimento não  podem ser trocados!",
-        "Estando na posição correta você pode atribuir um chamado a um funcionário. Faça isso  clicando no chamado e depois no Dino que você quer que seja responsável. Um Dino só pode  atender um chamado por vez. ",
-        "Lembre-se de dar uma atenção especial para os chamados de alta prioridade e boa sorte!"
+       "Bem-vindo a uma das partes mais agitadas do nosso aeroporto! Aqui é onde nossos aviões decolam, pousam ou fazem paradas.",
+       "Aqui temos diversos tipos de aviões (Assim como temos diversos tipos de periféricos no nosso computador). Cada um é indicado por uma cor, desse modo, cada pista possui uma bandeira da mesma cor para indicar ao piloto que é ali que o avião deve pousar.",
+       "Para não haver problemas de comunicação com nossos funcionários, os pilotos devem vestir um uniforme da mesma cor que a bandeira, indicando o tipo de avião que ele está pilotando. Desse modo, um piloto com uniforme azul, só pode pousar ou decolar da pista indicada pela bandeira azul.",
+       "Exatamente como ocorre quando você precisa conectar algum dispositivo externo no seu computador e para que o SO consiga se comunicar com ele, o sistema computacional deve possuir um driver e o dispositivo deve estar em conformidade com o protocolo de comunicação deste driver.",
+       "Toda vez que um piloto precisa usar a pista, ele deve se comunicar com a torre de controle por meio de chamados de rádio (chamadas de sistema). Você deve  analisar qual funcionário vai atender à solicitação e enviar um chamado para o mesmo na pista (como um tratamento de interrupção).",
+       "Veja, temos vários aviões chegando no momento, que tal tentar gerenciar nossos funcionários e atender os chamados? Lembre-se que o avião deve estar na pista correta para ser atendido, você pode colocá-lo na pista correta trocando eles de lugar com um clique (clique em um avião e depois clique em outro para trocá-los de lugar). Aviões em processo de atendimento não podem ser trocados!",
+       "Estando na posição correta você pode atribuir um chamado a um funcionário. Faça isso clicando no chamado e depois no Dino que você quer que seja responsável. Um Dino só pode atender um chamado por vez. ",
+       "Lembre-se de dar uma atenção especial para os chamados de alta prioridade e boa sorte!"
      };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 

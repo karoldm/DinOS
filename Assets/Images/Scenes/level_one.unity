@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 169369}
   - component: {fileID: 169368}
   - component: {fileID: 169367}
-  - component: {fileID: 169371}
   m_Layer: 0
   m_Name: Process
   m_TagString: Untagged
@@ -219,19 +218,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &169371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &6508642
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +468,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 1
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -1580,7 +1566,6 @@ GameObject:
   - component: {fileID: 577544936}
   - component: {fileID: 577544935}
   - component: {fileID: 577544937}
-  - component: {fileID: 577544938}
   m_Layer: 0
   m_Name: Process
   m_TagString: Untagged
@@ -1664,19 +1649,6 @@ MonoBehaviour:
   processImage: {fileID: 577544935}
   startPosition: {x: 0, y: 0}
   isExe: 0
---- !u!114 &577544938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577544933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &663791935
 GameObject:
   m_ObjectHideFlags: 0
@@ -25262,7 +25234,6 @@ GameObject:
   - component: {fileID: 1013675925}
   - component: {fileID: 1013675924}
   - component: {fileID: 1013675923}
-  - component: {fileID: 1013675927}
   m_Layer: 0
   m_Name: Process
   m_TagString: Untagged
@@ -25346,19 +25317,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1013675927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013675922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1038210645
 GameObject:
   m_ObjectHideFlags: 0
@@ -28169,7 +28127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 9db5fa34f9f37ca45b1a7d5c8aa73178, type: 3}
   dialog: {fileID: 2114440136}
-  name: Por Prioridade
+  title: Por prioridade
   description: "Emblema conquistado Por Prioridade. Boa! Iniciar os voos por prioridade
     \xE9 uma estrat\xE9gia muito inteligente! No entanto, tome  cuidado com voos
     que, apesar de serem priorit\xE1rios, s\xE3o muito longos e podem acabar atrasando
@@ -33147,7 +33105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: f60761b6c9daab4479fa6991fefdab1c, type: 3}
   dialog: {fileID: 2114440136}
-  name: Round Robin
+  title: Round Robin
   description: "Emblema conquistado Round Robin: voc\xEA \xE9 fera! Sabia que alternar
     entre os voos utilizando conex\xF5es e paradas permite que voc\xEA  distribua
     melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere 
@@ -33226,7 +33184,6 @@ GameObject:
   - component: {fileID: 1633669940}
   - component: {fileID: 1633669943}
   - component: {fileID: 1633669942}
-  - component: {fileID: 1633669944}
   m_Layer: 0
   m_Name: Tip
   m_TagString: Untagged
@@ -33292,19 +33249,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633669939}
   m_CullTransparentMesh: 1
---- !u!114 &1633669944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633669939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1669596727
 GameObject:
   m_ObjectHideFlags: 0
@@ -33435,7 +33379,6 @@ GameObject:
   - component: {fileID: 1701607789}
   - component: {fileID: 1701607788}
   - component: {fileID: 1701607787}
-  - component: {fileID: 1701607791}
   m_Layer: 0
   m_Name: Process
   m_TagString: Untagged
@@ -33519,19 +33462,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1701607791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701607786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1705483166
 GameObject:
   m_ObjectHideFlags: 0
@@ -100579,7 +100509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: b6261498def75834ca18f8ed57bb841f, type: 3}
   dialog: {fileID: 2114440136}
-  name: Shortest Job First
+  title: Shortest Job First
   description: "Emblema conquistado Shortest Job First. Uau, muito bom! Optar por
     iniciar os voos mais curtos primeiro \xE9 uma \xF3tima estrat\xE9gia. No  entanto,
     lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade 
@@ -100964,7 +100894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: d57fc0786e411f540bd4e733b7fc1acc, type: 3}
   dialog: {fileID: 2114440136}
-  name: First Came First Served
+  title: First Came First Served
   description: "Emblema conquistado First Came First Served. Nada mal! Voc\xEA sabia
     que executar os planos conforme eles chegam, apesar de ser f\xE1cil e  intuitivo,
     n\xE3o \xE9 uma das melhores formas? Se voc\xEA se deparar com um voo muito urgente, 

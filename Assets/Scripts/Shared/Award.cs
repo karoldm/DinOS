@@ -9,7 +9,7 @@ public class Award : MonoBehaviour, IPointerClickHandler
     public Sprite unlockedImage; 
     private bool locked = true;
     public DialogAwardInfo dialog;
-    public string name;
+    public string title;
     public string description;
 
     private Image imageComponent;
@@ -56,7 +56,7 @@ public class Award : MonoBehaviour, IPointerClickHandler
     {
         if(this.locked)
         {
-            dialog.SetText(name + ": Você ainda não desbloqueou essa conquista...");
+            dialog.SetText(title + ": Você ainda não desbloqueou essa conquista...");
                
         } else
         {
