@@ -759,7 +759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &145100746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &762421096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1841,6 @@ GameObject:
   - component: {fileID: 762421097}
   - component: {fileID: 762421100}
   - component: {fileID: 762421099}
-  - component: {fileID: 762421098}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -1866,24 +1863,11 @@ RectTransform:
   m_Father: {fileID: 1897655827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.1026, y: 34.1026}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &762421098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762421096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!114 &762421099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1917,6 @@ GameObject:
   - component: {fileID: 762729769}
   - component: {fileID: 762729772}
   - component: {fileID: 762729771}
-  - component: {fileID: 762729770}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -1956,24 +1939,11 @@ RectTransform:
   m_Father: {fileID: 1128936696}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.1026, y: 34.1026}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &762729770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762729768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!114 &762729771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,7 +2145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &842255564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +2522,6 @@ GameObject:
   - component: {fileID: 865740677}
   - component: {fileID: 865740680}
   - component: {fileID: 865740679}
-  - component: {fileID: 865740678}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -2576,24 +2544,11 @@ RectTransform:
   m_Father: {fileID: 1580359493}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.1026, y: 34.1026}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &865740678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865740676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!114 &865740679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2721,7 +2676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &946609996
 GameObject:
   m_ObjectHideFlags: 0
@@ -28111,7 +28065,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 180, y: 160}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128936697
 MonoBehaviour:
@@ -28135,6 +28089,7 @@ MonoBehaviour:
     a dura\xE7\xE3o  dos voos ao planejar seu escalonamento. J\xE1 pensou se algum
     processo do seu Sistema Operacional passasse horas executando e n\xE3o lhe deixasse
     fazer mais nada s\xF3 porque tem uma prioridade muito alta? Seria p\xE9ssimo! "
+  imageComponent: {fileID: 762729771}
 --- !u!114 &1128936698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28515,7 +28470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1285108573
 GameObject:
   m_ObjectHideFlags: 0
@@ -33089,7 +33043,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 140, y: 160}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580359494
 MonoBehaviour:
@@ -33112,6 +33066,7 @@ MonoBehaviour:
     muito tempo na fila, mantendo um equil\xEDbrio entre efici\xEAncia e justi\xE7a.
     Continue assim e  explore outras t\xE9cnicas de escalonamento para se tornar
     um mestre em gerenciamento de  processos! Ops! Coordenador de voos."
+  imageComponent: {fileID: 865740679}
 --- !u!114 &1580359495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100493,7 +100448,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 260, y: 160}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788911193
 MonoBehaviour:
@@ -100517,6 +100472,7 @@ MonoBehaviour:
     um algoritmo n\xE3o preemptivo que funciona em sistemas em lotes, desse modo
     ele pode n\xE3o ser eficiente em sistemas din\xE2micos e que precisam executar
     muitas coisas ao mesmo tempo! "
+  imageComponent: {fileID: 1943403664}
 --- !u!114 &1788911194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100878,7 +100834,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 220, y: 160}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897655828
 MonoBehaviour:
@@ -100903,6 +100859,7 @@ MonoBehaviour:
     com situa\xE7\xF5es mais  desafiadoras. O FCFS \xE9 utilizado em sistemas em
     lotes, ou seja, sistemas que n\xE3o permitem intera\xE7\xE3o com o usu\xE1rio,
     uma vez que \xE9 uma abordagem simples e limitada, e n\xE3o faz uso de um quantum."
+  imageComponent: {fileID: 762421099}
 --- !u!114 &1897655829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101051,7 +101008,6 @@ GameObject:
   - component: {fileID: 1943403662}
   - component: {fileID: 1943403665}
   - component: {fileID: 1943403664}
-  - component: {fileID: 1943403663}
   m_Layer: 0
   m_Name: image
   m_TagString: Untagged
@@ -101074,24 +101030,11 @@ RectTransform:
   m_Father: {fileID: 1788911192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.1026, y: 34.1026}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1943403663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943403661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!114 &1943403664
 MonoBehaviour:
   m_ObjectHideFlags: 0

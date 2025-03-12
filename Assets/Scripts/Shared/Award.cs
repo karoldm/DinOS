@@ -12,17 +12,7 @@ public class Award : MonoBehaviour, IPointerClickHandler
     public string title;
     public string description;
 
-    private Image imageComponent;
-
-    void Start()
-    {
-        imageComponent = GetComponentInChildren<Image>();
-
-        if (imageComponent == null)
-        {
-            Debug.LogError("Image component not found on the GameObject.");
-        }
-    }
+    public Image imageComponent;
 
     void Update()
     {

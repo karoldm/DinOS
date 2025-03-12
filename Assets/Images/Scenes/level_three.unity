@@ -1740,6 +1740,7 @@ MonoBehaviour:
     aqui! Parab\xE9ns por usar corretamente as chamadas de r\xE1dio (ou de sistema
     se preferir) e garantir uma comunica\xE7\xE3o precisa entre nossos pilotos e
     nossos funcion\xE1rios."
+  imageComponent: {fileID: 439511194}
 --- !u!114 &274290381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,10 +2830,10 @@ RectTransform:
   m_Father: {fileID: 274290379}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 140, y: 140}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439511194
 MonoBehaviour:

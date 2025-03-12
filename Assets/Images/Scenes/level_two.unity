@@ -964,6 +964,7 @@ MonoBehaviour:
     com cuidado para evitar que eles fiquem ociosos ou que acabem concorrendo pelo
     mesmo terminal. E voc\xEA fez isso t\xE3o bem quanto um gerenciador de mem\xF3ria,
     parab\xE9ns!"
+  imageComponent: {fileID: 1405076901}
 --- !u!114 &199432163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,6 +5147,7 @@ MonoBehaviour:
     e atendem um processo por vez, se dois processos passarem a depender um do recurso
     do outro, o Sistema Operacional estar\xE1 em um impasse!  Conquista desbloqueada:
     Problema do jantar dos fil\xF3sofos!"
+  imageComponent: {fileID: 1414696153}
 --- !u!114 &1057657250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85729,10 +85731,10 @@ RectTransform:
   m_Father: {fileID: 199432161}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 140, y: 140}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405076901
 MonoBehaviour:
@@ -85805,10 +85807,10 @@ RectTransform:
   m_Father: {fileID: 1057657248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 140, y: 140}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414696153
 MonoBehaviour:
