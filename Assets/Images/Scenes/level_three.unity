@@ -1093,7 +1093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &190171211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,7 +3664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &519320893
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,7 +4066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &565275733
 GameObject:
   m_ObjectHideFlags: 0
@@ -6302,7 +6299,6 @@ GameObject:
   - component: {fileID: 839243714}
   - component: {fileID: 839243715}
   - component: {fileID: 839243717}
-  - component: {fileID: 839243718}
   m_Layer: 0
   m_Name: airplane_yellow
   m_TagString: Untagged
@@ -6431,19 +6427,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &839243718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839243711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &844432697
 GameObject:
   m_ObjectHideFlags: 0
@@ -85861,7 +85844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &926694901
 GameObject:
   m_ObjectHideFlags: 0
@@ -87016,7 +86998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1207040551
 GameObject:
   m_ObjectHideFlags: 0
@@ -87646,7 +87627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1259757359
 GameObject:
   m_ObjectHideFlags: 0
@@ -89021,7 +89001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1663023911
 GameObject:
   m_ObjectHideFlags: 0
@@ -90322,7 +90301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1876050256
 GameObject:
   m_ObjectHideFlags: 0
@@ -90538,7 +90516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1917985902
 GameObject:
   m_ObjectHideFlags: 0
@@ -90628,7 +90605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &1921323427
 GameObject:
   m_ObjectHideFlags: 0
@@ -91207,7 +91183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2040703509
 GameObject:
   m_ObjectHideFlags: 0
@@ -91669,7 +91644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a767f196fde8fde4e9d22ec0e91de797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCursor: {fileID: 2800000, guid: a29462aa59fc769418af7079c471c74f, type: 3}
 --- !u!1 &2119733329
 GameObject:
   m_ObjectHideFlags: 0

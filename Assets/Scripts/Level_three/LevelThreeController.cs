@@ -25,7 +25,7 @@ public class LevelThreeController : UserController
     private bool wrongFlag = false; 
     public Award award;
     private int totalAirplanes = 0;
-    private int maxAirplanes = 20;
+    private int maxAirplanes = 2;
     public LevelThreeDialog dialog;
     public TextMeshProUGUI airplanesText;
 
@@ -279,13 +279,11 @@ public class LevelThreeController : UserController
 
         if (child != null)
         {
-            child.SetParent(null, false);
+            Destroy(child.gameObject);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(queue.GetComponent<RectTransform>());
         UpdateCalls();
-
-        child.gameObject.SetActive(false);
     }
 
     private void EndGame()
@@ -304,20 +302,8 @@ public class LevelThreeController : UserController
         user.levelThree.firstTime = false;
         UpdateUser();
 
-        foreach (VerticalLayoutGroup queue in queues)
-        {
-            HideAllElements(queue);
-        }
-
         this.scoreText.text = "0";
-        this.score = 0;
-    }
-
-    public void HideAllElements(VerticalLayoutGroup queue)
-    {
-        foreach (Transform child in queue.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        this.score = 0; 
+        this.totalAirplanes = 0;
     }
 }

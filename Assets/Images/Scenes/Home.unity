@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockedImage: {fileID: 21300000, guid: 2245efc97799c854d9fc89b528912952, type: 3}
-  dialog: {fileID: 0}
+  dialog: {fileID: 1918470791}
   title: "Organiza\xE7\xE3o \xE9 Tudo"
   description: "Conquista desbloqueada: Organiza\xE7\xE3o \xE9 tudo! Parab\xE9ns,
     voc\xEA finalizou com gl\xF3ria o atendimento de todos os nossos clientes! Voc\xEA

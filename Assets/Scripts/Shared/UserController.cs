@@ -11,17 +11,13 @@ public class UserController : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Awake user controller ");
 
         string userJson = PlayerPrefs.GetString("user", string.Empty);
-
-        Debug.Log("Awake user controller user json " + userJson);
 
 
         if (!string.IsNullOrEmpty(userJson))
         {
             user = JsonUtility.FromJson<UserModel>(userJson);
-            Debug.Log("Awake user controller " + user);
         }
         else
         {
