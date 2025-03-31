@@ -31,7 +31,7 @@ public class AirplaneCall : MonoBehaviour, IPointerClickHandler
 
         if (controller == null)
         {
-            Debug.LogError("LevelThreeController instance n„o encontrado na cena.");
+            Debug.LogError("LevelThreeController instance n√£o encontrado na cena.");
         }
     }
 

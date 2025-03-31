@@ -15,46 +15,44 @@ public class DialogLevelTwo : MonoBehaviour
     }
 
     private static string[] segmentationTexts =
-        {
-          "Conquista desbloqueada: SegmentaÁ„o Zero!",
-          "… muito raro conseguir aproveitar 100% dos funcion·rios e garantir que n„o estamos  desperdiÁando tempo e recursos!",
-          "Tal como nos sistemas computacionais, onde a memÛria RAM È um recurso caro e precisa ser gerenciado com cuidado para um melhor aproveitamento, as tarefas atribuÌdas aos nossos funcion·rios tambÈm devem ser alocadas com cuidado para evitar que eles fiquem ociosos ou que acabem concorrendo pelo mesmo terminal. E vocÍ fez isso t„o bem quanto um gerenciador de memÛria, parabÈns! \r\n",
-        };
+    {
+        "Conquista desbloqueada: Segmenta√ß√£o Zero!",
+        "√â muito raro conseguir aproveitar 100% dos funcion√°rios e garantir que n√£o estamos desperdi√ßando tempo e recursos!",
+        "Tal como nos sistemas computacionais, onde a mem√≥ria RAM √© um recurso caro e precisa ser gerenciado com cuidado para um melhor aproveitamento, as tarefas atribu√≠das aos nossos funcion√°rios tamb√©m devem ser alocadas com cuidado para evitar que eles fiquem ociosos ou que acabem concorrendo pelo mesmo terminal. E voc√™ fez isso t√£o bem quanto um gerenciador de mem√≥ria, parab√©ns! \r\n",
+    };
     private LinkedList<string> segmentationDialog = new LinkedList<string>(segmentationTexts);
 
-
     private static string[] introTexts =
-        {
-            "Bem-vindo! Aqui alocamos todas as tarefas necess·rias para que um plano de voo iniciado pela Torre de Controle possa ser conduzido atÈ o final sem falhas. Diversas tarefas como abastecer o avi„o, checar as travas de seguranÁa, verificar a comunicaÁ„o com a torre, conduzir os passageiros, entre muitas outras s„o realizadas neste local.",
-            "GraÁas ‡ nossa tecnologia avanÁada, podemos realizar essas tarefas a partir de terminais localizados aqui mesmo! Que tal tentar? Cada voo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu prÛprio terminal (identificado pela cor e pelo Ìcone da tarefa).",
-            "VocÍ pode associar os terminais ‡s diferentes partes do processador, onde cada uma È respons·vel por realizar uma computaÁ„o diferente.",
-            "Nossos companheiros podem lhe ajudar a realizar essas tarefas, mas cada um deles sÛ pode realizar uma tarefa de cada, e enquanto estiver ocupado com uma tarefa n„o pode receber outras! AlÈm disso, cada terminal sÛ pode ser usado por um Dino por vez.",
-            "Assim como os espaÁos da memÛria RAM podem ser divididos em blocos ou partiÁıes para diferentes processos, cada Dino representa um bloco com tamanho fixo. Se atente a essa capacidade quando for atribuir uma tarefa a um Dino.",
-            "Muito cuidado com tarefas dependentes! Algumas de nossas tarefas dependem de outras de modo que ser„o executadas imediatamente em seguida. Essas tarefas s„o marcadas com uma seta.",
-            "Para iniciar, basta arrastar uma tarefa de um dos voos atÈ um Dino, e esperar ele concluir.",
+    {
+        "Bem-vindo! Aqui alocamos todas as tarefas necess√°rias para que um plano de voo iniciado pela Torre de Controle possa ser conduzido at√© o final sem falhas. Diversas tarefas como abastecer o avi√£o, checar as travas de seguran√ßa, verificar a comunica√ß√£o com a torre, conduzir os passageiros, entre muitas outras s√£o realizadas neste local.",
+        "Gra√ßas √† nossa tecnologia avan√ßada, podemos realizar essas tarefas a partir de terminais localizados aqui mesmo! Que tal tentar? Cada voo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu pr√≥prio terminal (identificado pela cor e pelo √≠cone da tarefa).",
+        "Voc√™ pode associar os terminais √†s diferentes partes do processador, onde cada uma √© respons√°vel por realizar uma computa√ß√£o diferente.",
+        "Nossos companheiros podem lhe ajudar a realizar essas tarefas, mas cada um deles s√≥ pode realizar uma tarefa de cada vez, e enquanto estiver ocupado com uma tarefa n√£o pode receber outras! Al√©m disso, cada terminal s√≥ pode ser usado por um Dino por vez.",
+        "Assim como os espa√ßos da mem√≥ria RAM podem ser divididos em blocos ou parti√ß√µes para diferentes processos, cada Dino representa um bloco com tamanho fixo. Se atente a essa capacidade quando for atribuir uma tarefa a um Dino.",
+        "Muito cuidado com tarefas dependentes! Algumas de nossas tarefas dependem de outras de modo que ser√£o executadas imediatamente em seguida. Essas tarefas s√£o marcadas com uma seta.",
+        "Para iniciar, basta arrastar uma tarefa de um dos voos at√© um Dino, e esperar ele concluir.",
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] dinnerProblemTexts =
-        {
-           "Ops! You are dead(lock)!",
-           "Parece que dois ou mais dinossauros dependem um do terminal do outro para concluir suas  tarefas, e desse modo nenhum deles pode avanÁar! As tarefas precisam ser alocadas com  cuidado para n„o ocorrerem situaÁıes como essas, uma vez que os recursos do processador s„o limitados e atendem um processo por vez, se dois processos passarem a depender um do recurso do outro, o Sistema Operacional estar· em um impasse!", 
-           "Conquista desbloqueada: Problema do jantar dos filÛsofos!",
-        };
+    {
+        "Ops! You are dead(lock)!",
+        "Parece que dois ou mais dinossauros dependem um do terminal do outro para concluir suas tarefas, e desse modo nenhum deles pode avan√ßar! As tarefas precisam ser alocadas com cuidado para n√£o ocorrerem situa√ß√µes como essas, uma vez que os recursos do processador s√£o limitados e atendem um processo por vez, se dois processos passarem a depender um do recurso do outro, o Sistema Operacional estar√° em um impasse!", 
+        "Conquista desbloqueada: Problema do jantar dos fil√≥sofos!",
+    };
     private LinkedList<string> dinnerProblemDialog = new LinkedList<string>(dinnerProblemTexts);
 
     private static string[] NoneTexts =
-        {
-            "As coisas parecem meio fora de ordem por aqui...",
-        };
+    {
+        "As coisas parecem meio fora de ordem por aqui...",
+    };
     private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
-
     private static string[] feedbackTexts =
-        {
-            "Ops! O Dino poderia lidar com tarefas mais complexas!\r\nNo aeroporto da memÛria RAM, cada Dino (bloco de memÛria) tem uma capacidade especÌfica para realizar tarefas (processos). Delegar uma tarefa pequena a um Dino com grande capacidade È como colocar um avi„o de carga para transportar uma mala de m„o: ineficiente e um desperdÌcio de recursos!",
-            "No jogo, vocÍ precisa garantir que cada Dino receba tarefas adequadas ao seu tamanho. Tarefas grandes devem ser atribuÌdas a Dinos com maior capacidade, enquanto tarefas menores podem ser executadas por Dinos menores. Assim, o aeroporto (sistema) opera de forma eficiente, sem desperdiÁar memÛria ou deixar processos importantes esperando!"
-        };
+    {
+        "Ops! O Dino poderia lidar com tarefas mais complexas!\r\nNo aeroporto da mem√≥ria RAM, cada Dino (bloco de mem√≥ria) tem uma capacidade espec√≠fica para realizar tarefas (processos). Delegar uma tarefa pequena a um Dino com grande capacidade √© como colocar um avi√£o de carga para transportar uma mala de m√£o: ineficiente e um desperd√≠cio de recursos!",
+        "No jogo, voc√™ precisa garantir que cada Dino receba tarefas adequadas ao seu tamanho. Tarefas grandes devem ser atribu√≠das a Dinos com maior capacidade, enquanto tarefas menores podem ser executadas por Dinos menores. Assim, o aeroporto (sistema) opera de forma eficiente, sem desperdi√ßar mem√≥ria ou deixar processos importantes esperando!"
+    };
     private LinkedList<string> feedbackDialog = new LinkedList<string>(feedbackTexts);
 
     public Button button;

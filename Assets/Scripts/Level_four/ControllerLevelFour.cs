@@ -12,7 +12,7 @@ public class ControllerLevelFour : UserController
 
     public VerticalLayoutGroup dinoQueue;
     public TextMeshProUGUI pointsText;
-    public Customer modelDino;
+    public List<Customer> modelDino;
     public DialogLevelFour dialog;
     public TextMeshProUGUI timeText;
     public GameObject timeContainer;
@@ -97,7 +97,7 @@ public class ControllerLevelFour : UserController
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<ControllerLevelFour>();
+                instance = FindFirstObjectByType<ControllerLevelFour>();
 
                 if (instance == null)
                 {
@@ -219,8 +219,8 @@ public class ControllerLevelFour : UserController
 
     public void LoadInitialScene()
     {
+        
         SceneManager.LoadScene("Home");
-
     }
 
     private void AddDino(bool? initialHasPriority = null, Customer.Action? initialAction = null)
@@ -232,7 +232,9 @@ public class ControllerLevelFour : UserController
             return;
         }
 
-        Customer dino = Instantiate(modelDino, dinoQueue.transform);
+        int randDinoCustomer = UnityEngine.Random.Range(0, modelDino.Count);
+
+        Customer dino = Instantiate(modelDino[randDinoCustomer], dinoQueue.transform);
         var (action, priority) = operations.Dequeue();
         dino.Init(initialHasPriority ?? priority, initialAction ?? action);
         dino.SetActive();
@@ -248,7 +250,7 @@ public class ControllerLevelFour : UserController
     {
         if (QueueSize() <= 0) return null;
 
-        Transform firstChildTransform = dinoQueue.transform.GetChild(1);
+        Transform firstChildTransform = dinoQueue.transform.GetChild(3);
 
         return firstChildTransform.GetComponent<Customer>();
     }
@@ -257,7 +259,7 @@ public class ControllerLevelFour : UserController
     {
         if (QueueSize() <= 0) return;
 
-        Destroy(dinoQueue.transform.GetChild(1).gameObject);
+        Destroy(dinoQueue.transform.GetChild(3).gameObject);
         UpdateQueue();
 
         SetCurrentCustomer(null);
@@ -300,8 +302,6 @@ public class ControllerLevelFour : UserController
 
     public void ComputeSuccess()
     {
-        Debug.Log("ComputeSuccess");
-
         this.points++;
         pointsText.text = points.ToString();
         this.RemoveFirstDino();

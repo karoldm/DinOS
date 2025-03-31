@@ -17,7 +17,7 @@ public class Login : MonoBehaviour
 
     void Start()
     {
-        db = FindObjectOfType<DatabaseManager>();
+        db = FindFirstObjectByType<DatabaseManager>();
         if (db == null)
         {
             Debug.LogError("DatabaseManager instance not found in the scene.");

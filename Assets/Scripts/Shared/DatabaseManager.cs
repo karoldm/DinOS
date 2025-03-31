@@ -17,7 +17,7 @@ public class DatabaseManager : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<DatabaseManager>();
+                instance = FindFirstObjectByType<DatabaseManager>();
 
                 if (instance == null)
                 {
@@ -29,37 +29,29 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-
-    private void Awake()
-    {
-       
-    }
-
-    private string databaseUrl = ENV.DATABASE_URL;
+    private string databaseUrl = "https://dinoso-173fe-default-rtdb.firebaseio.com/";
 
     public IEnumerator WriteData(string path, string jsonData, Action<bool> onComplete)
     {
         string url = $"{databaseUrl}{path}.json";
-        using (UnityWebRequest request = new UnityWebRequest(url, "PUT"))
+        using UnityWebRequest request = new(url, "PUT");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(jsonToSend);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
         {
-            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
-            request.uploadHandler = new UploadHandlerRaw(jsonToSend);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
-
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Data written successfully");
-                onComplete?.Invoke(true);
-            }
-            else
-            {
-                Debug.LogError("Error writing data: " + request.error);
-                onComplete?.Invoke(false);
-            }
-        } 
+            Debug.Log("Data written successfully");
+            onComplete?.Invoke(true);
+        }
+        else
+        {
+            Debug.LogError("Error writing data: " + request.error);
+            onComplete?.Invoke(false);
+        }
     }
 
     public IEnumerator ReadData(string path, Action<string> onSuccess, Action<string> onFailure)

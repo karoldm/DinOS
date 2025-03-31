@@ -19,26 +19,26 @@ public class DialogInitial : MonoBehaviour
     private InitialDialogType currentSceneType;
 
     private static string[] processTexts =
-        {
-            "Torre de controle: Aqui È onde acompanhamos e controlamos os voos que precisam ser executados ou que j· est„o em execuÁ„o.", 
+    {
+        "Torre de controle: Aqui √© onde acompanhamos e controlamos os voos que precisam ser executados ou que j√° est√£o em execu√ß√£o.", 
     };
     private LinkedList<string> processDialog = new LinkedList<string>(processTexts);
 
     private static string[] secMemoryTexts =
-        {
-            "Armazem e ·rea administrativa: Aqui È a ·rea administrativa do nosso aeroporto, onde os planos de voo s„o gerados e armazenados para que a torre de controle possa recuper·-los posteriormente.",
+    {
+        "Armaz√©m e √°rea administrativa: Aqui √© a √°rea administrativa do nosso aeroporto, onde os planos de voo s√£o gerados e armazenados para que a torre de controle possa recuper√°-los posteriormente.",
     };
     private LinkedList<string> secMemoryDialog = new LinkedList<string>(secMemoryTexts);
 
     private static string[] ESTexts =
-        {
-            "Pista de decolagem e pouso: Aqui È onde acompanhamos os pousos e decolagens dos aviıes.",
+    {
+        "Pista de decolagem e pouso: Aqui √© onde acompanhamos os pousos e decolagens dos avi√µes.",
     };
     private LinkedList<string> ESDialog = new LinkedList<string>(ESTexts);
 
     private static string[] ramTexts =
-       {
-            "PreparaÁ„o dos voos: Aqui È onde realizamos as tarefas necess·rias para permitir que os aviıes decolem e cheguem ao destino corretamente e sem problemas.",
+    {
+        "Prepara√ß√£o dos voos: Aqui √© onde realizamos as tarefas necess√°rias para permitir que os avi√µes decolem e cheguem ao destino corretamente e sem problemas.",
     };
     private LinkedList<string> ramDialog = new LinkedList<string>(ramTexts);
 

@@ -26,7 +26,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
         if (this.sprite == null)
         {
-            Debug.LogError("SpriteRenderer n„o encontrado em SetNext().");
+            Debug.LogError("SpriteRenderer n√£o encontrado em SetNext().");
             return;
         }
 
@@ -34,7 +34,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
         if (canvas == null)
         {
-            Debug.LogError("Canvas n„o encontrado no SpriteRenderer em SetNext().");
+            Debug.LogError("Canvas n√£o encontrado no SpriteRenderer em SetNext().");
             return;
         }
 
@@ -42,7 +42,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         
         if(arrow == null)
         {
-            Debug.LogError("Arrow n„o encontrado no canvas em SetNext().");
+            Debug.LogError("Arrow n√£o encontrado no canvas em SetNext().");
             return;
         }
 
@@ -61,7 +61,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
         if (controller == null)
         {
-            Debug.LogError("RAMController instance n„o encontrado na cena.");
+            Debug.LogError("RAMController instance n√£o encontrado na cena.");
         }
     }
 
@@ -152,7 +152,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
         if (this.sprite == null)
         {
-            Debug.LogError("SpriteRenderer n„o encontrado em InstanciateTask().");
+            Debug.LogError("SpriteRenderer n√£o encontrado em InstanciateTask().");
             return;
         }
 
@@ -160,7 +160,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
         if (canvas == null)
         {
-            Debug.LogError("Canvas n„o encontrado no SpriteRenderer em InstanciateTask().");
+            Debug.LogError("Canvas n√£o encontrado no SpriteRenderer em InstanciateTask().");
             return;
         }
 
@@ -211,7 +211,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
             {
                 if(dino == null)
                 {
-                    Debug.Log("Dino È null");
+                    Debug.Log("Dino ÔøΩ null");
                     continue;
                 }
 
@@ -219,7 +219,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
                 if (dinoCollider == null)
                 {
-                    Debug.LogError("Dino n„o contÈm um Collider2D");
+                    Debug.LogError("Dino n√£o contÔøΩm um Collider2D");
                     return;
                 }
                 if (dinoCollider.OverlapPoint(mousePosition))
@@ -236,7 +236,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         }
         else
         {
-            Debug.LogError("controller.dinos È null");
+            Debug.LogError("controller.dinos ÔøΩ null");
         }
 
         if (!isInDino)
@@ -296,7 +296,7 @@ public class AirportTask : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         RectTransform taskTransform = GetComponent<RectTransform>();
         if (taskTransform == null)
         {
-            Debug.LogError("RectTransform da task È null em UpdateCurrentTasks");
+            Debug.LogError("RectTransform da task ÔøΩ null em UpdateCurrentTasks");
             return;
         }
         taskTransform.localScale = new Vector3(0.3f, 0.3f, taskTransform.localScale.z);

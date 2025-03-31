@@ -15,51 +15,50 @@ public class Dialog : MonoBehaviour
         SJF,
         None
     }
-
     private static string[] introTexts =
-        {
-            "Olá, seja bem-vindo à Torre de Controle (ou ao nosso processador)! Por aqui nós conseguimos acompanhar  quando um novo voo é agendado e chega para nós como um plano de voo.",
-            "Os planos de voos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a prioridade dele. Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro  para podermos agradar a todos os clientes possíveis!",
-            "Para iniciar a operação de um plano de voo você precisa arrastá-lo até o painel de execução à sua direita.  No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se  de usar as informações que você possui (prioridade e tempo de execução) para executar os planos da forma mais eficiente  possível!",
-            "Algumas estratégias de execução exigem que os voos sejam intercalados, para interromper um voo você pode só ativar o “ativar quantum” que ele será agendado para sempre ser interrompido no tempo correto. Lembre-se de ativar o quantum antes e iniciar a execução do primeiro voo!",
-        };
+    {
+        "OlÃ¡, seja bem-vindo Ã  Torre de Controle (ou ao nosso processador)! Por aqui nÃ³s conseguimos acompanhar quando um novo voo Ã© agendado e chega para nÃ³s como um plano de voo.",
+        "Os planos de voos possuem uma sÃ©rie de instruÃ§Ãµes que nos dizem o destino daquele aviÃ£o, quanto tempo ele vai levar atÃ© chegar ao destino e qual a prioridade dele. Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro para podermos agradar a todos os clientes possÃ­veis!",
+        "Para iniciar a operaÃ§Ã£o de um plano de voo vocÃª precisa arrastÃ¡-lo atÃ© o painel de execuÃ§Ã£o Ã  sua direita. No painel vocÃª consegue acompanhar quanto tempo falta atÃ© o voo ser concluÃ­do. Lembre-se de usar as informaÃ§Ãµes que vocÃª possui (prioridade e tempo de execuÃ§Ã£o) para executar os planos da forma mais eficiente possÃ­vel!",
+        "Algumas estratÃ©gias de execuÃ§Ã£o exigem que os voos sejam intercalados, para interromper um voo vocÃª pode sÃ³ ativar o 'ativar quantum' que ele serÃ¡ agendado para sempre ser interrompido no tempo correto. Lembre-se de ativar o quantum antes e iniciar a execuÃ§Ã£o do primeiro voo!",
+    };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] FCFSTexts =
-        {
-            "Emblema conquistado First Came First Served.",
-            "Nada mal! Você sabia que executar os planos conforme eles chegam, apesar de ser fácil e  intuitivo, não é uma das melhores formas? Se você se deparar com um voo muito urgente,  com um tempo curto, mas que está em último na fila, isso pode ser um problema. Talvez seja  hora de considerar outras estratégias de escalonamento para lidar com situações mais  desafiadoras.",
-            "O FCFS é utilizado em sistemas em lotes, ou seja, sistemas que não permitem interação com o usuário, uma vez que é uma abordagem simples e limitada, e não faz uso de um quantum.",
-        };
+    {
+        "Emblema conquistado First Came First Served.",
+        "Nada mal! VocÃª sabia que executar os planos conforme eles chegam, apesar de ser fÃ¡cil e intuitivo, nÃ£o Ã© uma das melhores formas? Se vocÃª se deparar com um voo muito urgente, com um tempo curto, mas que estÃ¡ em Ãºltimo na fila, isso pode ser um problema. Talvez seja hora de considerar outras estratÃ©gias de escalonamento para lidar com situaÃ§Ãµes mais desafiadoras.",
+        "O FCFS Ã© utilizado em sistemas em lotes, ou seja, sistemas que nÃ£o permitem interaÃ§Ã£o com o usuÃ¡rio, uma vez que Ã© uma abordagem simples e limitada, e nÃ£o faz uso de um quantum.",
+    };
     private LinkedList<string> FCFSDialog = new LinkedList<string>(FCFSTexts);
 
     private static string[] SJFTexts =
-        {
-            "Emblema conquistado Shortest Job First.",
-            "Uau, muito bom! Optar por iniciar os voos mais curtos primeiro é uma ótima estratégia. No  entanto, lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade  podem acabar esperando mais do que o desejado.",
-            "Assim como o FCFS, o SJF é um algoritmo não preemptivo que funciona em sistemas em lotes, desse modo ele pode não ser eficiente em sistemas dinâmicos e que precisam executar muitas coisas ao mesmo tempo!",
-        };
+    {
+        "Emblema conquistado Shortest Job First.",
+        "Uau, muito bom! Optar por iniciar os voos mais curtos primeiro Ã© uma Ã³tima estratÃ©gia. No entanto, lembre-se de que, ao priorizar os voos mais curtos, os voos com maior prioridade podem acabar esperando mais do que o desejado.",
+        "Assim como o FCFS, o SJF Ã© um algoritmo nÃ£o preemptivo que funciona em sistemas em lotes, desse modo ele pode nÃ£o ser eficiente em sistemas dinÃ¢micos e que precisam executar muitas coisas ao mesmo tempo!",
+    };
     private LinkedList<string> SJFDialog = new LinkedList<string>(SJFTexts);
 
     private static string[] BPTexts =
-        {
-            "Emblema conquistado Por Prioridade.",
-            "Boa! Iniciar os voos por prioridade é uma estratégia muito inteligente! No entanto, tome  cuidado com voos que, apesar de serem prioritários, são muito longos e podem acabar  atrasando os demais. Certifique-se de avaliar não apenas a prioridade, mas também a duração  dos voos ao planejar seu escalonamento.",
-            "Já pensou se algum processo do seu Sistema Operacional passasse horas executando e não lhe deixasse fazer mais nada só porque tem uma prioridade muito alta? Seria péssimo!",
-        };
+    {
+        "Emblema conquistado Por Prioridade.",
+        "Boa! Iniciar os voos por prioridade Ã© uma estratÃ©gia muito inteligente! No entanto, tome cuidado com voos que, apesar de serem prioritÃ¡rios, sÃ£o muito longos e podem acabar atrasando os demais. Certifique-se de avaliar nÃ£o apenas a prioridade, mas tambÃ©m a duraÃ§Ã£o dos voos ao planejar seu escalonamento.",
+        "JÃ¡ pensou se algum processo do seu Sistema Operacional passasse horas executando e nÃ£o lhe deixasse fazer mais nada sÃ³ porque tem uma prioridade muito alta? Seria pÃ©ssimo!",
+    };
     private LinkedList<string> BPDialog = new LinkedList<string>(BPTexts);
 
     private static string[] RRTexts =
-        {
-            "Emblema conquistado Round Robin.",
-            "Você é fera! Sabia que alternar entre os voos utilizando conexões e paradas permite que você  distribua melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere  muito tempo na fila, mantendo um equilíbrio entre eficiência e justiça. Continue assim e  explore outras técnicas de escalonamento para se tornar um mestre em gerenciamento de  processos! Ops! Coordenador de voos.",
-        };
+    {
+        "Emblema conquistado Round Robin.",
+        "VocÃª Ã© fera! Sabia que alternar entre os voos utilizando conexÃµes e paradas permite que vocÃª distribua melhor o tempo de processamento? Essa abordagem garante que nenhum voo espere muito tempo na fila, mantendo um equilÃ­brio entre eficiÃªncia e justiÃ§a. Continue assim e explore outras tÃ©cnicas de escalonamento para se tornar um mestre em gerenciamento de processos! Ops! Coordenador de voos.",
+    };
     private LinkedList<string> RRDialog = new LinkedList<string>(RRTexts);
 
     private static string[] NoneTexts =
-        {
-            "As coisas parecem meio fora de ordem por aqui...",
-        };
+    {
+        "As coisas parecem meio fora de ordem por aqui...",
+    };
     private LinkedList<string> NoneDialog = new LinkedList<string>(NoneTexts);
 
     public Button button;

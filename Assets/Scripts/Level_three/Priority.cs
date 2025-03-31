@@ -21,13 +21,13 @@ public class Priority : MonoBehaviour
         switch (priority)
         {
             case PriorityEnum.High:
-                return "Pouso de emergÍncia (prioridade 4)";
+                return "Pouso de emerg√™ncia (prioridade 4)";
             case PriorityEnum.Medium:
-                return "Conex„o r·pida (prioridade 3)";
+                return "Conex√£o r√°pida (prioridade 3)";
             case PriorityEnum.Low:
-                return "Permiss„o para decolar (prioridade 2)";
+                return "Permiss√£o para decolar (prioridade 2)";
             case PriorityEnum.Zero:
-                return "Permiss„o para decolar (prioridade 1)";
+                return "Permiss√£o para decolar (prioridade 1)";
             default:
                 return "";
         }

@@ -37,7 +37,7 @@ public class LevelThreeController : UserController
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<LevelThreeController>();
+                instance = FindFirstObjectByType<LevelThreeController>();
 
                 if (instance == null)
                 {
@@ -184,7 +184,7 @@ public class LevelThreeController : UserController
         }
         else
         {
-            Debug.LogWarning("Um dos elementos referenciados é nulo.");
+            Debug.LogWarning("Um dos elementos referenciados Ã© nulo.");
         }
     }
 
@@ -226,7 +226,7 @@ public class LevelThreeController : UserController
     {
         if (indexQueue < 0 || indexQueue >= queues.Count)
         {
-            Debug.LogError("Índice inválido para VerticalLayoutGroup");
+            Debug.LogError("indice invalido para VerticalLayoutGroup");
             Debug.LogError("indexQueue: " + indexQueue.ToString());
             return;
         }
@@ -236,7 +236,7 @@ public class LevelThreeController : UserController
 
         if (index < 0 || index >= listTypeOfAirplanes.Count)
         {
-            Debug.LogError("Índice inválido para VerticalLayoutGroup");
+            Debug.LogError("indice invalido para VerticalLayoutGroup");
             Debug.LogError("index: " + index.ToString());
             return;
         }

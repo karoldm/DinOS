@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.TextCore;
 
 
 namespace TMPro.Examples
@@ -35,7 +37,7 @@ namespace TMPro.Examples
 
                     textMeshPro.alignment = TextAlignmentOptions.Bottom;
                     textMeshPro.fontSize = 96;
-                    textMeshPro.enableKerning = false;
+                    textMeshPro.fontFeatures = new List<OTL_FeatureTag> { new() };
 
                     textMeshPro.color = new Color32(255, 255, 0, 255);
                     textMeshPro.text = "!";

@@ -12,8 +12,8 @@ public class Process_controller : UserController
     /*
      * Simula uma fila 
      * Considere que:
-     * Incio da fila: primeiro item inserido, posição 0
-     * Final da fila: último item inserido, posição count - 1
+     * Incio da fila: primeiro item inserido, posicao 0
+     * Final da fila: ultimo item inserido, posicao count - 1
      */
     public List<Slot_Process> slots; 
     public List<int> queueExe;
@@ -67,7 +67,7 @@ public class Process_controller : UserController
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<Process_controller>();
+                instance = FindFirstObjectByType<Process_controller>();
 
                 if (instance == null)
                 {

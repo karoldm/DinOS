@@ -205,7 +205,7 @@ public class RAMController : UserController
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<RAMController>();
+                instance = FindFirstObjectByType<RAMController>();
 
                 if (instance == null)
                 {
@@ -233,14 +233,14 @@ public class RAMController : UserController
     {
         if (indexQueue < 0 || indexQueue >= queues.Count)
         {
-            Debug.LogError("Índice inválido para HorizontalLayoutGroup");
+            Debug.LogError("indice invalido para HorizontalLayoutGroup");
             Debug.LogError("indexQueue: " + indexQueue.ToString());
             return;
         }
 
         if (indexTask < 0 || indexTask >= tasks.Count)
         {
-            Debug.LogError("Índice inválido para HorizontalLayoutGroup");
+            Debug.LogError("indice invalido para HorizontalLayoutGroup");
             Debug.LogError("indexTask: " + indexTask.ToString());
             return;
         }
@@ -286,7 +286,7 @@ public class RAMController : UserController
     {
         if (queueTransform == null || action == null)
         {
-            Debug.LogError("Queue ou action é null.");
+            Debug.LogError("Queue ou action e null.");
             return;
         }
 
@@ -304,7 +304,7 @@ public class RAMController : UserController
     {
         if (queueTransform == null || action == null)
         {
-            Debug.LogError("Queue ou action é null.");
+            Debug.LogError("Queue ou action e null.");
             return;
         }
 

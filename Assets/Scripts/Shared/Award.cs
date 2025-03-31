@@ -46,7 +46,7 @@ public class Award : MonoBehaviour, IPointerClickHandler
     {
         if(this.locked)
         {
-            dialog.SetText(title + ": Você ainda não desbloqueou essa conquista...");
+            dialog.SetText(title + ": VocÃª ainda nÃ£o desbloqueou essa conquista...");
                
         } else
         {

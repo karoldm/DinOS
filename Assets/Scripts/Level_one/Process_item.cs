@@ -78,7 +78,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         Slot_Process_Exe slot = process_controller.slotProcessExe.GetComponent<Slot_Process_Exe>();
         if (slot != null && slot.currentItemExe != null) return;
 
-        // Converter a posição do mouse na tela para as coordenadas do mundo
+        // Converter a posiÃ§Ã£o do mouse na tela para as coordenadas do mundo
         Vector3 worldPosition;
         RectTransformUtility.ScreenPointToWorldPointInRectangle(
             process_controller.GetComponent<RectTransform>(),
@@ -86,7 +86,7 @@ public class Process_item : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
             eventData.pressEventCamera,
             out worldPosition);
 
-        // Ajustar a posição do objeto para a célula do grid mais próxima
+        // Ajustar a posiÃ§Ã£o do objeto para a cÃ©lula do grid mais prÃ³xima
         transform.position = worldPosition;
     }
 

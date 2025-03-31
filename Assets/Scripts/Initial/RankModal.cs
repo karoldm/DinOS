@@ -78,7 +78,7 @@ public class RankModal : UserController
         textMeshPro.enableAutoSizing = false;
 
         textMeshPro.overflowMode = TextOverflowModes.Truncate; 
-        textMeshPro.enableWordWrapping = false; 
+        textMeshPro.textWrappingMode = TextWrappingModes.Normal; 
         textMeshPro.alignment = alignRight ? TextAlignmentOptions.Right : TextAlignmentOptions.Center;
 
         RectTransform textRect = textObj.GetComponent<RectTransform>();

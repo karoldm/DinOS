@@ -15,21 +15,21 @@ public class DialogLevelFour : MonoBehaviour
 
     private static string[] introTexts =
         {
-          "Bem-vindo ao local onde tudo comeÁa. Aqui È a ·rea administrativa do aeroporto, onde os clientes agendam seus voos, gerando os planos de voo para a torre de controle. Esses planos precisam ser armazenados corretamente para que possam ser recuperados quando necess·rio.",
-          "Para otimizar essa organizaÁ„o, o aeroporto utiliza dois espaÁos distintos:\nSagu„o (¡rea de Swap) ñ Um local de acesso r·pido, ideal para planos de voo de alta prioridade.\nArmazÈm (MemÛria Secund·ria / Disco RÌgido) ñ Um espaÁo maior, porÈm de recuperaÁ„o mais lenta, onde ficam armazenados planos de voo de baixa prioridade.",
-          "Para iniciar um atendimento, basta clicar no Dino. Em seguida ser· exibido um Dialog com as informaÁıes necess·rias (se a solicitaÁ„o È para armazenar ou recuperar um plano de voo e qual a sua prioridade).",
-          "Para escrever um arquivo, clique na ·rea desejada (sagu„o ou armazÈm).\nPara ler um plano de voo, clique nele e depois no cliente.\nPara mover um plano de voo, clique nele e depois na ·rea desejada.\n",
-          "Cuidado para n„o tentar armazenar nas ·reas quando a operaÁ„o for de leitura e vice-versa.\nSe atente tambÈm a prioridade do plano de voo solicitado, n„o tente recuperar um plano de voo de prioriadde baixa quando for solicitado um de prioridade alta, por exemplo",
-          "Vale ressaltar que os clientes esperam por um tempo determinado para serem atendidos. Caso o tempo acabe, o cliente ir· embora e vocÍ perder· pontos.",
-          "Por isso, guarde os planos de voos com cuidado, recuperar do sagu„o È bem mais r·pido do que recuperar do armazÈm, logo planos de alta prioridade devem ficar l·!",
+          "Bem-vindo ao local onde tudo come√ßa. Aqui √© a √°rea administrativa do aeroporto, onde os clientes agendam seus voos, gerando os planos de voo para a torre de controle. Esses planos precisam ser armazenados corretamente para que possam ser recuperados quando necess√°rio.",
+          "Para otimizar essa organiza√ß√£o, o aeroporto utiliza dois espa√ßos distintos:\nSagu√£o (√°rea de Swap) √© Um local de acesso r√°pido, ideal para planos de voo de alta prioridade.\nArmaz√©m (Mem√≥ria Secund√°ria / Disco R√≠gido) √© Um espa√ßo maior, por√©m de recupera√ß√£o mais lenta, onde ficam armazenados planos de voo de baixa prioridade.",
+          "Para iniciar um atendimento, basta clicar no Dino. Em seguida ser√° exibido um Dialog com as informa√ß√µes necess√°rias (se a solicita√ß√£o √© para armazenar ou recuperar um plano de voo e qual a sua prioridade).",
+          "Para escrever um arquivo, clique na √°rea desejada (sagu√£o ou armaz√©m).\nPara ler um plano de voo, clique nele e depois no cliente.\nPara mover um plano de voo, clique nele e depois na √°rea desejada.\n",
+          "Cuidado para n√£o tentar escrever quando a opera√ß√£oo for de leitura e vice-versa.\nSe atente tamb√©m a prioridade do plano de voo solicitado, n√£o tente recuperar um plano de voo de prioriade baixa quando for solicitado um de prioridade alta, por exemplo",
+          "Vale ressaltar que os clientes esperam por um tempo determinado para serem atendidos. Caso o tempo acabe, o cliente ir√° embora e voc√™ perder√° pontos.",
+          "Por isso, guarde os planos de voos com cuidado, recuperar do sagu√£o √© bem mais r√°pido do que recuperar do armaz√©m, logo planos de alta prioridade devem ficar l√°!",
           "Boa sorte!"
     };
     private LinkedList<string> introDialog = new LinkedList<string>(introTexts);
 
     private static string[] awardTexts =
         {
-        "Conquista desbloqueada: OrganizaÁ„o È tudo! ParabÈns, vocÍ finalizou com glÛria o atendimento de todos os nossos clientes! VocÍ conseguiu manter tudo organizado por aqui e n„o causou nenhum transtorno.",
-        "Isso n„o te lembra algo? Apesar de parecer mais complexo, um sistema de memÛria secund·ria em um Sistema Computacional funciona de forma muito semelhante, armazenando os seus arquivos em seÁıes especÌficas do disco, e fornecendo uma tabela virtual para que outras partes do sistema consigam acessar esses dados sem se preocupar com a implementaÁ„o fÌsica e interna da memÛria secund·ria."
+        "Conquista desbloqueada: Organiza√ß√£o √© tudo! Parab√©ns, voc√™ finalizou com gl√≥ria o atendimento de todos os nossos clientes! Voc√™ conseguiu manter tudo organizado por aqui e n√£o causou nenhum transtorno.",
+        "Isso n√£o te lembra algo? Apesar de parecer mais complexo, um sistema de mem√≥ria secund√°ria em um Sistema Computacional funciona de forma muito semelhante, armazenando os seus arquivos em se√ß√µes espec√≠ficas do disco, e fornecendo uma tabela virtual para que outras partes do sistema consigam acessar esses dados sem se preocupar com a implementa√ß√£o f√≠sica e interna da mem√≥ria secund√°ria."
         };
     private LinkedList<string> awardDialog = new LinkedList<string>(awardTexts);
 
@@ -137,16 +137,16 @@ public class DialogLevelFour : MonoBehaviour
         switch (errorType)
         {
             case ControllerLevelFour.ErrorType.TIMEOUT:
-                feedbackDialog.AddLast("Tempo esgotado!\r\nO cliente esperou demais para receber o plano de voo, e ele n„o pÙde ser lido a tempo. Lembre-se: planos de voo de alta prioridade devem ser mantidos no sagu„o (swap) para acesso r·pido, enquanto os de baixa prioridade podem ser armazenados no armazÈm (memÛria secund·ria). Organize os planos de voo de acordo com suas prioridades para evitar atrasos crÌticos!");
+                feedbackDialog.AddLast("Tempo esgotado!\r\nO cliente esperou demais para receber o plano de voo, e ele n√£o p√¥de ser lido a tempo. Lembre-se: planos de voo de alta prioridade devem ser mantidos no sagu√£o (swap) para acesso r√°pido, enquanto os de baixa prioridade podem ser armazenados no armaz√©m (mem√≥ria secund√°ria). Organize os planos de voo de acordo com suas prioridades para evitar atrasos cr√≠ticos!");
                 break;
             case ControllerLevelFour.ErrorType.DIFFERENT_PRIORITY:
-                feedbackDialog.AddLast("Prioridade incorreta!\r\nO cliente solicitou um plano de voo de prioridade diferente da que vocÍ serviu. Certifique-se de verificar a prioridade do plano antes de atendÍ-la!");
+                feedbackDialog.AddLast("Prioridade incorreta!\r\nO cliente solicitou um plano de voo de prioridade diferente da que voc√™ serviu. Certifique-se de verificar a prioridade do plano antes de atend√™-la!");
                 break;
             case ControllerLevelFour.ErrorType.READ_WHEN_MUST_WRITE:
-                feedbackDialog.AddLast("Ops! Parece que houve uma confus„o na operaÁ„o!\r\nO cliente solicitou a escrita de um plano de voo, mas vocÍ tentou ler. Lembre-se: quando a torre pede para escrever, o plano de voo precisa ser armazenado corretamente no sagu„o (swap) ou no armazÈm (memÛria secund·ria), dependendo da prioridade.");
+                feedbackDialog.AddLast("Ops! Parece que houve uma confus√£o na opera√ß√£o!\r\nO cliente solicitou a escrita de um plano de voo, mas voc√™ tentou ler. Lembre-se: quando a torre pede para escrever, o plano de voo precisa ser armazenado corretamente no sagu√£o (swap) ou no armaz√©m (mem√≥ria secund√°ria), dependendo da prioridade.");
                 break;
             case ControllerLevelFour.ErrorType.WRITE_WHEN_MUST_READ:
-                feedbackDialog.AddLast("Erro na operaÁ„o!\r\nO cliente solicitou a leitura de um plano de voo, mas vocÍ tentou escrever. Quando a torre pede para ler, o objetivo È recuperar o plano de voo rapidamente, especialmente se for de alta prioridade. Certifique-se de identificar corretamente se a operaÁ„o È de leitura ou escrita antes de agir!");
+                feedbackDialog.AddLast("Erro na opera√ß√£o!\r\nO cliente solicitou a leitura de um plano de voo, mas voc√™ tentou escrever. Quando a torre pede para ler, o objetivo √© recuperar o plano de voo rapidamente, especialmente se for de alta prioridade. Certifique-se de identificar corretamente se a opera√ß√£o √© de leitura ou escrita antes de agir!");
                 break;
         }
 

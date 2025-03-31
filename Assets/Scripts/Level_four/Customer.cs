@@ -95,14 +95,16 @@ public class Customer : MonoBehaviour, IPointerClickHandler
         }
 
         this.leftTime = customerWaitTime; 
-        this.infoText.text = "Ol·, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
+        this.infoText.text = "Ol√°, gostaria de " + (this.action == Action.READ ? "LER" : "ESCREVER")
             + " um plano de voo com prioridade: " + (this.planFile.GetHasPriority() ? "ALTA" : "BAIXA");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         // just the first customer can be clicked
-        if (this != controller.GetFirstCustomerOfQueue()) return;
+        if (this != controller.GetFirstCustomerOfQueue()) {
+            return;
+        };
 
         PlanFile selectedPlanFile = controller.GetSelectedPlanFile();
         if (selectedPlanFile != null)

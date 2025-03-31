@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.TextCore;
 
 
 namespace TMPro.Examples
@@ -65,7 +67,7 @@ namespace TMPro.Examples
                 m_textMeshPro.fontSize = 24;
                 //m_textMeshPro.enableExtraPadding = true;
                 //m_textMeshPro.enableShadows = false;
-                m_textMeshPro.enableKerning = false;
+                m_textMeshPro.fontFeatures = new List<OTL_FeatureTag> { new() };
                 m_textMeshPro.text = string.Empty;
                 m_textMeshPro.isTextObjectScaleStatic = IsTextObjectScaleStatic;
 
