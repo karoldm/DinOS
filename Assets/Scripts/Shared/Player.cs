@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 100f; 
-    public float webSpeedMultiplier = 2f; 
-
+    private float speed = 4f;
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
@@ -22,13 +19,6 @@ public class Player : MonoBehaviour
     public Tilemap tilemapESPortal;
 
     public DialogInitial initialDialog;
-
-    private void Start()
-    {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 120; // Increase FPS limit
-    }
-
 
     private void Awake()
     {
@@ -50,8 +40,8 @@ public class Player : MonoBehaviour
                 animator.SetFloat("MoveY", input.y);
 
                 var targetPosition = transform.position;
-                targetPosition.x += input.x;
-                targetPosition.y += input.y;
+                targetPosition.x += input.x * speed;
+                targetPosition.y += input.y * speed;
 
                 bool collision = false;
 
@@ -145,19 +135,8 @@ public class Player : MonoBehaviour
     IEnumerator Move(Vector3 targetPosition)
     {
         isMoving = true;
-
-        float adjustedSpeed = speed;
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {
-            adjustedSpeed *= webSpeedMultiplier;
-        }
-
-        float stepTime = 1f / adjustedSpeed; // Time to complete the move
-        yield return new WaitForSeconds(stepTime); // Ensures movement is frame-independent
-
-        transform.position = targetPosition; // Instantly move to target position
+        yield return new WaitForSeconds(0);
+        transform.position = targetPosition;
         isMoving = false;
     }
-
-
 }
