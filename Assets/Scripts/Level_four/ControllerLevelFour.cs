@@ -166,7 +166,7 @@ public class ControllerLevelFour : UserController
         this.timeText.text = "";
         timeContainer.SetActive(false);
         startButton.SetActive(true);
-        ClearQueue(1, dinoQueue);
+        ClearQueue(3, dinoQueue);
         ClearQueue(0, swapArea);
         ClearQueue(0, secondMemoryArea);
         HiddenTutorial();

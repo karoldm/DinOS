@@ -22,6 +22,9 @@ public class Login : MonoBehaviour
         {
             Debug.LogError("DatabaseManager instance not found in the scene.");
         }
+
+        usernameField.Select();
+        usernameField.ActivateInputField();
     }
 
     public void OnChangeUsername()
