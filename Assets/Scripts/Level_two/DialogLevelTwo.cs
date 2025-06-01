@@ -25,8 +25,8 @@ public class DialogLevelTwo : MonoBehaviour
     private static string[] introTexts =
     {
         "Bem-vindo! Aqui alocamos todas as tarefas necessárias para que um plano de voo iniciado pela Torre de Controle possa ser conduzido até o final sem falhas. Diversas tarefas como abastecer o avião, checar as travas de segurança, verificar a comunicação com a torre, conduzir os passageiros, entre muitas outras são realizadas neste local.",
-        "Graças à nossa tecnologia avançada, podemos realizar essas tarefas a partir de terminais localizados aqui mesmo! Que tal tentar? Cada voo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu próprio terminal (identificado pela cor e pelo ícone da tarefa).",
-        "Você pode associar os terminais às diferentes partes do processador, onde cada uma é responsável por realizar uma computação diferente.",
+        "Cada voo possui um conjunto de tarefas, e cada tarefa precisa ser realizada no seu próprio terminal (identificado pela cor e pelo ícone da tarefa).",
+        "Você pode associar os terminais aos núcleos da CPU, onde cada uma é responsável por executar processos diferentes.",
         "Nossos companheiros podem lhe ajudar a realizar essas tarefas, mas cada um deles só pode realizar uma tarefa de cada vez, e enquanto estiver ocupado com uma tarefa não pode receber outras! Além disso, cada terminal só pode ser usado por um Dino por vez.",
         "Assim como os espaços da memória RAM podem ser divididos em blocos ou partições para diferentes processos, cada Dino representa um bloco com tamanho fixo. Se atente a essa capacidade quando for atribuir uma tarefa a um Dino.",
         "Muito cuidado com tarefas dependentes! Algumas de nossas tarefas dependem de outras de modo que serão executadas imediatamente em seguida. Essas tarefas são marcadas com uma seta.",

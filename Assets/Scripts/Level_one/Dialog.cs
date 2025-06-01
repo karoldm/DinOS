@@ -18,7 +18,7 @@ public class Dialog : MonoBehaviour
     private static string[] introTexts =
     {
         "Olá, seja bem-vindo à Torre de Controle (ou ao nosso processador)! Por aqui nós conseguimos acompanhar quando um novo voo é agendado e chega para nós como um plano de voo.",
-        "Os planos de voos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a prioridade dele. Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
+        "Os planos de voos possuem uma série de instruções que nos dizem o destino daquele avião, quanto tempo ele vai levar até chegar ao destino e qual a prioridade dele (assim como um processo possui instruções que determinam seu estado final, tempo de execução e prioridade). Como gerenciadores desse setor devemos nos atentar a qual voo deve ser iniciado primeiro para podermos agradar a todos os clientes possíveis!",
         "Para iniciar a operação de um plano de voo você precisa arrastá-lo até o painel de execução à sua direita. No painel você consegue acompanhar quanto tempo falta até o voo ser concluído. Lembre-se de usar as informações que você possui (prioridade e tempo de execução) para executar os planos da forma mais eficiente possível!",
         "Algumas estratégias de execução exigem que os voos sejam intercalados, para interromper um voo você pode só ativar o 'ativar quantum' que ele será agendado para sempre ser interrompido no tempo correto. Lembre-se de ativar o quantum antes e iniciar a execução do primeiro voo!",
     };
