@@ -90,7 +90,7 @@ public class Login : MonoBehaviour
     {
         this.ClearErrorMessages();
 
-        if (string.IsNullOrEmpty(user.username) || string.IsNullOrEmpty(user.password))
+        if (string.IsNullOrWhiteSpace(user.username) || string.IsNullOrWhiteSpace(user.password))
         {
             this.HandleEmptyData();
             return;
