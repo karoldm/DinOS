@@ -14,7 +14,7 @@ public class LevelThreeController : UserController
     public List<VerticalLayoutGroup> queues;
     public List<AirplaneCall> calls;
     public List<AirplaneDino> dinos;
-    private float interval = 5f; 
+    private float interval = 5f;
     private int maxOfQueue = 4;
     public List<AirplanePeriferic> listTypeOfAirplanes;
     public AirplanePeriferic firstSelected;
@@ -22,10 +22,10 @@ public class LevelThreeController : UserController
     private AirplaneCall selectedCall;
     public TextMeshProUGUI scoreText;
     private int score = 0;
-    private bool wrongFlag = false; 
+    private bool wrongFlag = false;
     public Award award;
     private int totalAirplanes = 0;
-    private int maxAirplanes = 2;
+    private int maxAirplanes = 12;
     public LevelThreeDialog dialog;
     public TextMeshProUGUI airplanesText;
 
@@ -95,7 +95,7 @@ public class LevelThreeController : UserController
         newPosition.y += yincrement;
         cursorTutorial.transform.position = newPosition;
     }
-    
+
 
     public void HiddenTutorial()
     {
@@ -135,7 +135,7 @@ public class LevelThreeController : UserController
 
     public void UpdateCalls()
     {
-        for(int i = 0; i < queues.Count; i++)
+        for (int i = 0; i < queues.Count; i++)
         {
             AirplanePeriferic airplane = GetFirstAirplaneOfQueue(i);
 
@@ -201,19 +201,19 @@ public class LevelThreeController : UserController
 
     void AddAirplane()
     {
-        for(int i = 0; i < queues.Count; i++)
+        for (int i = 0; i < queues.Count; i++)
         {
             if (QueueSize(i) < maxOfQueue && totalAirplanes < maxAirplanes)
             {
                 AddElementToQueue(i);
                 UpdateCalls();
             }
-        } 
+        }
     }
 
     private int GetRandInt(int min, int max)
     {
-       return UnityEngine.Random.Range(min, max + 1);
+        return UnityEngine.Random.Range(min, max + 1);
     }
 
     public void ForceRebuildLayoutQueue(int indexQueue)
@@ -274,7 +274,7 @@ public class LevelThreeController : UserController
 
     public void RemoveChildOfQueue(VerticalLayoutGroup queue)
     {
-       
+
         Transform child = queue.transform.GetChild(0);
 
         if (child != null)
@@ -303,7 +303,7 @@ public class LevelThreeController : UserController
         UpdateUser();
 
         this.scoreText.text = "0";
-        this.score = 0; 
+        this.score = 0;
         this.totalAirplanes = 0;
     }
 }
